@@ -12,7 +12,7 @@ hosts the material specific for that training.
 
 For those sessions that do not yet have their own dedicated website,
 the material can be found in the training-masterials repository:
-https://github.com/gjbex/training-material
+[https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
 
 ## C++ for scientific programming (14 hours)
 
@@ -49,7 +49,7 @@ towards scientific computing.  This training introduces the language
 and its features.
 
 For detailed information, see:
-https://github.com/gjbex/Fortran-for-programmers
+[https://github.com/gjbex/Fortran-for-programmers](https://github.com/gjbex/Fortran-for-programmers)
 
 
 ## Python training sessions
@@ -131,7 +131,7 @@ of scientific domains. In this training we will concentrate on the core
 libraries, and give some examples of domain specific libraries.
 
 For detailed information, see:
-https://github.com/gjbex/Scientific-Python
+[https://github.com/gjbex/Scientific-Python](https://github.com/gjbex/Scientific-Python)
 
 
 ### Python for data science (4 hours)
@@ -141,7 +141,7 @@ training we will cover a number of modules that are useful for data
 preparation, analyzing data, visualization, and machine learning.
 
 For detailed information, see:
-https://github.com/gjbex/Python-for-data-science
+[https://github.com/gjbex/Python-for-data-science](https://github.com/gjbex/Python-for-data-science)
 
 
 ### Python for machine learning (4 hours)
@@ -369,7 +369,7 @@ application and can be deployed and run on HPC infrastructure, as well
 as on your own laptop.
 
 For detailed information, see:
-https://github.com/gjbex/Containers-for-HPC
+[https://github.com/gjbex/Containers-for-HPC](https://github.com/gjbex/Containers-for-HPC)
 
 
 ## Version control: git or SVN (3 hours)
@@ -380,4 +380,4 @@ You will learn how to use a version control system (either git or SVN)
 to document the changes in your source code.
 
 For detailed information, see:
-https://github.com/gjbex/Version-control-with-git
+[https://github.com/gjbex/Version-control-with-git](https://github.com/gjbex/Version-control-with-git)
