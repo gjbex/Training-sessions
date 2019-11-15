@@ -39,7 +39,7 @@ Prerequisites:
   * experience in another programming language
 
 
-## Fortran (7 hours)
+## Fortran for programmers
 
 Fortran is used a lot in the context of HPC.  For many, it has a
 reputation of being an old and ugly programming language.  However,
@@ -49,7 +49,7 @@ towards scientific computing.  This training introduces the language
 and its features.
 
 For detailed information, see:
-[https://github.com/gjbex/Fortran-for-programmers](https://github.com/gjbex/Fortran-for-programmers)
+[https://gjbex.github.io/Fortran-for-programmers/](https://gjbex.github.io/Fortran-for-programmers/)
 
 
 ## Python training sessions
@@ -123,7 +123,7 @@ Prerequisites:
   * experience in Python programming
 
 
-### Scientific Python (4 hours)
+### Scientific Python
 
 Python is a nice programming language for scientific programming. Many
 high quality libraries are available as building block in a wide variety 
@@ -131,17 +131,17 @@ of scientific domains. In this training we will concentrate on the core
 libraries, and give some examples of domain specific libraries.
 
 For detailed information, see:
-[https://github.com/gjbex/Scientific-Python](https://github.com/gjbex/Scientific-Python)
+[https://gjbex.github.io/Scientific-Python/](https://gjbex.github.io/Scientific-Python/)
 
 
-### Python for data science (4 hours)
+### Python for data science
 
 Python is one of the dominant languages in data science.  In this
 training we will cover a number of modules that are useful for data
 preparation, analyzing data, visualization, and machine learning.
 
 For detailed information, see:
-[https://github.com/gjbex/Python-for-data-science](https://github.com/gjbex/Python-for-data-science)
+[https://gjbex.github.io/Python-for-data-science/](https://gjbex.github.io/Python-for-data-science/)
 
 
 ### Python for machine learning (4 hours)
@@ -361,7 +361,7 @@ Prerequisites:
   * none
 
 
-## Container for HPC (3 hours)
+## Container for HPC
 
 Singularity can be viewed as the Docker for HPC, i.e., a Singularity
 image contains all the operating system/software components for your
@@ -369,10 +369,10 @@ application and can be deployed and run on HPC infrastructure, as well
 as on your own laptop.
 
 For detailed information, see:
-[https://github.com/gjbex/Containers-for-HPC](https://github.com/gjbex/Containers-for-HPC)
+[https://gjbex.github.io/Containers-for-HPC/](https://gjbex.github.io/Containers-for-HPC/)
 
 
-## Version control: git or SVN (3 hours)
+## Version control: git (or SVN)
 
 Version control is an essential part of the software development process
 and is crucial for scientific application to help reproducibility.
@@ -380,4 +380,4 @@ You will learn how to use a version control system (either git or SVN)
 to document the changes in your source code.
 
 For detailed information, see:
-[https://github.com/gjbex/Version-control-with-git](https://github.com/gjbex/Version-control-with-git)
+[https://gjbex.github.io/Version-control-with-git/](https://gjbex.github.io/Version-control-with-git/)
