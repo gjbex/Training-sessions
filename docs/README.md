@@ -372,7 +372,7 @@ For detailed information, see:
 [https://gjbex.github.io/Containers-for-HPC/](https://gjbex.github.io/Containers-for-HPC/)
 
 
-## Version control: git (or SVN)
+## Version control with git (or SVN)
 
 Version control is an essential part of the software development process
 and is crucial for scientific application to help reproducibility.
