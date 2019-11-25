@@ -80,21 +80,10 @@ applications.  This training concentrates on interaction with the
 operating system, the file system, other applications and the network.
 This is useful for systems programming, but also when you want to use
 Python as a coordination language for your workflows.
+This training introduces modules that are useful in that context.
 
-Subjects and Python modules that will be covered:
-
-  * interacting with the operating system: os, platform, sys, psutil
-  * interacting with the filesystem: os.path, pathlib, shutil,
-    fileinput, tempfile
-  * command line arguments & configuration files: argparse, click, configparser 
-  * compressing & decompressing files: e.g., gzip, tarfile
-  * running & communicating with other processes: sh, subprocess
-  * running remote commands using SSH: paramiko
-  * logging information, warnings and errors: logging
-
-Prerequisites:
-
-  * experience in Python programming
+For detailed information, see:
+[https://gjbex.github.io/Python-for-systems-programming/](https://gjbex.github.io/Python-for-systems-programming/)
 
 
 ### Python software engineering (4 hours)
