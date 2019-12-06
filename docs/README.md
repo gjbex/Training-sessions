@@ -96,20 +96,8 @@ to maintain, so coding style matters, API-level documentation should be
 available, as well as a battery of tests to ensure the software's
 integrity.  Of course, good design is at least as important.
 
-Subjects and Python modules that will be covered:
-
-  * code style and best practices, idiomatic Python: flake8, pylint
-  * documentation: docstring, mkdocs
-  * user interface: argparse, configparser
-  * exception handling
-  * type hints and type checking using mypy
-  * unit testing: pytest
-  * object oriented programming in Python
-  * design patterns
-
-Prerequisites:
-
-  * experience in Python programming
+For detailed information, see:
+[https://gjbex.github.io/Python-software-engineering/](https://gjbex.github.io/Python-software-engineering/)
 
 
 ### Scientific Python
