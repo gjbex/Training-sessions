@@ -153,19 +153,8 @@ Although vanilla Python is fairly slow and hence not a good candidate,
 there are several options to significantly increase the efficiency of
 Python programs.
 
-  * profiling Python code
-  * using the numba JIT compiler
-  * Cython to generate C code from annotated Python
-  * implementing libraries in C, C++ and Fortran
-  * concurrency via multiprocessing or concurrent.futures
-  * parallelization using dask
-  * distributed programming with mpi4py
-  * data processing with pyspark
-
-Prerequisites:
-
-  * experience in Python programming
-  * for some subjects, experience in programming C, C++ or Fortran
+For detailed information, see:
+[https://gjbex.github.io/Python-for-HPC/](https://gjbex.github.io/Python-for-HPC/)
 
 
 ## Jupyter notebooks (2 hours)
