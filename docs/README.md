@@ -128,23 +128,8 @@ and AI.  This training will provide an introduction to machine learning
 methodology for data preparation and machine learning, as well as some
 machine learning algorithms.
 
-subjects and Python modules that will be covered:
-
-  * what is machine learning, and what is AI?
-  * pipelines for data ingestion, training and testing: scikit-learn
-  * examples of classic algorithms: scikit-learn
-    * principal component analysis
-    * Ridge regression
-    * Naive Bayes classifier
-    * k-means clustering
-  * examples of (deep) neural networks: Keras
-    * multi-layer perceptron for image classification
-    * convolutional neural network for image classification
-    * recurrent neural networks for sentiment analysis
-
-Prerequisites:
-
-  * experience in Python programming, visualization
+For detailed information, see:
+[https://gjbex.github.io/Python-for-machine-learning/](https://gjbex.github.io/Python-for-machine-learning/)
 
 
 ### Python for HPC (4 hours)
