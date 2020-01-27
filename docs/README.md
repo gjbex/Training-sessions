@@ -272,22 +272,9 @@ components, and how they influence the efficiency of you application.
 You will also learn how to profile your application to identify
 performance bottlenecks.
 
-Subjects:
+For detailed information, see:
+[https://gjbex.github.io/Code-optimization/](https://gjbex.github.io/Code-optimization/)
 
-  * parallel efficiency 
-  * memory: cache hierarchy, cache lines, memory access patterns,
-    cache associativity
-  * CPU: vectorization
-  * pitfalls, e.g., double promotion, false sharing
-  * feedback guided optimization
-  * performance measures
-  * profiling
-
-Prerequisites:
-
-  * experience programming C, C++, or Fortran 
-  * experience using MPI and/or OpenMP
-  * familiarity with the bash command line
 
 
 ## Linux bash shell (4 hours)
