@@ -263,7 +263,7 @@ Prerequisites:
   * optional: experience using MPI and/or OpenMP
 
 
-## Optimization (4 hours)
+## Code optimization (4 hours)
 
 For HPC applications, performance is a major concern.  A thorough
 understanding of the relevant hardware and software components is
