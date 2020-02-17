@@ -21,22 +21,8 @@ the way Bjarne Stroustrup advocates modern C++ in his book "A tour of
 C++".  Some C++17 features and third party libraries will also be
 discussed.
 
-Subjects:
-
-  * basics: control flow statements, data types, functions
-  * user defined types: structs, classes
-  * modularization of code
-  * error handling
-  * classes: inheritance 
-  * templates
-  * strings and regular expressions
-  * I/O streams
-  * STL containers and algorithms
-  * numerics, Armadillo for linear algebra, GNU Scientific Library
-
-Prerequisites:
-
-  * experience in another programming language
+For detailed information, see:
+[https://gjbex.github.io/Scientific-C-plus-plus/](https://gjbex.github.io/Scientific-C-plus-plus/)
 
 
 ## Fortran for programmers
@@ -103,7 +89,7 @@ For detailed information, see:
 ### Scientific Python
 
 Python is a nice programming language for scientific programming. Many
-high quality libraries are available as building block in a wide variety 
+high quality libraries are available as building block in a wide variety
 of scientific domains. In this training we will concentrate on the core
 libraries, and give some examples of domain specific libraries.
 
@@ -258,7 +244,7 @@ Subjects:
 
 Prerequisites:
 
-  * experience programming C, C++, or Fortran 
+  * experience programming C, C++, or Fortran
   * familiarity with the bash command line
   * optional: experience using MPI and/or OpenMP
 
