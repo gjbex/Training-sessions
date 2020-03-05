@@ -86,7 +86,7 @@ For detailed information, see:
 [https://gjbex.github.io/Python-software-engineering/](https://gjbex.github.io/Python-software-engineering/)
 
 
-### Scientific Python
+### Scientific Python (4 hours)
 
 Python is a nice programming language for scientific programming. Many
 high quality libraries are available as building block in a wide variety
@@ -97,7 +97,7 @@ For detailed information, see:
 [https://gjbex.github.io/Scientific-Python/](https://gjbex.github.io/Scientific-Python/)
 
 
-### Python for data science
+### Python for data science (4 hours)
 
 Python is one of the dominant languages in data science.  In this
 training we will cover a number of modules that are useful for data
