@@ -40,7 +40,7 @@ For detailed information, see:
 
 ## Python training sessions
 
-### Python as a second language (4 hours)
+### Python for programmers (4 hours)
 
 Python is an all-round programming language that has applications in
 many domains.  This training session introduces the programming
