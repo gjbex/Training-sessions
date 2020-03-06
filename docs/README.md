@@ -25,7 +25,7 @@ For detailed information, see:
 [https://gjbex.github.io/Scientific-C-plus-plus/](https://gjbex.github.io/Scientific-C-plus-plus/)
 
 
-## Fortran for programmers
+## Fortran for programmers (8 hours)
 
 Fortran is used a lot in the context of HPC.  For many, it has a
 reputation of being an old and ugly programming language.  However,
@@ -36,6 +36,30 @@ and its features.
 
 For detailed information, see:
 [https://gjbex.github.io/Fortran-for-programmers/](https://gjbex.github.io/Fortran-for-programmers/)
+
+
+## C for programmers (12 hours)
+
+C is still one of the more popular programming languages today.  It is
+probably mainly used for systems programming, but there are also many
+applications for scientific computing that have been developed in this
+programming language.
+
+Subject:
+
+  * data types and operators
+  * control flow statements
+  * functions
+  * pointers
+  * arrays
+  * structures
+  * I/O and command line arguments
+  * C99 extensions
+  * using third party libraries, e.g., GSL
+
+Prerequisites:
+
+  * experience in another programming language
 
 
 ## Python training sessions
@@ -284,6 +308,26 @@ Prerequisites:
 
   * none
 
+## HPC introduction (3 hours)
+
+Although working on High Performance Computing (HPC) infrastructues is
+not rocket science, there are still a number of things you need to be
+aware of to do so efficiently.  Note that this session is specific for
+(potential) users of the infrastructure managed by the Vlaams
+Supercopmuting Centrum (VSC).
+
+Subjects:
+
+  * how to access the systems
+  * architecture of a cluster
+  * shared file systems
+  * software stack
+  * resource manageer and scheduler
+  * accoutning
+  
+Prerequisites:
+
+  * familiarity with the Linux command line
 
 ## Container for HPC
 
