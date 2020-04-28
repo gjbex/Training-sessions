@@ -1,10 +1,10 @@
 # Training sessions
 
-This is a (non-exhaustive) list of trainings offered on a regular basis
+This is a (non-exhaustive) list of training sessions offered on a regular basis
 by the VSC, but also to research institutes and companies.
 
-All of these trainings can be tailored to the audience if required,
-and ad-hoc trainings are possible as well.
+All of these training sessions can be tailored to the audience if required,
+and ad-hoc training sessions are possible as well.
 
 For many sessions, a dedicated website has been created that provides
 detailed information, as well as a link to a GitHub repository that
@@ -16,7 +16,7 @@ the material can be found in the training-masterials repository:
 
 ## C++ for scientific programming (14 hours)
 
-This training focusses on using C++ for scientific programming and on
+This training focuses on using C++ for scientific programming and on
 the way Bjarne Stroustrup advocates modern C++ in his book "A tour of
 C++".  Some C++17 features and third party libraries will also be
 discussed.
@@ -218,7 +218,7 @@ Subjects:
   * recap of required C++ features
   * algorithms: `parallel_for`, `parallel_reduce`, `parallel_do`
   * task based programming
-  * dataflow programming, task graphs
+  * data-flow programming, task graphs
   * pitfalls and best practices
 
 Prerequisites:
@@ -294,6 +294,20 @@ as on your own laptop.
 
 For detailed information, see:
 [https://gjbex.github.io/Containers-for-HPC/](https://gjbex.github.io/Containers-for-HPC/)
+
+
+## Worker and atools
+
+Many scientific workloads are embarrassingly parallel, i.e, they can be broken
+down into many independent computations.  Examples of such workflow are data
+preprocessing or postprocesing of many files, or parameter exploration where
+the same program is run for many different parameter instantiations.  Two
+tools have been developed to help you minimize the hassle with such workloads.
+This training session will highlight the strength of both tools, help you to
+pick the right one for your workflow, and use it efficiently.
+
+For detailed information, see:
+[https://gjbex.github.io/worker-and-atools/](https://gjbex.github.io/worker-and-atools/)
 
 
 ## Version control with git (or SVN)
