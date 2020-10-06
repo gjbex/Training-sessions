@@ -272,6 +272,10 @@ Prerequisites:
   * familiarity with the bash command line
   * optional: experience using MPI and/or OpenMP
 
+Supplementary material:
+
+  * [Online reading material](https://gjbex.github.io/DPD-online-book/)
+
 
 ## Code optimization (4 hours)
 
