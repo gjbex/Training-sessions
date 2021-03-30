@@ -1,0 +1,13 @@
+Subject: [VSC training] <title>
+
+Dear participant,
+
+You registered for the online training on "<title>", <date>.  The link for the session is:
+<link>
+
+The session starts at 9h, but you can join already at 8h45 to get familiar with the online training platform (Blackboard Collaborate).  A cheat sheet is available online:
+https://www.kuleuven.be/english/education/leuvenlearninglab/academic-year-2020-2021/asynchronous-synchronous/blackboard-collaborate/Collab_QS_functies_EN.pdf
+
+If you need a certificate of attendance for this training, make sure to join using your full name.
+
+Best regards, Geert Jan Bex
