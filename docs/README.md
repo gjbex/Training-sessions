@@ -152,6 +152,16 @@ For detailed information, see:
 [https://gjbex.github.io/Python-for-HPC/](https://gjbex.github.io/Python-for-HPC/)
 
 
+## Julia: the good, the bad and the ugly (4 hours)
+
+Julia has gained quite some traction over the last couple of years, but is it for you?
+In this training you will see how it compares to MATLAB and Python, and what Julia's
+strong and weak points are.
+
+For detailed information, see:
+[https://gjbex.github.io/Julia_good_bad_ugly/](https://gjbex.github.io/Julia_good_bad_ugly/)
+
+
 ## Jupyter notebooks (2 hours)
 
 Jupyter notebooks are a versatile tools for data exploration and
