@@ -200,12 +200,12 @@ Prerequisites:
 These courses have been developed by Rolf Rabenseifner (HLRS, Stuttgart,
 Germany) and the training has followed Rolf's train-the-trainer program.
 
-### MPI: Message Passing Interface (14 hours)
+### Parallel programming with MPI (14 hours)
 
-MPI is the de-facto standard for distributed parallel programming of
-scientific applications.  It specifies language bindings for C and
-Fortran.  This training covers the MPI 3.1 standard, but also
-emphasizes potential pitfalls and best practices.
+MPI (Message Passing Interface) is the de-facto standard for distributed
+parallel programming of scientific applications.  It specifies language
+bindings for C and Fortran.  This training covers the MPI 3.1 standard,
+but also emphasizes potential pitfalls and best practices.
 
 Subjects:
 
@@ -225,7 +225,7 @@ Prerequisites:
   * experience in C, C++ or Fortran programming
 
 
-### OpenMP (7 hours)
+### Parallel programming with OpenMP (7 hours)
 
 OpenMP provides a very convenient programming model for scientific
 applications that run multiple threads.  It is supported by C, C++ and
@@ -249,7 +249,7 @@ Prerequisites:
   * experience in C, C++ or Fortran programming
 
 
-### Threading Building Blocks (4 hours)
+###Parallel programming with Threading Building Blocks (4 hours)
 
 Threading Building Blocks (TBB) is a C++ template library for developing
 shared memory applications.  It integrates well with the C++ Standard
