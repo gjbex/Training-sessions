@@ -163,6 +163,18 @@ For detailed information, see:
 [https://gjbex.github.io/Python-on-GPUs/](https://gjbex.github.io/Python-on-GPUs/)
 
 
+### Python dashboards
+
+Dashboards are a useful way to present data in an interactive way.  They can be used
+for reporting, but also for data exploration, or even to create simple web applications.
+You can run dashboards locally, or deploy them via GitHub or GitLab, or even on a
+server in the cloud.  Creating dashboards in Python is quite straightforward.  In this
+training you will learn about several frameworks and their strenghts and weaknesses.
+
+For detailed information, see:
+[https://gjbex.github.io/Python-dashboards/](https://gjbex.github.io/Python-dashboards/)
+
+
 ## Julia: the good, the bad and the ugly (4 hours)
 
 Julia has gained quite some traction over the last couple of years, but is it for you?
