@@ -10,4 +10,7 @@ clear
 pe 'ls -l'
 
 # press enter for the command to appear, press enter to execute
-pe 'cat test.sh'
+pe 'cat simple.sh'
+
+# wait so that the script doesn't exit immediately
+wait
