@@ -13,3 +13,5 @@ as for video recordings and screencasts.
    to do its magic.
 1. `simple.sh`: very simple example that shows how to use `pe`.
    This will type a command and wait for enter to execute it.
+1. `compilation`: an example of using demo-magic to illustrate how to
+   compile C code and fix bugs.  Finally, show how to build with CMake.
