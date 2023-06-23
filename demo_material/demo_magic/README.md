@@ -6,6 +6,8 @@ it can be used to do intricate demonstrations of command line tools
 without the risk of typos.  This can be convenient both for live demos
 as for video recordings and screencasts.
 
+demo-magic is available on {GitHub](https://github.com/paxtonhare/demo-magic).
+
 
 ## What is it?
 
