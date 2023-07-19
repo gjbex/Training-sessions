@@ -1,0 +1,5 @@
+# apptainer recipe files
+*.recipe
+
+# apptainer images
+*.sif

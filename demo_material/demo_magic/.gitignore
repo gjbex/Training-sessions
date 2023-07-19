@@ -1,0 +1,8 @@
+# executables
+*.exe
+a.out
+
+# object files and libraries
+*.o
+*.a
+*.so
