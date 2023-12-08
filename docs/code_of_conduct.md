@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Code of conduct
-permalink: /code_of_conduct.md
+permalink: /code_of_conduct.html
 ---
 
 # Code of conduct
