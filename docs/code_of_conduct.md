@@ -1,3 +1,7 @@
+layout: page
+title: Code of conduct
+permalink: /code_of_conduct.html
+
 # Code of conduct
 
 This workshop is dedicated to providing a welcoming and supportive environment for all people, regardless of background or identity. By participating in this workshop, participants accept to abide by this Code of Conduct and accept the procedures by which any Code of Conduct incidents are resolved. We do not tolerate behavior that is disrespectful or that excludes, intimidates, or causes discomfort to others. We do not tolerate discrimination or harassment based on characteristics that include, but are not limited to, gender identity and expression, sexual orientation, disability, physical appearance, body size, citizenship, nationality, ethnic or social origin, pregnancy, familial status, veteran status, genetic information, religion or belief (or lack thereof), membership of a national minority, property, age, education, socio-economic status, technical choices, and experience level.

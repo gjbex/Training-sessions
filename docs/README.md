@@ -406,4 +406,4 @@ For detailed information, see:
 
 Please note that by participating in any training listed here, either
 online, hybrid, or face-to-face you implicitely agree to adhere tothe
-[code of conduct](code_of_conduct.md).
+[code of conduct](code_of_conduct.html).
