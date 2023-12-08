@@ -142,7 +142,7 @@ For detailed information, see:
 [https://gjbex.github.io/Python-for-machine-learning/](https://gjbex.github.io/Python-for-machine-learning/)
 
 
-### Python for HPC (4 hours)
+### Python for HPC (8 hours)
 
 Although vanilla Python is fairly slow and hence not a good candidate,
 there are several options to significantly increase the efficiency of
@@ -366,7 +366,7 @@ Prerequisites:
 
   * familiarity with the Linux command line
 
-## Container for HPC
+## Container for HPC (3 hours)
 
 Singularity can be viewed as the Docker for HPC, i.e., a Singularity
 image contains all the operating system/software components for your
@@ -377,7 +377,7 @@ For detailed information, see:
 [https://gjbex.github.io/Containers-for-HPC/](https://gjbex.github.io/Containers-for-HPC/)
 
 
-## Worker and atools
+## Worker and atools (3 hours)
 
 Many scientific workloads are embarrassingly parallel, i.e, they can be broken
 down into many independent computations.  Examples of such workflow are data
@@ -391,7 +391,7 @@ For detailed information, see:
 [https://gjbex.github.io/worker-and-atools/](https://gjbex.github.io/worker-and-atools/)
 
 
-## Version control with git (or SVN)
+## Version control with git (4 hours)
 
 Version control is an essential part of the software development process
 and is crucial for scientific application to help reproducibility.
