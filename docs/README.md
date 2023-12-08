@@ -400,3 +400,10 @@ to document the changes in your source code.
 
 For detailed information, see:
 [https://gjbex.github.io/Version-control-with-git/](https://gjbex.github.io/Version-control-with-git/)
+
+
+# Code of conduct
+
+Please note that by participating in any training listed here, either
+online, hybrid, or face-to-face you implicitely agree to adhere tothe
+[code of conduct](code_of_conduct.md).
