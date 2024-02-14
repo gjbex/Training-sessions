@@ -1,7 +1,7 @@
 # Training sessions
 
 This is a (non-exhaustive) list of training sessions offered on a regular basis
-by the VSC, but also to research institutes and companies.
+by the Vlaams Supercomputing Centrum (VSC), but also to research institutes and companies.
 
 All of these training sessions can be tailored to the audience if required,
 and ad-hoc training sessions are possible as well.
@@ -11,10 +11,16 @@ detailed information, as well as a link to a GitHub repository that
 hosts the material specific for that training.
 
 For those sessions that do not yet have their own dedicated website,
-the material can be found in the training-masterials repository:
+the material can be found in the training-materials repository:
 [https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
 
-## C++ for scientific programming (14 hours)
+
+## C++
+
+C++ is an important language for scientific programming and HPC.
+
+
+### C++ for scientific programming (14 hours)
 
 This training focuses on using C++ for scientific programming and on
 the way Bjarne Stroustrup advocates modern C++ in his book "A tour of
@@ -25,7 +31,65 @@ For detailed information, see:
 [https://gjbex.github.io/Scientific-C-plus-plus/](https://gjbex.github.io/Scientific-C-plus-plus/)
 
 
-## Fortran for programmers (8 hours)
+### C++ software engineering
+
+This training focuses on building applications and libraries in a
+professional way using best practices in software engineering.
+
+Subjects:
+
+  * building software with CMake
+  * unit testing with Catch2
+  * functional testing with CTest
+  * package managers such as Conan and vspkg
+  * using static code analyzers and linters
+  * design patterns
+
+Prerequisites:
+
+  * experience in C++ programming
+
+
+### Parallel programming with the STL and Threading Building Blocks (4 hours)
+
+Out of the box, the STL contains many algorithms that can be run in parallel.
+In this training, you will learn how to do that, and what the performance
+benefits may be.
+Threading Building Blocks (TBB) is a C++ template library for developing
+shared memory applications.  It integrates well with the C++ Standard
+Template Library (STL) and can be used with any modern C++ compiler.
+TBB is especially suited for nested parallelism, and pipelining when
+part of the application can use accelerator hardware.
+
+Subjects:
+
+  * STL parallel algorithms
+  * Threading Building Blocks
+    * programming and execution model
+    * recap of required C++ features
+    * algorithms: `parallel_for`, `parallel_reduce`, `parallel_do`
+    * task based programming
+    * data-flow programming, task graphs
+    * pitfalls and best practices
+
+Prerequisites:
+
+  * experience in C++ programming
+
+
+### Other training sessions useful for C++ programmers
+
+  * Parallel programming with OpenMP
+  * Parallel programming with MPI
+  * Code optimization
+  * Defensive programming and debugging
+  * Best practices in scientific programming
+
+
+## Fortran
+
+
+### Fortran for programmers (8 hours)
 
 Fortran is used a lot in the context of HPC.  For many, it has a
 reputation of being an old and ugly programming language.  However,
@@ -38,14 +102,25 @@ For detailed information, see:
 [https://gjbex.github.io/Fortran-for-programmers/](https://gjbex.github.io/Fortran-for-programmers/)
 
 
-## C for programmers (12 hours)
+### Other training sessions useful for Fortran programmers
+
+  * Parallel programming with OpenMP
+  * Parallel programming with MPI
+  * Code optimization
+  * Defensive programming and debugging
+  * Best practices in scientific programming
+
+
+## C
+
+### C for programmers (12 hours)
 
 C is still one of the more popular programming languages today.  It is
 probably mainly used for systems programming, but there are also many
 applications for scientific computing that have been developed in this
 programming language.
 
-Subject:
+Subjects:
 
   * data types and operators
   * control flow statements
@@ -60,6 +135,15 @@ Subject:
 Prerequisites:
 
   * experience in another programming language
+
+
+### Other training sessions useful for Fortran programmers
+
+  * Parallel programming with OpenMP
+  * Parallel programming with MPI
+  * Code optimization
+  * Defensive programming and debugging
+  * Best practices in scientific programming
 
 
 ## Python training sessions
@@ -169,7 +253,7 @@ Dashboards are a useful way to present data in an interactive way.  They can be 
 for reporting, but also for data exploration, or even to create simple web applications.
 You can run dashboards locally, or deploy them via GitHub or GitLab, or even on a
 server in the cloud.  Creating dashboards in Python is quite straightforward.  In this
-training you will learn about several frameworks and their strenghts and weaknesses.
+training you will learn about several frameworks and their strengths and weaknesses.
 
 For detailed information, see:
 [https://gjbex.github.io/Python-dashboards/](https://gjbex.github.io/Python-dashboards/)
@@ -261,28 +345,6 @@ Prerequisites:
   * experience in C, C++ or Fortran programming
 
 
-###Parallel programming with Threading Building Blocks (4 hours)
-
-Threading Building Blocks (TBB) is a C++ template library for developing
-shared memory applications.  It integrates well with the C++ Standard
-Template Library (STL) and can be used with any modern C++ compiler.
-TBB is especially suited for nested parallelism, and pipelining when
-part of the application can use accelerator hardware.
-
-Subjects:
-
-  * programming and execution model
-  * recap of required C++ features
-  * algorithms: `parallel_for`, `parallel_reduce`, `parallel_do`
-  * task based programming
-  * data-flow programming, task graphs
-  * pitfalls and best practices
-
-Prerequisites:
-
-  * experience in C++ programming
-
-
 ## Defensive programming and debugging (4 hours + 2 hours optional)
 
 All code contains bugs, finding and fixing them is boring.  In this
@@ -323,6 +385,35 @@ For detailed information, see:
 [https://gjbex.github.io/Code-optimization/](https://gjbex.github.io/Code-optimization/)
 
 
+## Best practices in scientific programming
+
+As a scientist, your core business is science, not software engineering.
+Nevertheless, having a good understanding of how best practices in software
+engineering can help you work more efficiently, or give your work more
+exposure is quite useful.  This training is flexible in that it can be
+tailored to any combination of C, C++, Fortran or Python, and to many
+levels of detail.
+
+Subjects:
+
+  * code style
+  * version control & collaboration
+  * testing
+    * unit testing
+    * functional testing
+    * code coverage
+  * documentation
+  * deployment
+  * continuous integration
+
+Prerequisites:
+
+  * fluency in at least one programming language
+
+Supplementary material:
+
+  * [website](https://gjbex.github.io/Best-practices-in-programming/)
+
 
 ## Linux bash shell (4 hours)
 
@@ -347,7 +438,7 @@ Prerequisites:
 
 ## HPC introduction (3 hours)
 
-Although working on High Performance Computing (HPC) infrastructues is
+Although working on High Performance Computing (HPC) infrastructures is
 not rocket science, there are still a number of things you need to be
 aware of to do so efficiently.  Note that this session is specific for
 (potential) users of the infrastructure managed by the Vlaams
@@ -359,12 +450,13 @@ Subjects:
   * architecture of a cluster
   * shared file systems
   * software stack
-  * resource manageer and scheduler
-  * accoutning
+  * resource manager and scheduler
+  * accounting
   
 Prerequisites:
 
   * familiarity with the Linux command line
+
 
 ## Container for HPC (3 hours)
 
@@ -381,7 +473,7 @@ For detailed information, see:
 
 Many scientific workloads are embarrassingly parallel, i.e, they can be broken
 down into many independent computations.  Examples of such workflow are data
-preprocessing or postprocesing of many files, or parameter exploration where
+preprocessing or postprocessing of many files, or parameter exploration where
 the same program is run for many different parameter instantiations.  Two
 tools have been developed to help you minimize the hassle with such workloads.
 This training session will highlight the strength of both tools, help you to
@@ -405,5 +497,5 @@ For detailed information, see:
 # Code of conduct
 
 Please note that by participating in any training listed here, either
-online, hybrid, or face-to-face you implicitely agree to adhere tothe
+online, hybrid, or face-to-face you implicitly agree to adhere to the
 [code of conduct](code_of_conduct.html).
