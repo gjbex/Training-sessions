@@ -15,6 +15,18 @@ the material can be found in the training-materials repository:
 [https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
 
 
+## C
+
+C is an important language for scientific programming and HPC.
+
+### C for scientific programming (14 hours)
+
+This training focuses on using C for scientific programming.
+
+For detailed information, see:
+[https://gjbex.github.io/Scientific-C/](https://gjbex.github.io/Scientific-C/)
+
+
 ## C++
 
 C++ is an important language for scientific programming and HPC.
