@@ -1,7 +1,9 @@
 # Training sessions
 
-This is a (non-exhaustive) list of training sessions offered on a regular basis
-by the Vlaams Supercomputing Centrum (VSC), but also to research institutes and companies.
+This is a (non-exhaustive) list of training sessions given by [Geert Jan
+Bex](mailto:geertjan.bex@uhasselt.be), either offered on a regular basis by the
+Vlaams Supercomputing Centrum (VSC), or on demand by research institutes and
+companies.
 
 All of these training sessions can be tailored to the audience if required,
 and ad-hoc training sessions are possible as well.
@@ -50,7 +52,7 @@ Prerequisites:
   * experience in C++ programming
 
 
-### Parallel programming with the STL and Threading Building Blocks (4 hours)
+### Parallel programming with the STL and Threading Building Blocks (3 hours)
 
 Out of the box, the STL contains many algorithms that can be run in parallel.
 In this training, you will learn how to do that, and what the performance
@@ -84,10 +86,10 @@ Prerequisites:
   * Code optimization
   * Defensive programming and debugging
   * Best practices in scientific programming
+  * Version control with git
 
 
 ## Fortran programming
-
 
 ### Fortran for programmers (8 hours)
 
@@ -109,9 +111,13 @@ For detailed information, see:
   * Code optimization
   * Defensive programming and debugging
   * Best practices in scientific programming
+  * Version control with git
 
 
 ## C programming
+
+C is still a very popular programming language, also in the
+context of scientific programming and HPC.
 
 ### Scientific C (12 hours)
 
@@ -119,22 +125,6 @@ C is still one of the more popular programming languages today.  It is
 probably mainly used for systems programming, but there are also many
 applications for scientific computing that have been developed in this
 programming language.
-
-Subjects:
-
-  * data types and operators
-  * control flow statements
-  * functions
-  * pointers
-  * arrays
-  * structures
-  * I/O and command line arguments
-  * C99 extensions
-  * using third party libraries, e.g., GSL
-
-Prerequisites:
-
-  * experience in another programming language
 
 For detailed information, see:
 [https://gjbex.github.io/Scientific-C/](https://gjbex.github.io/Scientific-C/)
@@ -146,9 +136,12 @@ For detailed information, see:
   * Code optimization
   * Defensive programming and debugging
   * Best practices in scientific programming
+  * Version control with git
 
 
 ## Python training sessions
+
+Python is a versatile programming language that is used in many domains.
 
 ### Python for programmers (4 hours)
 
@@ -204,7 +197,7 @@ For detailed information, see:
 [https://gjbex.github.io/Python-for-data-science/](https://gjbex.github.io/Python-for-data-science/)
 
 
-### Python for machine learning (4 hours)
+### Machine learning using Python (4 hours)
 
 Python is one of the dominant languages in the area of machine learning
 and AI.  This training will provide an introduction to machine learning
@@ -236,7 +229,7 @@ For detailed information, see:
 [https://gjbex.github.io/Python-on-GPUs/](https://gjbex.github.io/Python-on-GPUs/)
 
 
-### Python dashboards
+### Python dashboards (2 hours)
 
 Dashboards are a useful way to present data in an interactive way.  They can be used
 for reporting, but also for data exploration, or even to create simple web applications.
@@ -259,6 +252,14 @@ This training introduces modules that are useful in that context.
 
 For detailed information, see:
 [https://gjbex.github.io/Python-for-systems-programming/](https://gjbex.github.io/Python-for-systems-programming/)
+
+
+### Other training sessions useful for Python programmers
+
+  * Parallel programming with MPI
+  * Best practices in scientific programming
+  * Version control with git
+  * Jupyter notebooks
 
 
 ## Julia: the good, the bad and the ugly (4 hours)
@@ -320,9 +321,7 @@ Subjects:
 
 Prerequisites:
 
-  * experience in [C](README.html#scientific-c), [C++](#scientic-c++),
-    [Fortran](#fortran-for-programmers) or [Python](#scientific-pytohon)
-    programming;
+  * experience in C, C++, Fortran or Python programming;
   * for the section on hybrid programming, notions of OpenMP are required.
 
 
@@ -347,8 +346,17 @@ Subjects:
 
 Prerequisites:
 
-  * experience in [C](#scientific-c), [C++](#scientic-c++), or
-    [Fortran](#fortran-for-programmers).
+  * experience in C, C++, or Fortran.
+
+
+## GPU programming (8 hours)
+
+GPUs are used more and more in scientific computing, data science and
+machine learning.  This training will introduce you to using hardware-agnotic
+programming models such as OpenMP offloading and Kokkos.
+
+For detailed information, see:
+[https://gjbex.github.io/GPU-programming/](https://gjbex.github.io/GPU-programming/)
 
 
 ## Defensive programming and debugging (4 hours + 2 hours optional)
@@ -358,20 +366,8 @@ training, best practices are presented to reduce the number of bugs
 in your code.  You will also learn about debuggers and debugging
 techniques to find bugs more efficiently.
 
-Subjects:
-
-  * best practices in coding, code style, error handling
-  * using compiler options to warn about potential issues
-  * unit and functional testing
-  * using a debugger (breakpoints, inspection, watchpoints, tracing, ...)
-  * zoo of bugs
-  * optional: debugging parallel code
-
-Prerequisites:
-
-  * experience programming C, C++, or Fortran
-  * familiarity with the bash command line
-  * optional: experience using MPI and/or OpenMP
+For detailed information, see:
+[https://gjbex.github.io/Defensive-programming-and-debugging/](https://gjbex.github.io/Defensive-programming-and-debugging/)
 
 Supplementary material:
 
@@ -442,6 +438,7 @@ Prerequisites:
 
   * none
 
+
 ## HPC introduction (3 hours)
 
 Although working on High Performance Computing (HPC) infrastructures is
@@ -464,7 +461,7 @@ Prerequisites:
   * familiarity with the Linux command line
 
 
-## Container for HPC (3 hours)
+## Container for HPC (4 hours)
 
 Singularity can be viewed as the Docker for HPC, i.e., a Singularity
 image contains all the operating system/software components for your
@@ -475,7 +472,7 @@ For detailed information, see:
 [https://gjbex.github.io/Containers-for-HPC/](https://gjbex.github.io/Containers-for-HPC/)
 
 
-## Worker and atools (3 hours)
+## Worker-ng and atools (3 hours)
 
 Many scientific workloads are embarrassingly parallel, i.e, they can be broken
 down into many independent computations.  Examples of such workflow are data
@@ -498,6 +495,22 @@ to document the changes in your source code.
 
 For detailed information, see:
 [https://gjbex.github.io/Version-control-with-git/](https://gjbex.github.io/Version-control-with-git/)
+
+
+## Generative AI for software engineering and data analysis (3 hours)
+
+Generative AI is a useful tool in software engineering and data analysis. However,
+if you want to use it effectively, you need to understand the basics of the
+underlying technoligy, and to be aware of potential pitfalls..
+
+After an introduction to the basics of generative AI, various applications will be
+demoed, and you will be able to experiment with some of them yourself.  Tools such
+as OpenAI's Chat-GPT and GitHub's Copilot will be discussed.
+
+Prerequisites:
+
+  * experience in some programming language;
+  * familiarity with the Linux command line
 
 
 # Code of conduct
