@@ -320,7 +320,7 @@ Subjects:
 
 Prerequisites:
 
-  * experience in [C](#scientific-c), [C++](#scientic-c++),
+  * experience in [C](README.html#scientific-c), [C++](#scientic-c++),
     [Fortran](#fortran-for-programmers) or [Python](#scientific-pytohon)
     programming;
   * for the section on hybrid programming, notions of OpenMP are required.
