@@ -15,18 +15,6 @@ the material can be found in the training-materials repository:
 [https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
 
 
-## C
-
-C is an important language for scientific programming and HPC.
-
-### C for scientific programming (14 hours)
-
-This training focuses on using C for scientific programming.
-
-For detailed information, see:
-[https://gjbex.github.io/Scientific-C/](https://gjbex.github.io/Scientific-C/)
-
-
 ## C++
 
 C++ is an important language for scientific programming and HPC.
@@ -98,7 +86,7 @@ Prerequisites:
   * Best practices in scientific programming
 
 
-## Fortran
+## Fortran programming
 
 
 ### Fortran for programmers (8 hours)
@@ -123,9 +111,9 @@ For detailed information, see:
   * Best practices in scientific programming
 
 
-## C
+## C programming
 
-### C for programmers (12 hours)
+### Scientific C (12 hours)
 
 C is still one of the more popular programming languages today.  It is
 probably mainly used for systems programming, but there are also many
@@ -148,8 +136,10 @@ Prerequisites:
 
   * experience in another programming language
 
+For detailed information, see:
+[https://gjbex.github.io/Scientific-C/](https://gjbex.github.io/Scientific-C/)
 
-### Other training sessions useful for Fortran programmers
+### Other training sessions useful for C programmers
 
   * Parallel programming with OpenMP
   * Parallel programming with MPI
@@ -177,19 +167,6 @@ Subjects:
 Prerequisites:
 
   * experience in another programming language
-
-
-### Python systems programming (4 hours)
-
-Python is a very versatile programming language that has a wide range of
-applications.  This training concentrates on interaction with the
-operating system, the file system, other applications and the network.
-This is useful for systems programming, but also when you want to use
-Python as a coordination language for your workflows.
-This training introduces modules that are useful in that context.
-
-For detailed information, see:
-[https://gjbex.github.io/Python-for-systems-programming/](https://gjbex.github.io/Python-for-systems-programming/)
 
 
 ### Python software engineering (4 hours)
@@ -271,6 +248,19 @@ For detailed information, see:
 [https://gjbex.github.io/Python-dashboards/](https://gjbex.github.io/Python-dashboards/)
 
 
+### Python systems programming (4 hours)
+
+Python is a very versatile programming language that has a wide range of
+applications.  This training concentrates on interaction with the
+operating system, the file system, other applications and the network.
+This is useful for systems programming, but also when you want to use
+Python as a coordination language for your workflows.
+This training introduces modules that are useful in that context.
+
+For detailed information, see:
+[https://gjbex.github.io/Python-for-systems-programming/](https://gjbex.github.io/Python-for-systems-programming/)
+
+
 ## Julia: the good, the bad and the ugly (4 hours)
 
 Julia has gained quite some traction over the last couple of years, but is it for you?
@@ -330,7 +320,10 @@ Subjects:
 
 Prerequisites:
 
-  * experience in C, C++ or Fortran programming
+  * experience in [C](#scientific-c), [C++](#scientic-c++),
+    [Fortran](#fortran-for-programmers) or [Python](#scientific-pytohon)
+    programming;
+  * for the section on hybrid programming, notions of OpenMP are required.
 
 
 ### Parallel programming with OpenMP (7 hours)
@@ -354,7 +347,8 @@ Subjects:
 
 Prerequisites:
 
-  * experience in C, C++ or Fortran programming
+  * experience in [C](#scientific-c), [C++](#scientic-c++), or
+    [Fortran](#fortran-for-programmers).
 
 
 ## Defensive programming and debugging (4 hours + 2 hours optional)
