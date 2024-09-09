@@ -5,8 +5,6 @@ Bex](mailto:geertjan.bex@uhasselt.be), either offered on a regular basis by the
 Vlaams Supercomputing Centrum (VSC), or on demand by research institutes and
 companies.
 
-A graphical overview of the training sessions can be found [here](computational_skills.md).
-
 All of these training sessions can be tailored to the audience if required,
 and ad-hoc training sessions are possible as well.
 
