@@ -22,7 +22,7 @@ python-dateutil
 PyYAML
 pyyaml_env_tag
 requests==2.32.3
-setuptools==69.0.3
+setuptools==70.0.0
 six
 soupsieve==2.6
 typing_extensions
