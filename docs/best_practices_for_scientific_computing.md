@@ -25,4 +25,4 @@ Prerequisites:
 
 Supplementary material:
 
-  * [website](https://gjbex.github.io/Best-practices-in-programming/)
+  * [website](https://gjbex.github.io/Best-practices-for-scientific-computing/)

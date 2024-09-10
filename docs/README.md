@@ -369,7 +369,7 @@ For detailed information, see:
 [https://gjbex.github.io/Code-optimization/](https://gjbex.github.io/Code-optimization/)
 
 
-## Best practices in scientific programming
+## Best practices for scientific computing (4 hours)
 
 As a scientist, your core business is science, not software engineering.
 Nevertheless, having a good understanding of how best practices in software
@@ -396,7 +396,7 @@ Prerequisites:
 
 Supplementary material:
 
-  * [website](https://gjbex.github.io/Best-practices-in-programming/)
+  * [website](https://gjbex.github.io/Best-practices-for-scientific-computing/)
 
 
 ## Linux bash shell (4 hours)
