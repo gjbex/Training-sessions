@@ -9,12 +9,12 @@ graph LR
   Julia[Julia] --> Software_engineering
   Software_engineering --> Parallel_computing[Parallel computing]
   Software_engineering --> GPU_computing[GPU computing]
-  click Python "python.md" "Python"
-  click C "c.md" "C"
-  click Cpp "cpp.md" "C++"
-  click Fortran "fortran.md" "Fortran"
+  click Python "/python" "Python"
+  click C "/c" "C"
+  click Cpp "/cpp" "C++"
+  click Fortran "/fortran" "Fortran"
   click Julia "https://gjbex.github.io/Julia_good_bad_ugly/" "Julia"
-  click Software_engineering "software_engineering.md" "Software engineering"
-  click Parallel_computing "parallel_computing.md" "Parallel computing"
-  click GPU_computing "gpu_computing.md" "GPU computing"
+  click Software_engineering "/software_engineering" "Software engineering"
+  click Parallel_computing "/parallel_computing" "Parallel computing"
+  click GPU_computing "/gpu_computing" "GPU computing"
 ```
