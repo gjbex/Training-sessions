@@ -25,6 +25,6 @@ graph TD
   click Python_dashboards "https://gjbex.github.io/Python-dashboards/https://gjbex.github.io/Python-dashboards/" "Python dashboards"
   click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
   click Python_on_GPUs "https://gjbex.github.io/Python-on-GPUs/" "Python on GPUs"
-  click Parallel_programming_with_MPI "/parallel_programming_with_mpi" "Parallel programming with MPI"
+  click Parallel_programming_with_MPI "parallel_programming_with_mpi.md" "Parallel programming with MPI"
   click Python_for_systems_programming "https://gjbex.github.io/Python-for-systems-programming/" "Python for systems programming"
 ```

@@ -16,7 +16,7 @@ graph TD
   click Scientific_C "https://gjbex.github.io/Scientific-C/" "Scientific C"
   click Defensive_programming_and_debugging "https://gjbex.github.io/Defensive_programming_and_debugging/" "Defensive programming and debugging"
   click Code_optimization "https://gjbex.github.io/Code-optimization/https://gjbex.github.io/Code-optimization/" "Code optimization"
-  click Parallel_programming_with_OpenMP "/parallel_programming_with_openmp" "Parallel programming with OpenMP"
-  click Parallel_programming_with_MPI "/parallel_programming_with_mpi" "Parallel programming with MPI"
+  click Parallel_programming_with_OpenMP "parallel_programming_with_openmp.md" "Parallel programming with OpenMP"
+  click Parallel_programming_with_MPI "parallel_programming_with_mpi.md" "Parallel programming with MPI"
   click GPU_programming ""https://gjbex.github.io/GPU-programming/ "GPU programming"
 ```
