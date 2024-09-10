@@ -19,3 +19,8 @@ specific for that training.
 For those sessions that do not yet have their own dedicated website, the
 material can be found in the training-materials repository:
 [https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
+
+Many of the training sessions are organized in collaboration with the [Vlaams
+Supercomputer Centrum (VSC)](https://www.vscentrum.be/).  You can find the
+[schedule of upcoming training sessions](https://www.vscentrum.be/training) on
+their website.
