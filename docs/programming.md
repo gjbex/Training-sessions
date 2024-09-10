@@ -18,3 +18,11 @@ graph LR
   click Parallel_computing "/parallel_computing" "Parallel computing"
   click GPU_computing "/gpu_computing" "GPU computing"
 ```
+
+Developing scientific programming entails a lot more than simply knowing how to
+write code in your favorite programming language. It requires knowledge of
+software engineering principles such as proper software design, version control,
+testing, and documentation.
+
+If your application is performance-critical, you may need to consider parallel
+computing or GPU computing.
