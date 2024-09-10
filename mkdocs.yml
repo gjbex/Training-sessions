@@ -1,0 +1,21 @@
+site_name: Training sessions
+site_description: Overview of training sessions on scientific computing
+site_author: Geert Jan Bex
+nav:
+- Introduction: 'index.md'
+- Computational skills: 'computational_skills.md'
+- Using HPC systems: 'using_hpc_systems.md'
+- Programming: 'programming.md'
+- Software engineering: 'software_engineering.md'
+- C++: 'cpp.md'
+- C: 'c.md'
+- Fortran: 'fortran.md'
+- Python: 'python.md'
+- Parallel computing: 'parallel_computing.md'
+- GPU computing: 'gpu_computing.md'
+- Data analysis and visualization: 'data_analysis_and_visualization.md'
+site_dir: html_docs/training_sessions
+theme: readthedocs
+plugins:
+  - search
+  - mermaid2

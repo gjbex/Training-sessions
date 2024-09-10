@@ -38,18 +38,8 @@ For detailed information, see:
 This training focuses on building applications and libraries in a
 professional way using best practices in software engineering.
 
-Subjects:
-
-  * building software with CMake
-  * unit testing with Catch2
-  * functional testing with CTest
-  * package managers such as Conan and vspkg
-  * using static code analyzers and linters
-  * design patterns
-
-Prerequisites:
-
-  * experience in C++ programming
+For detailed information, see:
+[https://gjbex.github.io/C-plus-plus-software-engineering/](https://gjbex.github.io/C-plus-plus-software-engineering/)
 
 
 ### Parallel programming with the STL and Threading Building Blocks (3 hours)
@@ -150,16 +140,8 @@ many domains.  This training session introduces the programming
 language to participants who have programming experience with other
 programming languages such as R, MATLAB, C/C++ or Fortran.
 
-Subjects:
-
-  * control flow statements (conditional, repetition)
-  * functions
-  * data types
-  * file I/O
-
-Prerequisites:
-
-  * experience in another programming language
+For detailed information, see:
+[https://gjbex.github.io/Python-for-programmers/](https://gjbex.github.io/Python-for-programmers/)
 
 
 ### Python software engineering (4 hours)
@@ -197,7 +179,7 @@ For detailed information, see:
 [https://gjbex.github.io/Python-for-data-science/](https://gjbex.github.io/Python-for-data-science/)
 
 
-### Machine learning using Python (4 hours)
+### Machine learning with Python (4 hours)
 
 Python is one of the dominant languages in the area of machine learning
 and AI.  This training will provide an introduction to machine learning
@@ -511,6 +493,17 @@ Prerequisites:
 
   * experience in some programming language;
   * familiarity with the Linux command line
+
+
+## Scientific visualization with ParaView (2 hours)
+
+ParaView is an open-source, multi-platform data analysis and visualization
+tools for scientific data.  In this training you will learn how to use
+ParaView to visualize your data.
+
+Prerequisites:
+
+  * none
 
 
 # Code of conduct
