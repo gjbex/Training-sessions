@@ -21,7 +21,7 @@ graph TD
   click Python_software_engineering "https://gjbex.github.io/Python-software-engineering/" "Python software engineering"
   click Scientific_Python "https://gjbex.github.io/Scientific-Python/" "Scientific Python"
   click Python_for_data_science ""https://gjbex.github.io/Python-for-data-science/ "Python for data science"
-  click Machine_learning_with_Python "https://gjbex.github.io/Python-for-machine-learning/" "Machine learning with Python"
+  click Machine_learning_with_Python "https://gjbex.github.io/Machine-learning-with-Python/" "Machine learning with Python"
   click Python_dashboards "https://gjbex.github.io/Python-dashboards/https://gjbex.github.io/Python-dashboards/" "Python dashboards"
   click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
   click Python_on_GPUs "https://gjbex.github.io/Python-on-GPUs/" "Python on GPUs"

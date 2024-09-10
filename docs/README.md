@@ -187,7 +187,7 @@ methodology for data preparation and machine learning, as well as some
 machine learning algorithms.
 
 For detailed information, see:
-[https://gjbex.github.io/Python-for-machine-learning/](https://gjbex.github.io/Python-for-machine-learning/)
+[https://gjbex.github.io/Machine-learning-with-Python/](https://gjbex.github.io/Machine-learning-with-Python/)
 
 
 ### Python for HPC (8 hours)
