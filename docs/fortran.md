@@ -1,4 +1,4 @@
-# Fortran prgramming
+# Fortran programming
 
 Fortran is still a very popular and important programming language in the
 context of scientific programming and HPC.

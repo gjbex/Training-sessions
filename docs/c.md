@@ -1,4 +1,4 @@
-# C prgramming
+# C programming
 
 C is still a very popular programming language, also in the
 context of scientific programming and HPC.
