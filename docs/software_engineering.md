@@ -19,7 +19,7 @@ graph TD
   click Containers_on_HPC "https://gjbex.github.io/Containers-for-HPC/" "Containers on HPC"
   click Programming "/programming" "Programming"
   click Defensive_programming_and_debugging "https://gjbex.github.io/Defensive_programming_and_debugging/" "Defensive programming and debugging"
-  click Code_optimization "https://gjbex.github.io/Code-optimization/https://gjbex.github.io/Code-optimization/" "Code optimization"
+  click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
   click Parallel_computing "/parallel_computing" "Parallel computing"
   click GPU_computing "/gpu_computing" "GPU computing"
   click Generative_AI_in_software_engineering_and_data_analysis "/generative_ai_in_software_engineering_and_data_analysis" "Generative AI in software engineering and data analysis"

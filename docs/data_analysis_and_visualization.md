@@ -10,7 +10,7 @@ graph TD
   Scientific_python --> Python_for_HPC[Python for HPC]
   Python_for_data_science --> Python_for_HPC
   Python_for_data_science --> Generative_ai_for_software_engineering_and_data_analysis[Generative AI for software engineering and data analysis]
-  Scientific_visualization_with_ParaView
+  Scientific_visualization_with_ParaView[Scientific visualization with ParaView]
   click Scientific_python "https://gjbex.github.io/Scientific-Python/" "Scientific Python"
   click Generative_ai_for_software_engineering_and_data_analysis "/generative_ai_for_software_engineering_and_data_analysis" "Generative AI for software engineering and data analysis"
   click Scientific_visualization_with_ParaView "/scientific_visualization_with_paraview" "Scientific visualization with ParaView"
