@@ -73,6 +73,8 @@ Prerequisites:
 
   * Parallel programming with OpenMP
   * Parallel programming with MPI
+  * OpenMP GPU offloading
+  * Heterogeneous programming with Kokkos
   * Code optimization
   * Defensive programming and debugging
   * Best practices in scientific programming
@@ -98,6 +100,7 @@ For detailed information, see:
 
   * Parallel programming with OpenMP
   * Parallel programming with MPI
+  * OpenMP GPU offloading
   * Code optimization
   * Defensive programming and debugging
   * Best practices in scientific programming
@@ -123,6 +126,7 @@ For detailed information, see:
 
   * Parallel programming with OpenMP
   * Parallel programming with MPI
+  * OpenMP GPU offloading
   * Code optimization
   * Defensive programming and debugging
   * Best practices in scientific programming
@@ -331,11 +335,20 @@ Prerequisites:
   * experience in C, C++, or Fortran.
 
 
-## GPU programming (8 hours)
+## OpenMP GPU offloading (4 hours)
 
 GPUs are used more and more in scientific computing, data science and
 machine learning.  This training will introduce you to using hardware-agnotic
-programming models such as OpenMP offloading and Kokkos.
+programming using OpenMP to offload computations to GPUs.
+
+For detailed information, see:
+[https://gjbex.github.io/GPU-programming/](https://gjbex.github.io/GPU-programming/)
+
+
+## Heterogeneous programming with Kokkos (8 hours)
+
+Kokkos is a C++ library that enables writing performance portable code
+for heterogeneous systems.  It can offload to accelerators such as GPUs.
 
 For detailed information, see:
 [https://gjbex.github.io/GPU-programming/](https://gjbex.github.io/GPU-programming/)
@@ -443,6 +456,25 @@ Prerequisites:
   * familiarity with the Linux command line
 
 
+## Best practices for data science on HPC (4 hours)
+
+Although it seems that running data science workflows on HPC systems is
+quite straighforward, there are quite a number of pitfalls and best practices
+that you need to be aware of.
+
+Subjects:
+
+  * how to fine-tune your data science workflow for HPC
+  * data formats and I/O
+  * distributed computing
+
+Prerequisites:
+
+  * familiarity with the Linux command line
+  * familiarity with the basics of HPC systems
+  * familiarity with R or Python
+
+
 ## Container for HPC (4 hours)
 
 Singularity can be viewed as the Docker for HPC, i.e., a Singularity
@@ -454,18 +486,14 @@ For detailed information, see:
 [https://gjbex.github.io/Containers-for-HPC/](https://gjbex.github.io/Containers-for-HPC/)
 
 
-## Worker-ng and atools (3 hours)
+## Workflows for HPC (4 hours)
 
-Many scientific workloads are embarrassingly parallel, i.e, they can be broken
-down into many independent computations.  Examples of such workflow are data
-preprocessing or postprocessing of many files, or parameter exploration where
-the same program is run for many different parameter instantiations.  Two
-tools have been developed to help you minimize the hassle with such workloads.
-This training session will highlight the strength of both tools, help you to
-pick the right one for your workflow, and use it efficiently.
+The HPC ecosystems provides numerous tools to help you manage your
+workflows.  In this training, you will learn about some of these tools,
+and how to use them effectively.
 
 For detailed information, see:
-[https://gjbex.github.io/worker-and-atools/](https://gjbex.github.io/worker-and-atools/)
+[https://gjbex.github.io/Workflows-for-HPC/](https://gjbex.github.io/Workflows-for-HPC/)
 
 
 ## Version control with git (4 hours)
@@ -493,6 +521,18 @@ Prerequisites:
 
   * experience in some programming language;
   * familiarity with the Linux command line
+
+
+## Deploying LLMs locally (4 hours)
+
+Large/Small Language Models are very useful tools in software engineering and data analysis.
+However, if you want to use them effectively, you need to understand the basics of the
+underlying technology, and to be aware of potential pitfalls.  In many situations it is
+useful to deploy a LLM locally, rather than using a cloud service.  This training will
+show you how to do that.
+
+For detailed information, see:
+[https://gjbex.github.io/AI-tools/](https://gjbex.github.io/AI-tools/)
 
 
 ## Scientific visualization with ParaView (2 hours)
