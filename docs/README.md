@@ -50,7 +50,7 @@ benefits may be.
 Threading Building Blocks (TBB) is a C++ template library for developing
 shared memory applications.  It integrates well with the C++ Standard
 Template Library (STL) and can be used with any modern C++ compiler.
-TBB is especially suited for nested parallelism, and pipelining when
+TBB is especially suited for nested parallelism, and pipe-lining when
 part of the application can use accelerator hardware.
 
 Subjects:
@@ -338,7 +338,7 @@ Prerequisites:
 ## OpenMP GPU offloading (4 hours)
 
 GPUs are used more and more in scientific computing, data science and
-machine learning.  This training will introduce you to using hardware-agnotic
+machine learning.  This training will introduce you to using hardware-agnostic
 programming using OpenMP to offload computations to GPUs.
 
 For detailed information, see:
@@ -440,7 +440,7 @@ Although working on High Performance Computing (HPC) infrastructures is
 not rocket science, there are still a number of things you need to be
 aware of to do so efficiently.  Note that this session is specific for
 (potential) users of the infrastructure managed by the Vlaams
-Supercopmuting Centrum (VSC).
+Supercomputing Centrum (VSC).
 
 Subjects:
 
@@ -459,7 +459,7 @@ Prerequisites:
 ## Best practices for data science on HPC (4 hours)
 
 Although it seems that running data science workflows on HPC systems is
-quite straighforward, there are quite a number of pitfalls and best practices
+quite straightforward, there are quite a number of pitfalls and best practices
 that you need to be aware of.
 
 Subjects:
@@ -511,7 +511,7 @@ For detailed information, see:
 
 Generative AI is a useful tool in software engineering and data analysis. However,
 if you want to use it effectively, you need to understand the basics of the
-underlying technoligy, and to be aware of potential pitfalls..
+underlying technology, and to be aware of potential pitfalls..
 
 After an introduction to the basics of generative AI, various applications will be
 demoed, and you will be able to experiment with some of them yourself.  Tools such
