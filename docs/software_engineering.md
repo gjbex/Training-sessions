@@ -22,7 +22,7 @@ graph TD
   click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
   click Parallel_computing "https://gjbex.github.io/Training-sessions/parallel_computing" "Parallel computing"
   click GPU_computing "https://gjbex.github.io/Training-sessions/gpu_computing" "GPU computing"
-  click Generative_AI_in_software_engineering_and_data_analysis "https://gjbex.github.io/Training-sessions/generative_ai_in_software_engineering_and_data_analysis" "Generative AI in software engineering and data analysis"
+  click Generative_AI_in_software_engineering_and_data_analysis "https://gjbex.github.io/Training-sessions/generative_ai_for_software_engineering_and_data_analysis" "Generative AI in software engineering and data analysis"
 ```
 
 If you are new to software engineering in the context of scientific computing,
