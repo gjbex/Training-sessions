@@ -545,7 +545,7 @@ potential pitfalls.  In many situations it is useful to deploy a LLM locally,
 rather than using a cloud service.  This training will show you how to do that.
 
 For detailed information, see:
-[https://gjbex.github.io/AI-tools/](https://gjbex.github.io/AI-tools/)
+[https://gjbex.github.io/Deploying-LLMs-locally/](https://gjbex.github.io/Deploying-LLMs-locally/)
 
 
 ## Scientific visualization with ParaView (2 hours)
