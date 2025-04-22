@@ -17,9 +17,9 @@ graph TD
   click Scientific_Cpp "https://gjbex.github.io/Scientific-C-plus-plus/" "Scientific C++"
   click Cpp_software_engineering "https://gjbex.github.io/C-plus-plus-software-engineering/" "C++ software engineering"
   click Defensive_programming_and_debugging "https://gjbex.github.io/Defensive_programming_and_debugging/" "Defensive programming and debugging"
-  click Code_optimization "https://gjbex.github.io/Code-optimization/https://gjbex.github.io/Code-optimization/" "Code optimization"
-  click Parallel_programming_with_OpenMP "/parallel_programming_with_openmp" "Parallel programming with OpenMP"
-  click Parallel_programming_with_MPI "/parallel_programming_with_mpi" "Parallel programming with MPI"
+  click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
+  click Parallel_programming_with_OpenMP "https://gjbex.github.io/Training-sessions/parallel_programming_with_openmp" "Parallel programming with OpenMP"
+  click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
   click GPU_programming "https://gjbex.github.io/GPU-programming/" "GPU programming"
-  click Parallel_programming_with_STL_and_TBB "/parallel_programming_with_stl_and_tbb" "Parallel programming with STL and TBB"
+  click Parallel_programming_with_STL_and_TBB "https://gjbex.github.io/Training-sessions/parallel_programming_with_stl_and_tbb" "Parallel programming with STL and TBB"
 ```
