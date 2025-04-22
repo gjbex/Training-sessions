@@ -18,5 +18,5 @@ graph TD
   click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
   click Parallel_programming_with_OpenMP "https://gjbex.github.io/Training-sessions/parallel_programming_with_openmp" "Parallel programming with OpenMP"
   click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
-  click GPU_programming ""https://gjbex.github.io/GPU-programming/ "GPU programming"
+  click GPU_programming "https://gjbex.github.io/GPU-programming/" "GPU programming"
 ```
