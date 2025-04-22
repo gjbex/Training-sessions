@@ -15,6 +15,7 @@ nav:
 - GPU computing: 'gpu_computing.md'
 - Data analysis and visualization: 'data_analysis_and_visualization.md'
 - Contact: 'contact.md'
+- Code of conduct: 'code_of_conduct.md'
   # site_dir: html_docs/training_sessions
 theme: readthedocs
 plugins:
