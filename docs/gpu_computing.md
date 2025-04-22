@@ -9,5 +9,5 @@ graph LR
     GPU_offloading_with_OpenMP[GPU offloading with OpenMP]
     click Python_on_GPUs "https://gjbex.github.io/Python-on-GPUs/" "Python on GPUs"
     click Heterogeneous_programming_with_Kokkos "https://gjbex.github.io/GPU-programming/" "GPU programming"
-    click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU programming"
+    click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU offloading with OpenMP"
 ```
