@@ -563,4 +563,4 @@ Prerequisites:
 
 Please note that by participating in any training listed here, either
 online, hybrid, or face-to-face you implicitly agree to adhere to the
-[code of conduct](code_of_conduct.html).
+[code of conduct](code_of_conduct.md).
