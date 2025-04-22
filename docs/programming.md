@@ -9,14 +9,14 @@ graph LR
   Julia[Julia] --> Software_engineering
   Software_engineering --> Parallel_computing[Parallel computing]
   Software_engineering --> GPU_computing[GPU computing]
-  click Python "/python" "Python"
-  click C "/c" "C"
-  click Cpp "/cpp" "C++"
-  click Fortran "/fortran" "Fortran"
+  click Python "https://gjbex.github.io/Training-sessions/python" "Python"
+  click C "https://gjbex.github.io/Training-sessions/c" "C"
+  click Cpp "https://gjbex.github.io/Training-sessions/cpp" "C++"
+  click Fortran "https://gjbex.github.io/Training-sessions/fortran" "Fortran"
   click Julia "https://gjbex.github.io/Julia_good_bad_ugly/" "Julia"
-  click Software_engineering "/software_engineering" "Software engineering"
-  click Parallel_computing "/parallel_computing" "Parallel computing"
-  click GPU_computing "/gpu_computing" "GPU computing"
+  click Software_engineering "https://gjbex.github.io/Training-sessions/software_engineering" "Software engineering"
+  click Parallel_computing "https://gjbex.github.io/Training-sessions/parallel_computing" "Parallel computing"
+  click GPU_computing "https://gjbex.github.io/Training-sessions/gpu_computing" "GPU computing"
 ```
 
 Developing scientific programming entails a lot more than simply knowing how to
