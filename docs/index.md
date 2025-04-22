@@ -538,11 +538,11 @@ Prerequisites:
 
 ## Deploying LLMs locally (4 hours)
 
-Large/Small Language Models are very useful tools in software engineering and data analysis.
-However, if you want to use them effectively, you need to understand the basics of the
-underlying technology, and to be aware of potential pitfalls.  In many situations it is
-useful to deploy a LLM locally, rather than using a cloud service.  This training will
-show you how to do that.
+Large/Small Language Models are very useful tools in software engineering and
+data analysis. However, if you want to use them effectively, you need to
+understand the basics of the underlying technology, and to be aware of
+potential pitfalls.  In many situations it is useful to deploy a LLM locally,
+rather than using a cloud service.  This training will show you how to do that.
 
 For detailed information, see:
 [https://gjbex.github.io/AI-tools/](https://gjbex.github.io/AI-tools/)
@@ -564,3 +564,9 @@ Prerequisites:
 Please note that by participating in any training listed here, either
 online, hybrid, or face-to-face you implicitly agree to adhere to the
 [code of conduct](code_of_conduct.md).
+
+
+# License
+
+All the training materials are licensed under the [Creative Commons Attribution
+4.0 International License](https://creativecommons.org/licenses/by/4.0/).
