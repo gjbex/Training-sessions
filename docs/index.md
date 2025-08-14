@@ -150,6 +150,18 @@ For detailed information, see:
 
 Python is a versatile programming language that is used in many domains.
 
+
+### Python for beginners (16 hours)
+
+Python is a versatile programming language that is used in many domains.
+It is easy to learn.  This training material introduces the basics, and
+can be used for self-study, or as a basis for training sessions.  It 
+requires no prior programming experience.
+
+For detailed information, see:
+[https://gjbex.github.io/Python-for-beginners/](https://gjbex.github.io/Python-for-beginners/)
+
+
 ### Python for programmers (4 hours)
 
 Python is an all-round programming language that has applications in
@@ -507,6 +519,17 @@ and how to use them effectively.
 
 For detailed information, see:
 [https://gjbex.github.io/Workflows-for-HPC/](https://gjbex.github.io/Workflows-for-HPC/)
+
+
+## MLOps on HPC (4 hours)
+
+MLOps is a set of practices that aims to deploy and maintain machine learning
+models reproducibly, reliably and efficiently.  In this training you will learn
+how to use MLOps tools on HPC systems.  In fact, this training is also for you
+if you perform any kind of computational experiments, not just machine learning.
+
+For detailed information, see:
+[https://gjbex.github.io/MLOps-on-HPC/](https://gjbex.github.io/MLOps-on-HPC/)
 
 
 ## Version control with git (4 hours)

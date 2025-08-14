@@ -4,7 +4,8 @@ Python is a versatile programming language that is used in many domains.
 
 ```mermaid
 graph TD
-  Python_for_programmers[Python for programmers] --> Python_software_engineering[Python software engineering]
+  Python_for_beginners[Python for beginners] --> Python_for_programmers[Python for programmers]
+  Python_for_programmers --> Python_software_engineering[Python software engineering]
   Python_for_programmers --> Scientific_Python[Scientific Python]
   Scientific_Python --> Python_for_data_science[Python for data science]
   Python_for_programmers --> Python_for_data_science
@@ -17,6 +18,7 @@ graph TD
   Python_for_HPC --> Python_on_GPUs
   Python_for_HPC --> Parallel_programming_with_MPI[Parallel programming with MPI]
   Python_for_programmers --> Python_for_systems_programming[Python for systems programming]
+  click Python_for_beginners "https://gjbex.github.io/Python-for-beginners/" "Python for beginners"
   click Python_for_programmers "https://gjbex.github.io/Python-for-programmers/" "Python for programmers"
   click Python_software_engineering "https://gjbex.github.io/Python-software-engineering/" "Python software engineering"
   click Scientific_Python "https://gjbex.github.io/Scientific-Python/" "Scientific Python"
