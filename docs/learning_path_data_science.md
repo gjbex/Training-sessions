@@ -8,7 +8,7 @@ graph TD
   Best_practices_for_data_science_on_HPC[Best practices for data science on HPC] --> Version_control_with_git[Version control with Git]
   Version_control_with_git --> MLOps_on_HPC[MLOps on HPC]
   Best_practices_for_data_science_on_HPC[Best practices for data science on HPC] --> Linux_intro[Linux introduction]
-  Linux_intro[ --> HPC_intro[HPC introduction]
+  Linux_intro --> HPC_intro[HPC introduction]
   HPC_intro --> Containers_on_HPC[Containers on HPC]
   HPC_intro --> Workflows_for_HPC[Workflows for HPC]
   HPC_intro --> MLOps_on_HPC
