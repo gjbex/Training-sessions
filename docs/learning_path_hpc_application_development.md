@@ -30,8 +30,8 @@ graph TD
   click GPU_computing "https://gjbex.github.io/Training-sessions/gpu_computing" "GPU computing"
 ```
 
-If you are new to software developmentVjjjkkk in the context of scientific
-computing, you may want to start with "[Best practices for scientific
+If you are new to software development in the context of scientific computing,
+you may want to start with "[Best practices for scientific
 computing](best_practices_for_scientific_computing.md)".
 
 Of course, you coding skills should be up to par.  For more information on this
