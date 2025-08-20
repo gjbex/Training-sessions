@@ -3,6 +3,9 @@ site_description: Overview of training sessions on scientific computing
 site_author: Geert Jan Bex
 nav:
 - Introduction: 'index.md'
+- Learning paths:
+  - 'Data science': 'learning_path_data_science.md'
+  - 'HPC applciation development': 'learning_path_hpc_application_development.md'
 - Computational skills: 'computational_skills.md'
 - Using HPC systems: 'using_hpc_systems.md'
 - Programming: 'programming.md'
@@ -15,8 +18,6 @@ nav:
 - GPU computing: 'gpu_computing.md'
 - Data analysis and visualization: 'data_analysis_and_visualization.md'
 - AI and machine learning: 'ai_and_machine_learning.md'
-- Learning paths:
-  - 'Data science': 'learning_path_data_science.md'
 - Contact: 'contact.md'
 - Code of conduct: 'code_of_conduct.md'
 - License: 'license.md'
