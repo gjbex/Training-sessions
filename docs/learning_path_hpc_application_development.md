@@ -14,7 +14,7 @@ graph TD
   Programming --> Defensive_programming_and_debugging[Defensive programming and debugging]
   Defensive_programming_and_debugging --> Code_optimization[Code optimization]
   Programming --> Code_optimization
-  Programming --> Generative_AI_in_software_engineering_and_data_analysis[Generative AI in software engineering and data analysis]
+  Programming --> Generative_AI_in_software_engineering_and_data_analysis[Generative AI in software\nengineering and data analysis]
   HPC_intro --> Defensive_programming_and_debugging
   Code_optimization --> Parallel_computing[Parallel computing]
   Code_optimization --> GPU_computing[GPU computing]
@@ -22,7 +22,7 @@ graph TD
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
   click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
   click Containers_on_HPC "https://gjbex.github.io/Containers-for-HPC/" "Containers on HPC"
-  click Generative_ai_for_software_engineering_and_data_analysis "https://gjbex.github.io/Training-sessions/generative_ai_for_software_engineering_and_data_analysis" "Generative AI for software engineering and data analysis"
+  click Generative_ai_for_software_engineering_and_data_analysis "https://gjbex.github.io/Training-sessions/generative_ai_for_software_engineering_and_data_analysis" "Generative AI in software\nengineering and data analysis"
   click Programming "https://gjbex.github.io/Training-sessions/programming" "Programming"
   click Defensive_programming_and_debugging "https://gjbex.github.io/Defensive_programming_and_debugging/" "Defensive programming and debugging"
   click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
