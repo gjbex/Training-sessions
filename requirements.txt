@@ -21,12 +21,12 @@ pymdown-extensions
 python-dateutil
 PyYAML
 pyyaml_env_tag
-requests==2.32.3
-setuptools==70.0.0
+requests>=2.32.4
+setuptools>=78.1.1
 six
 soupsieve==2.6
 typing_extensions
-urllib3==2.2.2
+urllib3>=2.5.0
 watchdog
 wheel==0.42.0
 zipp
