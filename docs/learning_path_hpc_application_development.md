@@ -15,6 +15,7 @@ graph TD
   Defensive_programming_and_debugging --> Code_optimization[Code optimization]
   Programming --> Code_optimization
   Programming --> Generative_AI_in_software_engineering_and_data_analysis[Generative AI in software engineering and data analysis]
+  HPC_intro --> Code_optimization
   Code_optimization --> Parallel_computing[Parallel computing]
   Code_optimization --> GPU_computing[GPU computing]
   click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
