@@ -15,6 +15,7 @@ graph TD
   Scientific_Python --> Python_for_HPC[Python for HPC]
   Scientific_Cpp[Scientific C++] --> Python_for_HPC
   Python_for_HPC --> Python_on_GPUs[Python on GPUs]
+  Python_on_HPC[Python on HPC] --> Parallel_programming_with_MPI[Parallel programming with MPI]
   click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
   click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
@@ -25,6 +26,7 @@ graph TD
   click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
   click Scientific_Cpp "https://gjbex.github.io/Scientific-C-plus-plus/" "Scientific C++"
   click Python_on_GPUs "https://gjbex.github.io/Python-on-GPUs/" "Python on GPUs"
+  click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
 ```
 
 If you are new to development using Python, you may want to start with
