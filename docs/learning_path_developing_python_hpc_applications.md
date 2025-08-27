@@ -9,8 +9,7 @@ graph TD
   Python_for_beginners[Python for beginners] --> Python_for_programmers[Python for programmers]
   Version_control_with_git[Version control with Git] --> Python_for_programmers
   Linux_intro[Linux introduction] --> HPC_intro[HPC introduction]
-  Python_for_programmers --> Scientific_python[Scientific Python]
-  Linux_intro[Linux introduction] --> HPC_intro[HPC introduction]
+  Python_for_programmers --> Scientific_Python[Scientific Python]
   HPC_intro --> Python_for_HPC[Python for HPC]
   Python_for_programmers --> Python_software_engineering[Python software engineering]
   Scientific_Python --> Python_for_HPC[Python for HPC]
