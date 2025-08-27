@@ -19,6 +19,7 @@ graph TD
   Code_optimization --> Parallel_computing[Parallel computing]
   Code_optimization --> GPU_computing[GPU computing]
   click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
+  click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
   click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
   click Containers_on_HPC "https://gjbex.github.io/Containers-for-HPC/" "Containers on HPC"
@@ -33,6 +34,10 @@ graph TD
 If you are new to software development in the context of scientific computing,
 you may want to start with "[Best practices for scientific
 computing](best_practices_for_scientific_computing.md)".
+
+The next step is to fammliarize yourself with the basics of working on the
+[Linux command line](https://gjbex.github.io/Training-sessions/linux_intro) and
+the [HPC infrastructure](https://gjbex.github.io/Training-sessions/hpc_intro).
 
 Of course, you coding skills should be up to par.  For more information on this
 topic, see "[Programming](programming.md)".
