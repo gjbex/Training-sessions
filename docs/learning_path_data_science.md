@@ -26,6 +26,7 @@ graph TD
   MLOps_on_HPC --> Machine_learning_with_Python
   click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
   click Best_practices_for_data_science_on_HPC "https://gjbex.github.io/Best-practices-for-data-science-on-HPC/" "Best practices for data science on HPC"
+  click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
   click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
   click Containers_on_HPC "https://gjbex.github.io/Containers-for-HPC/" "Containers on HPC"
