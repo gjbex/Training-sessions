@@ -15,6 +15,7 @@ graph TD
   Python_for_programmers --> Python_software_engineering[Python software engineering]
   Scientific_Python --> Python_for_HPC[Python for HPC]
   Scientific_Cpp[Scientific C++] --> Python_for_HPC
+  Python_for_HPC --> Python_on_GPUs[Python on GPUs]
   click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
   click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
@@ -24,6 +25,7 @@ graph TD
   click Scientific_Python "https://gjbex.github.io/Scientific-Python/" "Scientific Python"
   click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
   click Scientific_Cpp "https://gjbex.github.io/Scientific-C-plus-plus/" "Scientific C++"
+  click Python_on_GPUs "https://gjbex.github.io/Python-on-GPUs/" "Python on GPUs"
 ```
 
 If you are new to development using Python, you may want to start with
@@ -46,3 +48,6 @@ training session to learn how to write efficient Python code for HPC systems.
 
 If you intend to interface Python with C++ code, you may want to follow the
 "[Scientific C++](https://gjbex.github.io/Scientific-C-plus-plus)" training session as well.
+
+Perhaps you want to leverage the power of GPUs in your Python applications, in which case you
+may want to follow the "[Python on GPUs](https://gjbex.github.io/Python-on-GPUs/)" training session.
