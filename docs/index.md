@@ -18,10 +18,11 @@ material can be found in the training-materials repository:
 [https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
 
 Many of the training sessions are organized in collaboration with the [Vlaams
-Supercomputer Centrum (VSC)](https://www.vscentrum.be/).  You can find the
-[schedule of upcoming training sessions](https://www.vscentrum.be/training) on
-their website.  For EuroCC training sessions, please consult the [EuroCC training
-portal](https://www.eurocc-access.eu/services/training/) on EuroCC ACCESS.
+Supercomputer Centrum (VSC)](https://www.vscentrum.be/) and
+[EuroCC@Belgium](https://www.enccb.be/).  You can find the [schedule of
+upcoming training sessions](https://www.vscentrum.be/training) on their
+website.  For EuroCC training sessions, please consult the [EuroCC training
+portal](https://hpc-portal.eu/training) on EuroCC ACCESS.
 
 Below is a list of all the training sessions that are currently available.
 A graphical overview of the training sessions on [computational
