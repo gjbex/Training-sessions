@@ -12,11 +12,13 @@ graph TD
   Version_control_with_git --> MLOps_on_HPC[MLOps on HPC]
   Python_for_beginners[Python for beginners] --> Python_for_programmers[Python for programmers]
   Python_for_programmers --> Best_practices_for_data_science_on_HPC
+  Best_practices_for_data_science_on_HPC --> Jupyter_notebooks[Jupyter notebooks]
   Best_practices_for_data_science_on_HPC --> Containers_on_HPC[Containers on HPC]
   Best_practices_for_data_science_on_HPC --> Workflows_for_HPC[Workflows for HPC]
   Best_practices_for_data_science_on_HPC --> Scientific_python[Scientific Python]
   Python_for_programmers --> Python_software_engineering[Python software engineering]
   Python_for_programmers --> Scientific_Python[Scientific Python]
+  Jupyter_notebooks --> Scientific_Python
   Scientific_Python --> Python_for_data_science[Python for data science]
   Python_for_data_science --> Python_dashboards[Python dashboards]
   Scientific_Python --> Python_for_HPC[Python for HPC]
@@ -40,6 +42,7 @@ graph TD
   click Machine_learning_with_Python "https://gjbex.github.io/Training-sessions/machine_learning_with_python" "Machine learning with Python"
   click MLOps_on_HPC "https://gjbex.github.io/Training-sessions/mlops_on_hpc" "MLOps on HPC"
   click Python_dashboards "https://gjbex.github.io/Python-dashboards/" "Python dashboards"
+  click Jupyter_notebooks "https://gjbex.github.io/Jupyter-notebooks/" "Jupyter notebooks"
   click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
   click Python_for_data_science "https://gjbex.github.io/Python-for-data-science/" "Python for data science"
 ```
