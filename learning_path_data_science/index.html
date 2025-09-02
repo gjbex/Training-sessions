@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="writer-html5" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Geert Jan Bex" name="author"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Data science - Training sessions</title>
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+        // Current page data
+        var mkdocs_page_name = "Data science";
+        var mkdocs_page_input_path = "learning_path_data_science.md";
+        var mkdocs_page_url = null;
+      </script>
+<!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> Training sessions
+        </a><div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input aria-label="Search docs" name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="Navigation menu" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Learning paths</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../learning_path_using_hpc_applications/">Using HPC applications</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="#">Data science</a>
+<ul class="current">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../learning_path_hpc_application_development/">HPC applciation development</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../learning_path_developing_python_hpc_applications/">Python HPC application development</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Subjects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../computational_skills/">Computational skills</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../using_hpc_systems/">Using HPC systems</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../programming/">Programming</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software_engineering/">Software engineering</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cpp/">C++</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../c/">C</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fortran/">Fortran</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../python/">Python</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../parallel_computing/">Parallel computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gpu_computing/">GPU computing</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data_analysis_and_visualization/">Data analysis and visualization</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ai_and_machine_learning/">AI and machine learning</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contact/">Contact</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../code_of_conduct/">Code of conduct</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../license/">License</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="Mobile navigation menu" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">Training sessions</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content"><div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a aria-label="Docs" class="icon icon-home" href=".."></a></li>
+<li class="breadcrumb-item">Learning paths</li>
+<li class="breadcrumb-item active">Data science</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
+<div class="section" itemprop="articleBody">
+<h1 id="data-science-learning-path">Data science learning path</h1>
+<p>If you want to do data science on HPC, you can consider following the following training sessions.</p>
+<div class="mermaid">graph TD
+  Best_practices_for_scientific_computing[Best practices for\nscientific computing] --&gt; Best_practices_for_data_science_on_HPC[Best practices for\ndata science on HPC]
+  Linux_intro[Linux introduction] --&gt; HPC_intro[HPC introduction]
+  HPC_intro --&gt; Best_practices_for_data_science_on_HPC
+  Best_practices_for_data_science_on_HPC --&gt; Version_control_with_git[Version control with Git]
+  Version_control_with_git --&gt; MLOps_on_HPC[MLOps on HPC]
+  Python_for_beginners[Python for beginners] --&gt; Python_for_programmers[Python for programmers]
+  Python_for_programmers --&gt; Best_practices_for_data_science_on_HPC
+  Best_practices_for_data_science_on_HPC --&gt; Jupyter_notebooks[Jupyter notebooks]
+  Best_practices_for_data_science_on_HPC --&gt; Containers_on_HPC[Containers on HPC]
+  Best_practices_for_data_science_on_HPC --&gt; Workflows_for_HPC[Workflows for HPC]
+  Best_practices_for_data_science_on_HPC --&gt; Scientific_python[Scientific Python]
+  Python_for_programmers --&gt; Python_software_engineering[Python software engineering]
+  Python_for_programmers --&gt; Scientific_Python[Scientific Python]
+  Jupyter_notebooks --&gt; Scientific_Python
+  Scientific_Python --&gt; Python_for_data_science[Python for data science]
+  Python_for_data_science --&gt; Python_dashboards[Python dashboards]
+  Scientific_Python --&gt; Python_for_HPC[Python for HPC]
+  Python_for_data_science --&gt; Python_for_HPC
+  Python_for_data_science --&gt; Generative_ai_for_software_engineering_and_data_analysis[Generative AI for software\nengineering and data analysis]
+  Python_for_data_science --&gt; Machine_learning_with_Python[Machine learning with Python]
+  MLOps_on_HPC --&gt; Machine_learning_with_Python
+  click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
+  click Best_practices_for_data_science_on_HPC "https://gjbex.github.io/Best-practices-for-data-science-on-HPC/" "Best practices for data science on HPC"
+  click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
+  click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
+  click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
+  click Containers_on_HPC "https://gjbex.github.io/Containers-for-HPC/" "Containers on HPC"
+  click Workflows_for_HPC "https://gjbex.github.io/Workflows-for-HPC/" "Workflows for HPC"
+  click MLOps_on_HPC "https://gjbex.github.io/MLOps-on-HPC/" "MLOps on HPC"
+  click Python_for_beginners "https://gjbex.github.io/Python-for-beginners/" "Python for beginners"
+  click Python_for_programmers "https://gjbex.github.io/Python-for-programmers/" "Python for programmers"
+  click Python_software_engineering "https://gjbex.github.io/Python-software-engineering/" "Python software engineering"
+  click Scientific_Python "https://gjbex.github.io/Scientific-Python/" "Scientific Python"
+  click Generative_ai_for_software_engineering_and_data_analysis "https://gjbex.github.io/Training-sessions/generative_ai_for_software_engineering_and_data_analysis" "Generative AI for software engineering and data analysis"
+  click Machine_learning_with_Python "https://gjbex.github.io/Training-sessions/machine_learning_with_python" "Machine learning with Python"
+  click MLOps_on_HPC "https://gjbex.github.io/Training-sessions/mlops_on_hpc" "MLOps on HPC"
+  click Python_dashboards "https://gjbex.github.io/Python-dashboards/" "Python dashboards"
+  click Jupyter_notebooks "https://gjbex.github.io/Jupyter-notebooks/" "Jupyter notebooks"
+  click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
+  click Python_for_data_science "https://gjbex.github.io/Python-for-data-science/" "Python for data science"
+</div>
+<p>If you are new to scientific computing, you may want to start with "<a href="../best_practices_for_scientific_computing/">Best
+practices for scientific
+computing</a>".</p>
+<p>The next step is to fammliarize yourself with the basics of working on the
+<a href="https://gjbex.github.io/Training-sessions/linux_intro">Linux command line</a> and
+the <a href="https://gjbex.github.io/Training-sessions/hpc_intro">HPC infrastructure</a>.</p>
+<p>Since you need some programming skills to do data science, you may want to
+start with "<a href="https://gjbex.github.io/Python-for-beginners">Python for beginners</a>",
+followed by "<a href="https://gjbex.github.io/Python-for-programmers">Python for programmers</a>".</p>
+<p>Since there are quite  some best practices specific to data science on HPC,
+you may want to follow the "<a href="https://gjbex.github.io/Best-practices-for-data-science-on-HPC">Best practices for data science on
+HPC</a>" training
+session.</p>
+<p>Learn how to manage your code with version control in the "<a href="https://gjbex.github.io/Version-control-with-git">Version control with
+git</a>" training session, and your
+data and experiments with MLOps in the "<a href="https://gjbex.github.io/MLOps-on-HPC">MLOps on HPC</a>"
+training session.</p>
+<p>Containers are useful tools in the context of data science both to create a
+complete, stable and portable development environment, but also as a means to
+distribute your software.  For more information on this topic, see
+"<a href="https://gjbex.github.io/Containers-for-HPC">Containers on HPC</a>".</p>
+<p>Workflows are essential to automate your data science tasks.  For more
+information on this topic, see "<a href="https://gjbex.github.io/Workflows-for-HPC">Workflows for HPC</a>".</p>
+<p>"<a href="https://gjbex.github.io/Scientific-Python">Scientific Python</a>" will introduce you to the
+Python libraries that are commonly used in the context of scientific computing, while
+"<a href="https://gjbex.github.io/Python-for-data-science">Python for data science</a>" will
+introduce you to the Python libraries that are commonly used in the context of data science.</p>
+<p>Performance is of course important in data science on HPC, so you may want to
+follow the "<a href="https://gjbex.github.io/Python-for-HPC">Python for HPC</a>" training session.</p>
+</div>
+</div><footer>
+<div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-left" href="../learning_path_using_hpc_applications/" title="Using HPC applications"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+<a class="btn btn-neutral float-right" href="../learning_path_hpc_application_development/" title="HPC applciation development">Next <span class="icon icon-circle-arrow-right"></span></a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="Versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../learning_path_using_hpc_applications/" style="color: #fcfcfc">« Previous</a></span>
+<span><a href="../learning_path_hpc_application_development/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<script>var base_url = "..";</script>
+<script src="../js/theme_extra.js"></script>
+<script src="../js/theme.js"></script>
+<script src="../search/main.js"></script>
+<script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>
