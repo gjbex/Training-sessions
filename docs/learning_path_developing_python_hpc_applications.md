@@ -15,7 +15,7 @@ graph TD
   Scientific_Python --> Python_for_HPC[Python for HPC]
   Scientific_Cpp[Scientific C++] --> Python_for_HPC
   Python_for_HPC --> Python_on_GPUs[Python on GPUs]
-  Python_on_HPC[Python on HPC] --> Parallel_programming_with_MPI[Parallel programming with MPI]
+  Python_for_HPC --> Parallel_programming_with_MPI[Parallel programming with MPI]
   click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
   click HPC_intro "https://gjbex.github.io/Training-sessions/hpc_intro" "HPC introduction"
