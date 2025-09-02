@@ -5,7 +5,7 @@ If you want to do data science on HPC, you can consider following the following 
 
 ```mermaid
 graph TD
-  Best_practices_for_scientific_computing[Best practices for scientific computing] --> Best_practices_for_data_science_on_HPC[Best practices for data science on HPC]
+  Best_practices_for_scientific_computing[Best practices for\nscientific computing] --> Best_practices_for_data_science_on_HPC[Best practices for\ndata science on HPC]
   Linux_intro[Linux introduction] --> HPC_intro[HPC introduction]
   HPC_intro --> Best_practices_for_data_science_on_HPC
   Best_practices_for_data_science_on_HPC --> Version_control_with_git[Version control with Git]
