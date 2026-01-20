@@ -24,6 +24,8 @@ skills](computational_skills.md) is available as well.  A number of learning
 paths have been defined to help you choose the right training sessions for
 your needs.
 
+[![Tux, the Linux mascot](img/visual_representation.png) ](computational_skills.md)
+
 For EuroCC training sessions, please consult the [EuroCC training
 portal](https://hpc-portal.eu/training) on EuroCC ACCESS.
 
