@@ -2,9 +2,14 @@
 
 
 This is a (non-exhaustive) list of training sessions given by [Geert Jan
-Bex](mailto:geertjan.bex@uhasselt.be), either offered on a regular basis by the
-Vlaams Supercomputing Centrum (VSC) and EuroCC@Belgium, or on demand by
-research institutes, governmental agencies and companies.
+Bex](mailto:geertjan.bex@uhasselt.be), either offered on a regular basis or on
+demand by research institutes, governmental agencies and companies.
+
+The regular schedule of trainings sessions are organized in collaboration with
+the [Vlaams Supercomputer Centrum (VSC)](https://www.vscentrum.be/) and
+[EuroCC@Belgium](https://www.enccb.be/).  You can find the [schedule of
+upcoming training sessions](https://www.vscentrum.be/training) on the VSC
+website.
 
 All of these training sessions can be tailored to the audience if required, and
 ad-hoc training sessions are possible as well.
@@ -13,20 +18,14 @@ For many sessions, a dedicated website has been created that provides detailed
 information, as well as a link to a GitHub repository that hosts the material
 specific for that training.
 
-For those sessions that do not yet have their own dedicated website, the
-material can be found in the training-materials repository:
-[https://github.com/gjbex/training-material](https://github.com/gjbex/training-material)
-
-Many of the training sessions are organized in collaboration with the [Vlaams
-Supercomputer Centrum (VSC)](https://www.vscentrum.be/) and
-[EuroCC@Belgium](https://www.enccb.be/).  You can find the [schedule of
-upcoming training sessions](https://www.vscentrum.be/training) on their
-website.  For EuroCC training sessions, please consult the [EuroCC training
-portal](https://hpc-portal.eu/training) on EuroCC ACCESS.
-
-Below is a list of all the training sessions that are currently available.
+Below is a list of all the training sessions that are currently offered.
 A graphical overview of the training sessions on [computational
-skills](computational_skills.md) is available.
+skills](computational_skills.md) is available as well.  A number of learning
+paths have been defined to help you choose the right training sessions for
+your needs.
+
+For EuroCC training sessions, please consult the [EuroCC training
+portal](https://hpc-portal.eu/training) on EuroCC ACCESS.
 
 
 # Training sessions
