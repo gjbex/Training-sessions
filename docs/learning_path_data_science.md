@@ -15,7 +15,7 @@ graph TD
   Best_practices_for_data_science_on_HPC --> Jupyter_notebooks[Jupyter notebooks]
   Best_practices_for_data_science_on_HPC --> Containers_on_HPC[Containers on HPC]
   Best_practices_for_data_science_on_HPC --> Workflows_for_HPC[Workflows for HPC]
-  Best_practices_for_data_science_on_HPC --> Scientific_python[Scientific Python]
+  Best_practices_for_data_science_on_HPC --> Scientific_Python[Scientific Python]
   Python_for_programmers --> Python_software_engineering[Python software engineering]
   Python_for_programmers --> Scientific_Python[Scientific Python]
   Jupyter_notebooks --> Scientific_Python
@@ -25,7 +25,7 @@ graph TD
   Python_for_data_science --> Python_for_HPC
   Python_for_data_science --> Generative_ai_for_software_engineering_and_data_analysis[Generative AI for software\nengineering and data analysis]
   Python_for_data_science --> Machine_learning_with_Python[Machine learning with Python]
-  MLOps_on_HPC --> Machine_learning_with_Python
+  Machine_learning_with_Python --> MLOps_on_HPC
   click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
   click Best_practices_for_data_science_on_HPC "https://gjbex.github.io/Best-practices-for-data-science-on-HPC/" "Best practices for data science on HPC"
   click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
@@ -39,8 +39,7 @@ graph TD
   click Python_software_engineering "https://gjbex.github.io/Python-software-engineering/" "Python software engineering"
   click Scientific_Python "https://gjbex.github.io/Scientific-Python/" "Scientific Python"
   click Generative_ai_for_software_engineering_and_data_analysis "https://gjbex.github.io/Training-sessions/generative_ai_for_software_engineering_and_data_analysis" "Generative AI for software engineering and data analysis"
-  click Machine_learning_with_Python "https://gjbex.github.io/Training-sessions/machine_learning_with_python" "Machine learning with Python"
-  click MLOps_on_HPC "https://gjbex.github.io/Training-sessions/mlops_on_hpc" "MLOps on HPC"
+  click Machine_learning_with_Python "https://gjbex.github.io/Machine-learning-with-Python/" "Machine learning with Python"
   click Python_dashboards "https://gjbex.github.io/Python-dashboards/" "Python dashboards"
   click Jupyter_notebooks "https://gjbex.github.io/Jupyter-notebooks/" "Jupyter notebooks"
   click Python_for_HPC "https://gjbex.github.io/Python-for-HPC/" "Python for HPC"
@@ -51,7 +50,7 @@ If you are new to scientific computing, you may want to start with "[Best
 practices for scientific
 computing](best_practices_for_scientific_computing.md)".
 
-The next step is to fammliarize yourself with the basics of working on the
+The next step is to familiarize yourself with the basics of working on the
 [Linux command line](https://gjbex.github.io/Training-sessions/linux_intro) and
 the [HPC infrastructure](https://gjbex.github.io/Training-sessions/hpc_intro).
 
@@ -59,15 +58,17 @@ Since you need some programming skills to do data science, you may want to
 start with "[Python for beginners](https://gjbex.github.io/Python-for-beginners)",
 followed by "[Python for programmers](https://gjbex.github.io/Python-for-programmers)".
 
-Since there are quite  some best practices specific to data science on HPC,
+Since there are quite some best practices specific to data science on HPC,
 you may want to follow the "[Best practices for data science on
 HPC](https://gjbex.github.io/Best-practices-for-data-science-on-HPC)" training
 session.
 
 Learn how to manage your code with version control in the "[Version control with
-git](https://gjbex.github.io/Version-control-with-git)" training session, and your
-data and experiments with MLOps in the "[MLOps on HPC](https://gjbex.github.io/MLOps-on-HPC)"
-training session.
+git](https://gjbex.github.io/Version-control-with-git)" training session.
+When your work involves machine learning models, continue with "[Machine
+learning with Python](https://gjbex.github.io/Machine-learning-with-Python/)"
+and then learn how to manage your data, models and experiments with
+"[MLOps on HPC](https://gjbex.github.io/MLOps-on-HPC)".
 
 Containers are useful tools in the context of data science both to create a
 complete, stable and portable development environment, but also as a means to
