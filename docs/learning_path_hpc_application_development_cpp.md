@@ -18,8 +18,10 @@ graph TD
   Parallel_programming_with_OpenMP --> Defensive_programming_and_debugging
   Parallel_programming_with_MPI --> Defensive_programming_and_debugging
   Defensive_programming_and_debugging --> Code_optimization[Code optimization]
-  Parallel_programming_with_OpenMP --> GPU_programming[GPU programming]
-  GPU_programming --> Code_optimization
+  Parallel_programming_with_OpenMP -. optional .-> GPU_offloading_with_OpenMP[GPU offloading with OpenMP]
+  Cpp_software_engineering -. optional .-> Kokkos[Kokkos]
+  classDef optional fill:#f7f7f7,stroke:#777,stroke-dasharray: 4 4,color:#333
+  class GPU_offloading_with_OpenMP,Kokkos optional
   click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
   click Version_control_with_git "https://gjbex.github.io/Version-control-with-git" "Version control with Git"
   click Linux_intro "https://gjbex.github.io/Training-sessions/linux_intro" "Linux introduction"
@@ -31,9 +33,12 @@ graph TD
   click Parallel_programming_with_STL_and_TBB "https://gjbex.github.io/Training-sessions/parallel_programming_with_stl_and_tbb" "Parallel programming with STL and TBB"
   click Parallel_programming_with_OpenMP "https://gjbex.github.io/Training-sessions/parallel_programming_with_openmp" "Parallel programming with OpenMP"
   click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
-  click GPU_programming "https://gjbex.github.io/GPU-programming/" "GPU programming"
+  click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU offloading with OpenMP"
+  click Kokkos "https://gjbex.github.io/GPU-programming/" "Kokkos"
   click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
 ```
+
+Dashed arrows indicate optional branches.
 
 Start with the shared scientific-computing, Linux and HPC foundations if these
 are new to you.  Then follow "[Scientific
@@ -51,8 +56,11 @@ For robust parallel development, continue with "[Defensive programming and
 debugging](https://gjbex.github.io/Defensive-programming-and-debugging/)" to
 learn how to test and debug shared-memory and MPI applications.
 
-"[GPU programming](https://gjbex.github.io/GPU-programming/)" is an optional
-branch when accelerators are part of your target system.  "[Code
-optimization](https://gjbex.github.io/Code-optimization/)" is most useful after
-you have a correct implementation, know which programming model you will use,
-and have the debugging skills to validate changes.
+When accelerators are part of your target system, you can choose between
+"[GPU offloading with OpenMP](https://gjbex.github.io/GPU-programming/)" and
+"[Kokkos](https://gjbex.github.io/GPU-programming/)", depending on whether you
+prefer a directive-based approach or a C++ performance-portability library.
+
+"[Code optimization](https://gjbex.github.io/Code-optimization/)" is most
+useful after you have a correct CPU implementation, know which programming model
+you will use, and have the debugging skills to validate changes.
