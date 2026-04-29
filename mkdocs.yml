@@ -6,8 +6,12 @@ nav:
 - Learning paths:
   - Using HPC applications: 'learning_path_using_hpc_applications.md'
   - Data science: 'learning_path_data_science.md'
-  - HPC application development: 'learning_path_hpc_application_development.md'
-  - Python HPC application development: 'learning_path_developing_python_hpc_applications.md'
+  - HPC application development:
+    - Overview: 'learning_path_hpc_application_development.md'
+    - C: 'learning_path_hpc_application_development_c.md'
+    - C++: 'learning_path_hpc_application_development_cpp.md'
+    - Fortran: 'learning_path_hpc_application_development_fortran.md'
+    - Python: 'learning_path_hpc_application_development_python.md'
 - Subjects:
   - Computational skills: 'computational_skills.md'
   - Using HPC systems: 'using_hpc_systems.md'
