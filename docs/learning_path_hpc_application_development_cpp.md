@@ -11,12 +11,13 @@ graph TD
   HPC_intro --> Containers_on_HPC[Containers on HPC]
   Best_practices_for_scientific_computing --> Scientific_Cpp[Scientific C++]
   Scientific_Cpp --> Cpp_software_engineering[C++ software engineering]
-  Cpp_software_engineering --> Defensive_programming_and_debugging[Defensive programming and debugging]
-  Defensive_programming_and_debugging --> Parallel_programming_with_STL_and_TBB[Parallel programming with STL and TBB]
-  Defensive_programming_and_debugging --> Parallel_programming_with_OpenMP[Parallel programming with OpenMP]
+  Cpp_software_engineering --> Parallel_programming_with_STL_and_TBB[Parallel programming with STL and TBB]
+  Cpp_software_engineering --> Parallel_programming_with_OpenMP[Parallel programming with OpenMP]
   Parallel_programming_with_OpenMP --> Parallel_programming_with_MPI[Parallel programming with MPI]
-  Parallel_programming_with_STL_and_TBB --> Code_optimization[Code optimization]
-  Parallel_programming_with_MPI --> Code_optimization
+  Parallel_programming_with_STL_and_TBB --> Defensive_programming_and_debugging[Defensive programming and debugging]
+  Parallel_programming_with_OpenMP --> Defensive_programming_and_debugging
+  Parallel_programming_with_MPI --> Defensive_programming_and_debugging
+  Defensive_programming_and_debugging --> Code_optimization[Code optimization]
   Parallel_programming_with_OpenMP --> GPU_programming[GPU programming]
   GPU_programming --> Code_optimization
   click Best_practices_for_scientific_computing "https://gjbex.github.io/Best-practices-for-scientific-computing/" "Best practices for scientific computing"
@@ -40,16 +41,18 @@ C++](https://gjbex.github.io/Scientific-C-plus-plus/)" and "[C++ software
 engineering](https://gjbex.github.io/C-plus-plus-software-engineering/)" to
 build a maintainable application or library.
 
-For robust development, continue with "[Defensive programming and
-debugging](https://gjbex.github.io/Defensive-programming-and-debugging/)".
 For parallelism, choose "[Parallel programming with STL and
 TBB](parallel_programming_with_stl_and_tbb.md)" for modern C++ shared-memory
 patterns, "[Parallel programming with OpenMP](parallel_programming_with_openmp.md)"
 for directive-based shared-memory programming, and "[Parallel programming with
 MPI](parallel_programming_with_mpi.md)" for distributed-memory systems.
 
+For robust parallel development, continue with "[Defensive programming and
+debugging](https://gjbex.github.io/Defensive-programming-and-debugging/)" to
+learn how to test and debug shared-memory and MPI applications.
+
 "[GPU programming](https://gjbex.github.io/GPU-programming/)" is an optional
 branch when accelerators are part of your target system.  "[Code
 optimization](https://gjbex.github.io/Code-optimization/)" is most useful after
-you have a correct implementation and know which programming model you will use.
-
+you have a correct implementation, know which programming model you will use,
+and have the debugging skills to validate changes.
