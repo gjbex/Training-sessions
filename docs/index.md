@@ -94,6 +94,7 @@ Prerequisites:
   * Defensive programming and debugging
   * Best practices in scientific programming
   * Version control with git
+  * Rust: the good, the bad and the ugly
 
 
 ## Fortran programming
@@ -283,6 +284,16 @@ strong and weak points are.
 
 For detailed information, see:
 [https://gjbex.github.io/Julia_good_bad_ugly/](https://gjbex.github.io/Julia_good_bad_ugly/)
+
+
+## Rust: the good, the bad and the ugly (4 hours)
+
+Rust has gained quite some traction over the last couple of years, but is it for you?
+In this training you will see how it compares to C++ and Python, and what Rust's
+strong and weak points are.
+
+For detailed information, see:
+[https://gjbex.github.io/Rust-good-bad-ugly/](https://gjbex.github.io/Rust-good-bad-ugly/)
 
 
 ## Jupyter notebooks (3 hours)
