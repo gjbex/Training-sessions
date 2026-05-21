@@ -8,6 +8,6 @@ graph LR
     Heterogeneous_programming_with_Kokkos[Heterogeneous programming with Kokkos]
     GPU_offloading_with_OpenMP[GPU offloading with OpenMP]
     click Python_on_GPUs "https://gjbex.github.io/Python-on-GPUs/" "Python on GPUs"
-    click Heterogeneous_programming_with_Kokkos "https://gjbex.github.io/GPU-programming/" "GPU programming"
-    click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU offloading with OpenMP"
+    click Heterogeneous_programming_with_Kokkos "https://gjbex.github.io/Heterogeneous-programming-with-Kokkos/" "Heterogeneous programming with Kokkos"
+    click GPU_offloading_with_OpenMP "https://gjbex.github.io/OpenMP-GPU-offloading/" "GPU offloading with OpenMP"
 ```

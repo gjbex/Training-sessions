@@ -33,8 +33,8 @@ graph TD
   click Parallel_programming_with_STL_and_TBB "https://gjbex.github.io/Training-sessions/parallel_programming_with_stl_and_tbb" "Parallel programming with STL and TBB"
   click Parallel_programming_with_OpenMP "https://gjbex.github.io/Training-sessions/parallel_programming_with_openmp" "Parallel programming with OpenMP"
   click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
-  click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU offloading with OpenMP"
-  click Kokkos "https://gjbex.github.io/GPU-programming/" "Kokkos"
+  click GPU_offloading_with_OpenMP "https://gjbex.github.io/OpenMP-GPU-offloading/" "GPU offloading with OpenMP"
+  click Kokkos "https://gjbex.github.io/Heterogeneous-programming-with-Kokkos/" "Kokkos"
   click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
 ```
 
@@ -57,8 +57,8 @@ debugging](https://gjbex.github.io/Defensive-programming-and-debugging/)" to
 learn how to test and debug shared-memory and MPI applications.
 
 When accelerators are part of your target system, you can choose between
-"[GPU offloading with OpenMP](https://gjbex.github.io/GPU-programming/)" and
-"[Kokkos](https://gjbex.github.io/GPU-programming/)", depending on whether you
+"[GPU offloading with OpenMP](https://gjbex.github.io/OpenMP-GPU-offloading/)" and
+"[Kokkos](https://gjbex.github.io/Heterogeneous-programming-with-Kokkos/)", depending on whether you
 prefer a directive-based approach or a C++ performance-portability library.
 
 "[Code optimization](https://gjbex.github.io/Code-optimization/)" is most

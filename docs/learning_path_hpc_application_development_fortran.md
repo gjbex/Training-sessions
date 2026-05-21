@@ -27,7 +27,7 @@ graph TD
   click Defensive_programming_and_debugging "https://gjbex.github.io/Defensive-programming-and-debugging/" "Defensive programming and debugging"
   click Parallel_programming_with_OpenMP "https://gjbex.github.io/Training-sessions/parallel_programming_with_openmp" "Parallel programming with OpenMP"
   click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
-  click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU offloading with OpenMP"
+  click GPU_offloading_with_OpenMP "https://gjbex.github.io/OpenMP-GPU-offloading/" "GPU offloading with OpenMP"
   click Code_optimization "https://gjbex.github.io/Code-optimization/" "Code optimization"
 ```
 
@@ -48,7 +48,7 @@ For production-quality parallel Fortran applications, continue with
 debugging](https://gjbex.github.io/Defensive-programming-and-debugging/)" to
 learn how to test and debug shared-memory and MPI applications.
 
-"[GPU offloading with OpenMP](https://gjbex.github.io/GPU-programming/)" is an
+"[GPU offloading with OpenMP](https://gjbex.github.io/OpenMP-GPU-offloading/)" is an
 optional branch when accelerators are part of your target system.
 
 "[Code optimization](https://gjbex.github.io/Code-optimization/)" is most useful

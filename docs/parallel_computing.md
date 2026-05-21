@@ -13,5 +13,5 @@ graph LR
   click Parallel_programming_with_MPI "https://gjbex.github.io/Training-sessions/parallel_programming_with_mpi" "Parallel programming with MPI"
   click Python_on_HPC "https://gjbex.github.io/Python-for-HPC/" "Python on HPC"
   click Parallel_programming_with_STL_and_TBB "https://gjbex.github.io/Training-sessions/parallel_programming_with_stl_and_tbb" "Parallel programming with STL and TBB"
-  click GPU_offloading_with_OpenMP "https://gjbex.github.io/GPU-programming/" "GPU offloading with OpenMP"
+  click GPU_offloading_with_OpenMP "https://gjbex.github.io/OpenMP-GPU-offloading/" "GPU offloading with OpenMP"
 ```

@@ -368,7 +368,7 @@ machine learning.  This training will introduce you to using hardware-agnostic
 programming using OpenMP to offload computations to GPUs.
 
 For detailed information, see:
-[https://gjbex.github.io/GPU-programming/](https://gjbex.github.io/GPU-programming/)
+[https://gjbex.github.io/OpenMP-GPU-offloading/](https://gjbex.github.io/OpenMP-GPU-offloading/)
 
 
 ## Heterogeneous programming with Kokkos (8 hours)
@@ -377,7 +377,7 @@ Kokkos is a C++ library that enables writing performance portable code
 for heterogeneous systems.  It can offload to accelerators such as GPUs.
 
 For detailed information, see:
-[https://gjbex.github.io/GPU-programming/](https://gjbex.github.io/GPU-programming/)
+[https://gjbex.github.io/Heterogeneous-programming-with-Kokkos/](https://gjbex.github.io/Heterogeneous-programming-with-Kokkos/)
 
 
 ## Defensive programming and debugging (4 hours + 2 hours optional)
