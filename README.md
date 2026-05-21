@@ -20,3 +20,13 @@ It contains:
    email templates and such.
 1. `demo_material`: some material on software to create demos,
    mostly in terminal sessions.
+
+
+## New training repositories
+
+Use the
+[training-template](https://github.com/gjbex/training-template)
+repository when creating a new training repository.  It provides the
+standard layout, classic GitHub Pages setup using Jekyll and
+`jekyll-theme-slate`, participant-facing documentation templates, setup
+instructions, and placeholder-filling tooling.
