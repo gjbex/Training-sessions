@@ -2,3 +2,6 @@
 *~
 *.swp
 *.bak
+
+# mkdocs build output
+/site
