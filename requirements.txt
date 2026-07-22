@@ -24,7 +24,7 @@ pyyaml_env_tag
 requests>=2.32.4
 setuptools>=78.1.1
 six
-soupsieve==2.6
+soupsieve>=2.8.4
 typing_extensions
 urllib3>=2.5.0
 watchdog
