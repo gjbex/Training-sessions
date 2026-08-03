@@ -26,15 +26,14 @@ a shortlist.
 </div>
 
 <noscript>
-This guide needs JavaScript for its step-by-step presentation.  The underlying
-recommendations are:
-
-  * honour hard constraints such as existing code, instruments and platforms;
-  * prefer a mature domain ecosystem when one clearly exists;
-  * otherwise shortlist languages according to the dominant work;
-  * screen the shortlist for libraries, interoperability, hardware,
-    deployment, maintainability and licensing;
-  * test the strongest candidates with a representative slice of the project.
+<p>This guide needs JavaScript for its step-by-step presentation. The underlying recommendations are:</p>
+<ul>
+  <li>honour hard constraints such as existing code, instruments and platforms;</li>
+  <li>prefer a mature domain ecosystem when one clearly exists;</li>
+  <li>otherwise shortlist languages according to the dominant work;</li>
+  <li>screen the shortlist for libraries, interoperability, hardware, deployment, maintainability and licensing;</li>
+  <li>test the strongest candidates with a representative slice of the project.</li>
+</ul>
 </noscript>
 
 ## Interpreting the result
