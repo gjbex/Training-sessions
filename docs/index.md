@@ -24,6 +24,10 @@ skills](computational_skills.md) is available as well.  A number of learning
 paths have been defined to help you choose the right training sessions for
 your needs.
 
+If you are starting a new research software project, the interactive guide to
+[choosing a programming language](choosing_a_programming_language.md) can help
+you identify and evaluate a sensible shortlist.
+
 [![Tux, the Linux mascot](img/visual_representation.png) ](computational_skills.md)
 
 For EuroCC training sessions, please consult the [EuroCC training
