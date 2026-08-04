@@ -80,6 +80,106 @@ label = "Machine learning"
 id = "computational-documents"
 label = "Computational documents"
 
+[[domains]]
+id = "c"
+label = "C"
+
+[[domains]]
+id = "fortran"
+label = "Fortran"
+
+[[domains]]
+id = "julia"
+label = "Julia"
+
+[[domains]]
+id = "rust"
+label = "Rust"
+
+[[domains]]
+id = "software-engineering"
+label = "Software engineering"
+
+[[domains]]
+id = "testing"
+label = "Software testing"
+
+[[domains]]
+id = "scientific-python"
+label = "Scientific Python"
+
+[[domains]]
+id = "data-science"
+label = "Data science"
+
+[[domains]]
+id = "deep-learning"
+label = "Deep learning"
+
+[[domains]]
+id = "natural-language-processing"
+label = "Natural-language processing"
+
+[[domains]]
+id = "python-performance"
+label = "Python performance"
+
+[[domains]]
+id = "distributed-computing"
+label = "Distributed computing"
+
+[[domains]]
+id = "gpu-computing"
+label = "GPU computing"
+
+[[domains]]
+id = "dashboards"
+label = "Dashboards and small web applications"
+
+[[domains]]
+id = "systems-programming"
+label = "Systems scripting"
+
+[[domains]]
+id = "jupyter"
+label = "Jupyter notebooks"
+
+[[domains]]
+id = "kokkos"
+label = "Kokkos"
+
+[[domains]]
+id = "profiling"
+label = "Performance profiling"
+
+[[domains]]
+id = "compiler-optimization"
+label = "Compiler optimization"
+
+[[domains]]
+id = "containers"
+label = "Containers"
+
+[[domains]]
+id = "workflow-management"
+label = "Workflow management"
+
+[[domains]]
+id = "dvc"
+label = "DVC"
+
+[[domains]]
+id = "large-language-models"
+label = "Large language models"
+
+[[domains]]
+id = "scientific-software"
+label = "Scientific software practices"
+
+[[domains]]
+id = "version-control"
+label = "Version control"
+
 [[competencies]]
 id = "programming.variables-and-expressions"
 domain = "programming"
@@ -576,3 +676,1018 @@ domain = "computational-documents"
 label = "Distinguish code, narrative, and output"
 description = "Distinguish executable code, explanatory text, and generated output in a computational document."
 assessment_examples = ["Classify parts of a notebook-like document as code, narrative, or generated output."]
+
+[[competencies]]
+id = "cpp.read-and-write-idiomatic-programs"
+domain = "cpp"
+label = "Read and write idiomatic C++ programs"
+description = "Read, explain, and write small to medium C++ programs using conventional modern C++ style."
+assessment_examples = ["Extend a small C++ program while preserving its idiomatic structure and interfaces."]
+
+[[competencies]]
+id = "cpp.templates"
+domain = "cpp"
+label = "Use basic C++ templates"
+description = "Read and write basic function or class templates to express reusable type-independent code."
+assessment_examples = ["Turn a type-specific function into a constrained or otherwise appropriate function template."]
+
+[[competencies]]
+id = "cpp.apply-best-practices"
+domain = "cpp"
+label = "Apply C++ best practices"
+description = "Recognize and improve common C++ correctness, ownership, interface, and maintainability problems."
+assessment_examples = ["Review a short C++ fragment and correct a concrete lifetime, interface, or style problem."]
+
+[[competencies]]
+id = "cpp.use-scientific-linear-algebra-libraries"
+domain = "cpp"
+label = "Use scientific C++ linear-algebra libraries"
+description = "Represent and compute with vectors or matrices using an established C++ linear-algebra library."
+assessment_examples = ["Implement a matrix-vector calculation with Eigen or Armadillo."]
+
+[[competencies]]
+id = "cpp.use-algorithms-and-ranges"
+domain = "cpp"
+label = "Use C++ algorithms and ranges idiomatically"
+description = "Express collection processing with suitable standard-library algorithms and ranges."
+assessment_examples = ["Replace a manual collection-processing loop with a clear algorithm or ranges pipeline."]
+
+[[competencies]]
+id = "c.read-and-write-programs"
+domain = "c"
+label = "Read and write C programs"
+description = "Read, explain, and write intermediate C programs using functions, arrays, pointers, and explicit resource management."
+assessment_examples = ["Extend a multi-function C program that processes an array of values."]
+
+[[competencies]]
+id = "c.apply-best-practices"
+domain = "c"
+label = "Apply C best practices"
+description = "Recognize and improve common C correctness, interface, resource-management, and portability problems."
+assessment_examples = ["Review a short C fragment and correct a bounds, lifetime, or error-handling problem."]
+
+[[competencies]]
+id = "c.use-standard-library"
+domain = "c"
+label = "Use the C standard library"
+description = "Select and use common C standard-library facilities for input, strings, memory, mathematics, and utilities."
+assessment_examples = ["Implement a small data-processing task using suitable standard-library functions."]
+
+[[competencies]]
+id = "c.use-numerical-libraries"
+domain = "c"
+label = "Use numerical libraries from C"
+description = "Call an established C numerical library and handle its inputs, outputs, and errors."
+assessment_examples = ["Solve a small numerical problem using an appropriate GSL routine."]
+
+[[competencies]]
+id = "fortran.read-and-write-idiomatic-programs"
+domain = "fortran"
+label = "Read and write idiomatic Fortran programs"
+description = "Read, explain, and write small to medium programs using modern Fortran conventions."
+assessment_examples = ["Extend a small modern Fortran program while preserving its module and procedure structure."]
+
+[[competencies]]
+id = "fortran.arrays-and-procedures"
+domain = "fortran"
+label = "Use Fortran arrays and procedures"
+description = "Express numerical computations with Fortran arrays and well-defined functions or subroutines."
+assessment_examples = ["Write a procedure that transforms an array and returns or updates a result."]
+
+[[competencies]]
+id = "fortran.modules-and-derived-types"
+domain = "fortran"
+label = "Use Fortran modules and derived types"
+description = "Organize code in modules and model related data with derived types."
+assessment_examples = ["Define a derived type and expose operations on it through a module."]
+
+[[competencies]]
+id = "fortran.apply-best-practices"
+domain = "fortran"
+label = "Apply Fortran best practices"
+description = "Recognize and improve common Fortran correctness, interface, array, and maintainability problems."
+assessment_examples = ["Review a short Fortran fragment and correct a concrete interface or array-handling problem."]
+
+[[competencies]]
+id = "julia.basic-programming"
+domain = "julia"
+label = "Write basic Julia programs"
+description = "Use Julia expressions, functions, control flow, and core data types to implement a small computation."
+assessment_examples = ["Write a Julia function that classifies and aggregates values from a collection."]
+
+[[competencies]]
+id = "julia.file-io"
+domain = "julia"
+label = "Read and write files with Julia"
+description = "Read a small data file in Julia and write or print a derived result."
+assessment_examples = ["Read tabular text data and write a summary from Julia."]
+
+[[competencies]]
+id = "julia.organize-and-document-code"
+domain = "julia"
+label = "Organize and document Julia code"
+description = "Structure Julia code into reusable units and provide useful participant- or developer-facing documentation."
+assessment_examples = ["Refactor a script into documented functions and a module."]
+
+[[competencies]]
+id = "julia.use-package-ecosystem"
+domain = "julia"
+label = "Use the Julia package ecosystem"
+description = "Find, add, and use suitable Julia packages in a reproducible project environment."
+assessment_examples = ["Add a package to a Julia project and use one of its documented APIs."]
+
+[[competencies]]
+id = "julia.parallel-programming"
+domain = "julia"
+label = "Use Julia parallel-programming facilities"
+description = "Implement a basic concurrent or parallel computation using an appropriate Julia facility."
+assessment_examples = ["Parallelize an independent collection-processing task in Julia."]
+
+[[competencies]]
+id = "rust.create-build-and-run-projects"
+domain = "rust"
+label = "Create, build, and run Rust projects"
+description = "Create a small Cargo project and build, run, and test it with the standard Rust toolchain."
+assessment_examples = ["Create a Cargo project containing a binary and run its tests."]
+
+[[competencies]]
+id = "rust.types-expressions-and-control-flow"
+domain = "rust"
+label = "Use Rust types, expressions, and control flow"
+description = "Write scalar numerical expressions with explicit Rust types and organize them with the main control-flow constructs."
+assessment_examples = ["Implement a typed numerical function containing selection and iteration."]
+
+[[competencies]]
+id = "rust.ownership-borrowing-and-mutation"
+domain = "rust"
+label = "Reason about Rust ownership, borrowing, and mutation"
+description = "Explain and apply basic ownership, borrowing, lifetime, and mutability rules in safe Rust code."
+assessment_examples = ["Correct a borrow-checker error without adding an unnecessary clone."]
+
+[[competencies]]
+id = "rust.structs-methods-and-traits"
+domain = "rust"
+label = "Model data with Rust structs, methods, and traits"
+description = "Define structured data and reusable behavior with structs, implementations, and traits."
+assessment_examples = ["Define two types that implement a shared trait and call them through a generic interface."]
+
+[[competencies]]
+id = "rust.collections-iterators-and-text"
+domain = "rust"
+label = "Process collections, iterators, and text in Rust"
+description = "Transform collections and structured text using Rust iterators and suitable standard types."
+assessment_examples = ["Parse structured text and compute a result through an iterator pipeline."]
+
+[[competencies]]
+id = "rust.option-and-result"
+domain = "rust"
+label = "Handle absence and errors with Option and Result"
+description = "Represent missing values and recoverable failures with Option and Result and propagate or handle them explicitly."
+assessment_examples = ["Read an optional input and return a meaningful Result from a fallible operation."]
+
+[[competencies]]
+id = "rust.organize-projects-modules-and-tests"
+domain = "rust"
+label = "Organize Rust projects, modules, and tests"
+description = "Structure Rust code into binaries, libraries, modules, and automated tests with clear boundaries."
+assessment_examples = ["Move reusable code from a binary into a library module and add a test."]
+
+[[competencies]]
+id = "rust.reproducible-randomness"
+domain = "rust"
+label = "Use reproducible random-number generation in Rust"
+description = "Generate random values from an explicitly controlled seed in a Rust computation."
+assessment_examples = ["Run a seeded simulation twice and reproduce the same result."]
+
+[[competencies]]
+id = "rust.rayon-data-parallelism"
+domain = "rust"
+label = "Use Rayon for data parallelism"
+description = "Express a data-parallel Rust computation using Rayon iterators while preserving correctness."
+assessment_examples = ["Convert an independent iterator computation to a Rayon parallel iterator and verify its result."]
+
+[[competencies]]
+id = "rust.safe-native-library-interface"
+domain = "rust"
+label = "Wrap a native library in a safe Rust interface"
+description = "Expose a small native scientific-library operation through a documented safe Rust abstraction."
+assessment_examples = ["Wrap one fallible native function and keep unsafe operations behind a safe Rust API."]
+
+[[competencies]]
+id = "rust.scientific-computing-ecosystem"
+domain = "rust"
+label = "Navigate Rust's scientific-computing ecosystem"
+description = "Locate and assess Rust crates and interoperability options for a scientific-computing workflow."
+assessment_examples = ["Identify and justify suitable crates or native-library bindings for a small scientific task."]
+
+[[competencies]]
+id = "python.read-and-write-idiomatic-programs"
+domain = "python"
+label = "Read and write idiomatic Python programs"
+description = "Read, explain, and write small to medium Python programs using conventional Python style."
+assessment_examples = ["Extend a small Python program while preserving clear, idiomatic structure."]
+
+[[competencies]]
+id = "python.use-built-in-functions"
+domain = "python"
+label = "Use Python built-in functions"
+description = "Select and use Python built-in functions for common conversion, aggregation, iteration, and inspection tasks."
+assessment_examples = ["Solve a small collection-processing task using suitable built-in functions."]
+
+[[competencies]]
+id = "python.generators-and-standard-library"
+domain = "python"
+label = "Use Python generators and standard-library facilities"
+description = "Use generators and suitable standard-library modules to express a small data-processing workflow."
+assessment_examples = ["Process a sequence lazily with a generator and a standard-library utility."]
+
+[[competencies]]
+id = "python.apply-best-practices"
+domain = "python"
+label = "Apply Python best practices"
+description = "Recognize and improve common Python correctness, interface, readability, and maintainability problems."
+assessment_examples = ["Review a short Python module and correct a concrete design or style problem."]
+
+[[competencies]]
+id = "python.type-annotations"
+domain = "python"
+label = "Use Python type annotations"
+description = "Annotate Python interfaces and use static type-checking feedback to find development-time errors."
+assessment_examples = ["Add useful annotations to a function and correct a type-checker diagnostic."]
+
+[[competencies]]
+id = "python.object-oriented-design"
+domain = "python"
+label = "Use object-oriented design in Python"
+description = "Use classes and composition or inheritance where they improve reuse and clarify responsibilities."
+assessment_examples = ["Refactor related state and operations into a cohesive Python class."]
+
+[[competencies]]
+id = "python.functional-programming"
+domain = "python"
+label = "Apply functional-programming concepts in Python"
+description = "Use pure functions, higher-order operations, or immutable transformations where they improve Python code."
+assessment_examples = ["Refactor a stateful transformation into a composition of testable functions."]
+
+[[competencies]]
+id = "software-engineering.assess-code-quality"
+domain = "software-engineering"
+label = "Assess software code quality"
+description = "Evaluate code using explicit correctness, readability, maintainability, testability, and interface criteria."
+assessment_examples = ["Review a small module and justify a prioritized set of quality improvements."]
+
+[[competencies]]
+id = "software-engineering.build-with-cmake"
+domain = "software-engineering"
+label = "Build software with CMake"
+description = "Configure and build a multi-file project with targets and dependencies expressed in CMake."
+assessment_examples = ["Define and build a library and executable with CMake."]
+
+[[competencies]]
+id = "software-engineering.run-static-analysis"
+domain = "software-engineering"
+label = "Run and interpret static analysis"
+description = "Run suitable static-analysis tools, interpret their diagnostics, and distinguish useful findings from noise."
+assessment_examples = ["Run a static analyser on a small project and resolve or justify its findings."]
+
+[[competencies]]
+id = "software-engineering.manage-cpp-dependencies"
+domain = "software-engineering"
+label = "Manage C++ dependencies"
+description = "Declare, resolve, and use external C++ dependencies through a package-management workflow."
+assessment_examples = ["Add and build a small dependency with Conan or vcpkg."]
+
+[[competencies]]
+id = "software-engineering.apply-design-patterns"
+domain = "software-engineering"
+label = "Apply software design patterns"
+description = "Recognize a recurring design problem and apply a suitable pattern without obscuring a simpler solution."
+assessment_examples = ["Refactor a concrete variation point using an appropriate, justified design pattern."]
+
+[[competencies]]
+id = "software-engineering.document-code-and-interfaces"
+domain = "software-engineering"
+label = "Document code and interfaces"
+description = "Write documentation that explains a component's purpose, public interface, constraints, and usage."
+assessment_examples = ["Document a public function or class sufficiently for another developer to use it correctly."]
+
+[[competencies]]
+id = "software-engineering.choose-project-tools"
+domain = "software-engineering"
+label = "Choose tools for a project context"
+description = "Choose development and quality tools that fit the language, project risks, and maintenance context."
+assessment_examples = ["Justify a minimal formatter, analyser, test, and automation toolset for a project."]
+
+[[competencies]]
+id = "software-engineering.use-deployment-and-ci"
+domain = "software-engineering"
+label = "Use deployment and continuous integration"
+description = "Automate repeatable checks or deployment steps so changes receive timely and reproducible feedback."
+assessment_examples = ["Define a CI job that builds a project and runs its automated checks."]
+
+[[competencies]]
+id = "testing.write-unit-tests"
+domain = "testing"
+label = "Write unit tests"
+description = "Write focused automated tests for small units with clear inputs, expected behavior, and failure messages."
+assessment_examples = ["Add unit tests for normal, boundary, and invalid inputs of a function."]
+
+[[competencies]]
+id = "testing.write-functional-tests"
+domain = "testing"
+label = "Write functional tests"
+description = "Test an integrated program or workflow through its externally observable behavior."
+assessment_examples = ["Run an executable on controlled input and verify its output and exit status."]
+
+[[competencies]]
+id = "testing.design-scientific-tests"
+domain = "testing"
+label = "Design tests for scientific software"
+description = "Identify scientifically meaningful properties, invariants, reference cases, and numerical comparisons for tests."
+assessment_examples = ["Design a tolerance-aware test based on a physical or mathematical invariant."]
+
+[[competencies]]
+id = "testing.interpret-code-coverage"
+domain = "testing"
+label = "Interpret code coverage"
+description = "Use coverage information to identify untested behavior without treating coverage as proof of correctness."
+assessment_examples = ["Use a coverage report to propose a meaningful missing test and explain its limitation."]
+
+[[competencies]]
+id = "scientific-python.select-scipy-functionality"
+domain = "scientific-python"
+label = "Select suitable SciPy functionality"
+description = "Recognize major SciPy capability areas and locate an appropriate routine for a scientific task."
+assessment_examples = ["Choose and apply a SciPy routine for a small integration, optimization, or signal task."]
+
+[[competencies]]
+id = "scientific-python.symbolic-computation"
+domain = "scientific-python"
+label = "Perform symbolic computations"
+description = "Represent and manipulate symbolic mathematical expressions with a Python symbolic-computing library."
+assessment_examples = ["Differentiate or simplify a symbolic expression and evaluate the result numerically."]
+
+[[competencies]]
+id = "scientific-python.hdf5-data"
+domain = "scientific-python"
+label = "Represent and manipulate HDF5 data"
+description = "Create, inspect, and read or write structured array data and metadata in HDF5."
+assessment_examples = ["Write an array and metadata to HDF5 and read them back with their structure preserved."]
+
+[[competencies]]
+id = "scientific-python.image-and-video-workflows"
+domain = "scientific-python"
+label = "Start image or video analysis workflows"
+description = "Load, inspect, transform, and save basic image or video data with suitable Python tools."
+assessment_examples = ["Load an image, apply a simple transformation, and save or visualize the result."]
+
+[[competencies]]
+id = "pandas.transform-and-query-data"
+domain = "pandas"
+label = "Transform and query pandas data"
+description = "Filter, derive, group, aggregate, and query tabular data represented in pandas."
+assessment_examples = ["Filter records, derive a column, and compute a grouped summary."]
+
+[[competencies]]
+id = "data-science.create-statistical-and-interactive-visualizations"
+domain = "data-science"
+label = "Create statistical and interactive visualizations"
+description = "Create an appropriate statistical or interactive visualization with a Python visualization library."
+assessment_examples = ["Create and interpret a grouped statistical plot or an interactive linked view."]
+
+[[competencies]]
+id = "data-science.extract-data-with-regular-expressions"
+domain = "data-science"
+label = "Extract textual data with regular expressions"
+description = "Design and apply regular expressions to validate, locate, or extract structured information from text."
+assessment_examples = ["Extract named fields from consistently structured log lines."]
+
+[[competencies]]
+id = "data-science.query-relational-databases"
+domain = "data-science"
+label = "Query relational databases from Python"
+description = "Connect to a relational database and retrieve or update data through an appropriate Python database abstraction."
+assessment_examples = ["Define or reflect a table and execute a filtered query through SQLAlchemy."]
+
+[[competencies]]
+id = "data-science.extract-web-page-data"
+domain = "data-science"
+label = "Extract information from web pages"
+description = "Parse an HTML document and extract selected structured information while respecting the page structure."
+assessment_examples = ["Extract links and associated labels from a provided HTML page."]
+
+[[competencies]]
+id = "data-science.represent-and-query-geospatial-data"
+domain = "data-science"
+label = "Represent and query geospatial data"
+description = "Represent geospatial features and perform basic attribute or spatial queries."
+assessment_examples = ["Load geospatial data and select features intersecting a given region."]
+
+[[competencies]]
+id = "machine-learning.distinguish-learning-paradigms"
+domain = "machine-learning"
+label = "Distinguish supervised and unsupervised learning"
+description = "Distinguish supervised from unsupervised learning based on data, objectives, and evaluation."
+assessment_examples = ["Classify several example problems as supervised or unsupervised and justify the choice."]
+
+[[competencies]]
+id = "machine-learning.supervised-learning-workflow"
+domain = "machine-learning"
+label = "Apply a supervised-learning workflow"
+description = "Prepare data, train a model, evaluate it on appropriate held-out data, and interpret the result without leakage."
+assessment_examples = ["Build and evaluate a reproducible supervised-learning baseline."]
+
+[[competencies]]
+id = "machine-learning.use-scikit-learn"
+domain = "machine-learning"
+label = "Implement machine-learning workflows with scikit-learn"
+description = "Use scikit-learn estimators, preprocessing, pipelines, and evaluation utilities coherently."
+assessment_examples = ["Construct and evaluate a preprocessing-and-estimator pipeline."]
+
+[[competencies]]
+id = "machine-learning.regression-classification-and-clustering"
+domain = "machine-learning"
+label = "Apply regression, classification, and clustering"
+description = "Select, fit, and interpret a basic regression, classification, or clustering algorithm for a suitable problem."
+assessment_examples = ["Fit and evaluate one supervised model and apply k-means to an unlabeled dataset."]
+
+[[competencies]]
+id = "machine-learning.apply-best-practices"
+domain = "machine-learning"
+label = "Apply machine-learning best practices"
+description = "Recognize and avoid common problems involving leakage, evaluation, imbalance, overfitting, and misleading interpretation."
+assessment_examples = ["Review an ML experiment and identify a concrete validity or evaluation flaw."]
+
+[[competencies]]
+id = "deep-learning.neural-network-concepts"
+domain = "deep-learning"
+label = "Explain core neural-network concepts"
+description = "Explain at a high level layers, parameters, activations, loss, optimization, and generalization in neural networks."
+assessment_examples = ["Trace the data and parameter updates through a small feed-forward network training step."]
+
+[[competencies]]
+id = "deep-learning.cnn-image-classification"
+domain = "deep-learning"
+label = "Apply a CNN to image classification"
+description = "Prepare image data and train or apply a convolutional neural network for a classification task."
+assessment_examples = ["Train or fine-tune a small CNN and evaluate it on held-out images."]
+
+[[competencies]]
+id = "deep-learning.recurrent-models-for-sequences"
+domain = "deep-learning"
+label = "Apply recurrent models to sequence data"
+description = "Represent sequence data and apply a recurrent architecture such as an LSTM to a suitable task."
+assessment_examples = ["Train or apply an LSTM to a small text or time-series problem."]
+
+[[competencies]]
+id = "natural-language-processing.word-embeddings"
+domain = "natural-language-processing"
+label = "Explain and use word embeddings"
+description = "Explain how word embeddings represent lexical relationships and use them in a small language task."
+assessment_examples = ["Inspect similarities between word vectors and use embeddings as model input."]
+
+[[competencies]]
+id = "python-performance.identify-bottlenecks"
+domain = "python-performance"
+label = "Identify Python performance bottlenecks"
+description = "Measure Python code and identify the operations or execution model responsible for a performance limitation."
+assessment_examples = ["Profile a numerical Python program and identify its dominant bottleneck."]
+
+[[competencies]]
+id = "python-performance.use-accelerating-array-libraries"
+domain = "python-performance"
+label = "Use libraries that accelerate array computations"
+description = "Restructure numerical Python work to use suitable compiled array-expression or numerical-library operations."
+assessment_examples = ["Replace a costly Python-level array loop with an appropriate NumPy or numexpr expression."]
+
+[[competencies]]
+id = "python-performance.compile-with-cython"
+domain = "python-performance"
+label = "Accelerate Python code with Cython"
+description = "Compile a performance-critical Python-compatible component with Cython and measure the result."
+assessment_examples = ["Add useful Cython types to a bottleneck and compare its performance and correctness."]
+
+[[competencies]]
+id = "python-performance.interoperate-with-native-code"
+domain = "python-performance"
+label = "Call native scientific code from Python"
+description = "Expose and call a C, C++, or Fortran operation from Python through a suitable interoperability mechanism."
+assessment_examples = ["Wrap a small native numerical function and verify its Python-facing behavior."]
+
+[[competencies]]
+id = "python-performance.reason-about-multithreading"
+domain = "python-performance"
+label = "Reason about Python multithreading"
+description = "Explain the opportunities and limitations of Python threads for CPU-bound, I/O-bound, and native-library work."
+assessment_examples = ["Choose and justify whether threads are suitable for a given Python workload."]
+
+[[competencies]]
+id = "python-performance.distributed-applications-with-mpi"
+domain = "python-performance"
+label = "Write distributed Python applications with MPI"
+description = "Partition data or work and communicate results between Python processes using MPI."
+assessment_examples = ["Implement and run a small multi-process mpi4py computation."]
+
+[[competencies]]
+id = "distributed-computing.reason-about-data-processing-frameworks"
+domain = "distributed-computing"
+label = "Reason about distributed data-processing frameworks"
+description = "Explain at a high level how task graphs, partitions, scheduling, and data movement shape frameworks such as Dask or Spark."
+assessment_examples = ["Explain how a small partitioned computation would execute and where communication occurs."]
+
+[[competencies]]
+id = "gpu-computing.architecture-and-programming-model"
+domain = "gpu-computing"
+label = "Explain GPU architecture and programming models"
+description = "Explain the main execution, memory, and concurrency characteristics that distinguish GPU computing."
+assessment_examples = ["Relate a basic GPU kernel's threads and memory accesses to the hardware execution model."]
+
+[[competencies]]
+id = "gpu-computing.transfer-host-and-device-data"
+domain = "gpu-computing"
+label = "Transfer data between host and GPU"
+description = "Move data between host and device memory deliberately and synchronize when required."
+assessment_examples = ["Transfer input to a GPU, execute an operation, and retrieve a verified result."]
+
+[[competencies]]
+id = "gpu-computing.use-accelerated-libraries"
+domain = "gpu-computing"
+label = "Use GPU-accelerated scientific libraries"
+description = "Use established GPU libraries for operations such as linear algebra, random numbers, machine learning, or data processing."
+assessment_examples = ["Run and verify a matrix operation or data transformation with a GPU-backed library."]
+
+[[competencies]]
+id = "gpu-computing.write-custom-kernels"
+domain = "gpu-computing"
+label = "Write custom GPU kernels"
+description = "Implement and launch a basic custom GPU kernel with correct indexing and data access."
+assessment_examples = ["Write an element-wise kernel and verify it for several input sizes."]
+
+[[competencies]]
+id = "gpu-computing.generate-kernels-with-numba"
+domain = "gpu-computing"
+label = "Generate GPU kernels with Numba"
+description = "Implement and launch a GPU kernel from Python using Numba's GPU programming facilities."
+assessment_examples = ["Implement a Numba GPU kernel for an array transformation and validate its result."]
+
+[[competencies]]
+id = "dashboards.create-interactive-dashboards"
+domain = "dashboards"
+label = "Create interactive dashboards"
+description = "Create a small dashboard that presents data and responds to participant or user interaction."
+assessment_examples = ["Build a dashboard with one visualization and one control that updates it."]
+
+[[competencies]]
+id = "dashboards.create-small-web-applications"
+domain = "dashboards"
+label = "Create small data-oriented web applications"
+description = "Build a small web application that accepts input, performs a computation, and presents a result."
+assessment_examples = ["Create an application with an input form and a computed output view."]
+
+[[competencies]]
+id = "dashboards.select-and-deploy-frameworks"
+domain = "dashboards"
+label = "Select and deploy dashboard frameworks"
+description = "Choose a dashboard framework and deploy the resulting application to a suitable static, managed, or server environment."
+assessment_examples = ["Justify a framework and deploy a small application to an appropriate target."]
+
+[[competencies]]
+id = "systems-programming.configuration-driven-cli-scripts"
+domain = "systems-programming"
+label = "Write configurable command-line scripts"
+description = "Write scripts that accept command-line arguments and use configuration files or environment variables appropriately."
+assessment_examples = ["Create a script whose inputs can be supplied through arguments and a configuration file."]
+
+[[competencies]]
+id = "systems-programming.application-logging"
+domain = "systems-programming"
+label = "Implement application logging"
+description = "Emit structured, appropriately leveled operational and error information from an application."
+assessment_examples = ["Configure a script to log normal progress and failures to suitable destinations."]
+
+[[competencies]]
+id = "systems-programming.filesystem-automation"
+domain = "systems-programming"
+label = "Automate filesystem tasks"
+description = "Inspect, create, move, filter, or transform files and directories safely from a script."
+assessment_examples = ["Select files by a defined rule and organize them without overwriting unrelated data."]
+
+[[competencies]]
+id = "systems-programming.generate-reports-from-templates"
+domain = "systems-programming"
+label = "Generate reports from templates"
+description = "Render structured data into a text-based report using a template and controlled context."
+assessment_examples = ["Generate a small report from a template and a structured input object."]
+
+[[competencies]]
+id = "systems-programming.interact-with-processes"
+domain = "systems-programming"
+label = "Interact with operating-system processes"
+description = "Start, monitor, communicate with, and inspect the result of child or system processes from a script."
+assessment_examples = ["Run an external command, capture its output, and handle a nonzero exit status."]
+
+[[competencies]]
+id = "systems-programming.automate-remote-systems-with-ssh"
+domain = "systems-programming"
+label = "Automate remote systems with SSH"
+description = "Connect to a remote system programmatically, execute a controlled command, and retrieve its result."
+assessment_examples = ["Run a harmless diagnostic command on a remote host and capture its output."]
+
+[[competencies]]
+id = "systems-programming.process-compressed-files"
+domain = "systems-programming"
+label = "Process compressed files and archives"
+description = "Inspect, create, or extract common compressed files and archives programmatically."
+assessment_examples = ["Extract selected files from an archive and verify their paths and contents."]
+
+[[competencies]]
+id = "jupyter.compose-computational-narratives"
+domain = "jupyter"
+label = "Compose computational narratives in notebooks"
+description = "Combine executable code, explanatory text, equations, and visualizations into a coherent notebook narrative."
+assessment_examples = ["Create a notebook that explains and reproduces a small analysis from input to conclusion."]
+
+[[competencies]]
+id = "jupyter.use-magics-and-shell-integration"
+domain = "jupyter"
+label = "Use notebook magics and shell integration"
+description = "Use notebook-specific commands and controlled shell interaction to support an analysis workflow."
+assessment_examples = ["Use an appropriate magic or shell command and explain its execution context."]
+
+[[competencies]]
+id = "jupyter.create-interactive-visualizations"
+domain = "jupyter"
+label = "Create interactive notebook visualizations"
+description = "Create a notebook visualization or animation that supports interactive exploration."
+assessment_examples = ["Add a control that updates a visualization in a notebook."]
+
+[[competencies]]
+id = "jupyter.pair-notebooks-for-version-control"
+domain = "jupyter"
+label = "Pair notebooks with version-control-friendly formats"
+description = "Pair or synchronize notebooks with a text representation suitable for review and version control."
+assessment_examples = ["Pair a notebook with a text form, change it, and inspect a meaningful diff."]
+
+[[competencies]]
+id = "jupyter.install-and-use-language-kernels"
+domain = "jupyter"
+label = "Install and use notebook kernels"
+description = "Install, select, and execute code with an appropriate non-default Jupyter kernel."
+assessment_examples = ["Install or register a Bash or R kernel and execute a small notebook cell."]
+
+[[competencies]]
+id = "jupyter.interoperate-between-python-and-r"
+domain = "jupyter"
+label = "Interoperate between Python and R in notebooks"
+description = "Exchange data and invoke R from Python or Python from R within a controlled notebook workflow."
+assessment_examples = ["Pass a small dataset between Python and R in a notebook and verify the result."]
+
+[[competencies]]
+id = "jupyter.create-presentations"
+domain = "jupyter"
+label = "Create presentations from notebooks"
+description = "Structure and export a notebook as a simple presentation with suitable slide boundaries and output."
+assessment_examples = ["Turn a short explanatory notebook into a navigable slide presentation."]
+
+[[competencies]]
+id = "openmp.target-offloading"
+domain = "openmp"
+label = "Offload computations to GPUs with OpenMP"
+description = "Write OpenMP target constructs that move required data and execute a computation on a supported GPU."
+assessment_examples = ["Offload an array computation and verify its result against a CPU implementation."]
+
+[[competencies]]
+id = "openmp.optimize-gpu-offloading"
+domain = "openmp"
+label = "Optimize OpenMP GPU offloading"
+description = "Measure and improve OpenMP target code by reasoning about data movement, parallelism, and device execution."
+assessment_examples = ["Identify and reduce an avoidable transfer or underutilized parallel region in target code."]
+
+[[competencies]]
+id = "kokkos.explain-programming-model"
+domain = "kokkos"
+label = "Explain the Kokkos programming model"
+description = "Explain how Kokkos separates execution policy, data representation, and backend selection for performance portability."
+assessment_examples = ["Describe how one Kokkos kernel can target different execution backends."]
+
+[[competencies]]
+id = "kokkos.write-portable-programs"
+domain = "kokkos"
+label = "Write portable Kokkos programs"
+description = "Write and build a basic Kokkos program that can target more than one supported execution backend."
+assessment_examples = ["Build and run the same Kokkos computation with two available backends."]
+
+[[competencies]]
+id = "kokkos.execution-patterns"
+domain = "kokkos"
+label = "Use Kokkos execution patterns"
+description = "Use parallel_for, parallel_reduce, or parallel_scan with an appropriate execution policy."
+assessment_examples = ["Implement and verify a Kokkos reduction or scan."]
+
+[[competencies]]
+id = "kokkos.views-and-data-movement"
+domain = "kokkos"
+label = "Use Kokkos views and data movement"
+description = "Represent kernel data with Kokkos views and synchronize or mirror data across memory spaces correctly."
+assessment_examples = ["Move initialized host data to a device view and retrieve a verified result."]
+
+[[competencies]]
+id = "kokkos.execution-and-memory-spaces"
+domain = "kokkos"
+label = "Reason about Kokkos execution and memory spaces"
+description = "Choose or recognize relevant execution spaces, memory spaces, team policies, and scratch-memory arrangements."
+assessment_examples = ["Explain whether a view is accessible from a selected execution space and propose a correction."]
+
+[[competencies]]
+id = "performance.scaling-laws"
+domain = "performance"
+label = "Apply performance scaling laws"
+description = "Use basic scaling laws to reason about problem size, serial fractions, and expected performance limits."
+assessment_examples = ["Estimate the maximum useful speedup from a stated serial fraction or scaling model."]
+
+[[competencies]]
+id = "performance.memory-hierarchy"
+domain = "performance"
+label = "Reason about the memory hierarchy"
+description = "Relate caches, main memory, bandwidth, latency, and locality to application performance."
+assessment_examples = ["Explain why two computations with similar operation counts can have different memory performance."]
+
+[[competencies]]
+id = "performance.vectorization"
+domain = "performance"
+label = "Reason about and enable vectorization"
+description = "Recognize vectorizable work and restructure a loop when appropriate to support SIMD execution."
+assessment_examples = ["Inspect a compiler report and remove a justified obstacle to vectorization."]
+
+[[competencies]]
+id = "performance.shared-memory-pitfalls"
+domain = "performance"
+label = "Recognize shared-memory performance pitfalls"
+description = "Recognize contention, synchronization overhead, false sharing, imbalance, and related shared-memory costs."
+assessment_examples = ["Diagnose a scaling loss caused by synchronization or false sharing in a small parallel program."]
+
+[[competencies]]
+id = "performance.estimate-runtime-memory-and-efficiency"
+domain = "performance"
+label = "Estimate runtime, memory, and efficiency"
+description = "Measure or estimate a computation's runtime, peak memory need, and resource efficiency well enough to plan a run."
+assessment_examples = ["Estimate resources from a representative run and compare the estimate with an observed larger run."]
+
+[[competencies]]
+id = "performance.choose-when-to-parallelize"
+domain = "performance"
+label = "Choose when parallelization is worthwhile"
+description = "Judge whether parallelization is likely to justify its implementation, communication, and scheduling costs."
+assessment_examples = ["Recommend a serial or parallel approach for a workload and justify the expected tradeoff."]
+
+[[competencies]]
+id = "profiling.profile-applications"
+domain = "profiling"
+label = "Profile applications"
+description = "Use a profiling tool to locate time-consuming functions or regions and interpret the collected evidence."
+assessment_examples = ["Profile an application and identify a measured optimization target."]
+
+[[competencies]]
+id = "compiler-optimization.feedback-guided-optimization"
+domain = "compiler-optimization"
+label = "Use feedback-guided optimization"
+description = "Collect representative execution profiles and use them to guide an optimized compiler build."
+assessment_examples = ["Produce a profile-guided build and compare it with a conventionally optimized build."]
+
+[[competencies]]
+id = "containers.run-apptainer-on-hpc"
+domain = "containers"
+label = "Run Apptainer containers on HPC"
+description = "Execute a containerized application with appropriate files, environment, and resources on an HPC system."
+assessment_examples = ["Run an Apptainer image as a batch job and verify its output."]
+
+[[competencies]]
+id = "containers.write-definition-files"
+domain = "containers"
+label = "Write container definition files"
+description = "Describe a reproducible container build including base image, dependencies, files, and runtime behavior."
+assessment_examples = ["Build an image from a definition file and verify an installed application."]
+
+[[competencies]]
+id = "containers.evaluate-tradeoffs-and-pitfalls"
+domain = "containers"
+label = "Evaluate container tradeoffs and pitfalls"
+description = "Assess reproducibility, portability, security, performance, and data-access tradeoffs of container use."
+assessment_examples = ["Review a proposed HPC container workflow and identify a concrete benefit and risk."]
+
+[[competencies]]
+id = "slurm.schedule-delayed-jobs"
+domain = "slurm"
+label = "Schedule Slurm jobs for a later time"
+description = "Submit or arrange a Slurm job to become eligible at an intended later time."
+assessment_examples = ["Schedule a harmless batch job for a specified future time and inspect its state."]
+
+[[competencies]]
+id = "slurm.job-dependencies"
+domain = "slurm"
+label = "Build workflows with Slurm job dependencies"
+description = "Express ordering and success or failure conditions between Slurm jobs using dependency relationships."
+assessment_examples = ["Submit a producer and consumer job so the consumer runs only after successful production."]
+
+[[competencies]]
+id = "slurm.checkpoint-restart-workflows"
+domain = "slurm"
+label = "Build checkpoint-restart workflows with Slurm"
+description = "Combine checkpointing and job dependencies so a long computation can continue across scheduled jobs."
+assessment_examples = ["Arrange two dependent jobs where the second resumes from the first job's checkpoint."]
+
+[[competencies]]
+id = "slurm.job-arrays"
+domain = "slurm"
+label = "Use Slurm job arrays"
+description = "Run many similar tasks with shared resource requirements through a parameterized Slurm job array."
+assessment_examples = ["Submit an array whose tasks process distinct input files and produce distinct outputs."]
+
+[[competencies]]
+id = "workflow-management.schedule-local-tasks"
+domain = "workflow-management"
+label = "Schedule tasks on a login or local node"
+description = "Arrange a lightweight command or script to run at a specified time on an appropriate non-compute node."
+assessment_examples = ["Schedule a harmless local task and verify its recorded output."]
+
+[[competencies]]
+id = "workflow-management.use-hpc-worker-tools"
+domain = "workflow-management"
+label = "Use HPC worker tools"
+description = "Use a worker-oriented HPC tool to distribute and monitor a collection of small tasks."
+assessment_examples = ["Submit and monitor a small task collection with worker-ng or atools."]
+
+[[competencies]]
+id = "workflow-management.run-resource-aware-workflows"
+domain = "workflow-management"
+label = "Run resource-aware workflows"
+description = "Express and execute a multi-step workflow whose tasks have dependencies and distinct resource requirements."
+assessment_examples = ["Run a small Nextflow-like workflow containing dependent tasks with different resource requests."]
+
+[[competencies]]
+id = "workflow-management.reproduce-computational-experiments"
+domain = "workflow-management"
+label = "Reproduce computational experiments"
+description = "Recreate a computational result from recorded code, data, parameters, environment, and execution steps."
+assessment_examples = ["Reproduce a prior experiment in a clean workspace and compare its recorded outputs."]
+
+[[competencies]]
+id = "dvc.version-data"
+domain = "dvc"
+label = "Version data with DVC"
+description = "Track dataset versions with DVC while storing appropriate metadata in version control."
+assessment_examples = ["Record two versions of a dataset and restore the earlier version."]
+
+[[competencies]]
+id = "dvc.define-pipelines"
+domain = "dvc"
+label = "Define DVC pipelines"
+description = "Define reproducible DVC stages with explicit inputs, outputs, parameters, and dependencies."
+assessment_examples = ["Create and run a two-stage DVC pipeline that rebuilds only affected outputs."]
+
+[[competencies]]
+id = "dvc.manage-machine-learning-projects"
+domain = "dvc"
+label = "Manage machine-learning projects with DVC"
+description = "Use DVC to coordinate data, pipelines, parameters, metrics, and artifacts in an ML project."
+assessment_examples = ["Change an ML parameter, reproduce the affected pipeline, and record its metrics."]
+
+[[competencies]]
+id = "dvc.compare-experiments"
+domain = "dvc"
+label = "Compare experiments with DVC and DVCLive"
+description = "Record and compare parameters, metrics, and artifacts across computational experiments."
+assessment_examples = ["Compare two experiment runs and identify the parameter and metric differences."]
+
+[[competencies]]
+id = "git.collaborative-workflow"
+domain = "git"
+label = "Use Git collaboratively"
+description = "Exchange, integrate, and review changes with other contributors through a shared Git repository."
+assessment_examples = ["Integrate a collaborator's independent change while preserving both contributions."]
+
+[[competencies]]
+id = "git.branches"
+domain = "git"
+label = "Use Git branches to separate work"
+description = "Create, switch, compare, and integrate branches for distinct lines of work."
+assessment_examples = ["Develop a small change on a branch and integrate it into the main line."]
+
+[[competencies]]
+id = "git.gui-and-command-line"
+domain = "git"
+label = "Use Git through GUI and command-line interfaces"
+description = "Perform and cross-check common Git operations through graphical and command-line interfaces."
+assessment_examples = ["Inspect and commit the same kind of change using both interface styles."]
+
+[[competencies]]
+id = "git.repository-hosting"
+domain = "git"
+label = "Manage repositories on a hosting platform"
+description = "Create and manage a repository, access, and collaboration settings on a Git hosting platform."
+assessment_examples = ["Create a hosted repository, connect a local clone, and grant appropriate collaborator access."]
+
+[[competencies]]
+id = "version-control.traceability-collaboration-and-provenance"
+domain = "version-control"
+label = "Explain version-control support for traceability and provenance"
+description = "Explain how version history supports recovery, collaboration, traceability, and scientific provenance."
+assessment_examples = ["Use a concrete project history to explain who changed what, why, and how an earlier state can be recovered."]
+
+[[competencies]]
+id = "large-language-models.training-and-inference-concepts"
+domain = "large-language-models"
+label = "Explain LLM training and inference"
+description = "Explain at a high level how large language models are trained and how pretrained models generate text."
+assessment_examples = ["Distinguish pretraining, fine-tuning, and inference in a concrete LLM workflow."]
+
+[[competencies]]
+id = "large-language-models.generate-text-with-pretrained-models"
+domain = "large-language-models"
+label = "Generate text with pretrained language models"
+description = "Load or access a pretrained language model and generate text with controlled prompts and decoding settings."
+assessment_examples = ["Generate and compare outputs under two documented decoding configurations."]
+
+[[competencies]]
+id = "large-language-models.retrieval-augmented-generation"
+domain = "large-language-models"
+label = "Build retrieval-augmented generation workflows"
+description = "Index supplied data, retrieve relevant context, and use it to support language-model answers."
+assessment_examples = ["Answer questions over a small document collection and inspect the retrieved evidence."]
+
+[[competencies]]
+id = "large-language-models.quantization"
+domain = "large-language-models"
+label = "Use and explain model quantization"
+description = "Explain how reduced-precision model representations affect size, memory, speed, and output quality."
+assessment_examples = ["Compare the resource use and output of two quantization choices for the same model."]
+
+[[competencies]]
+id = "large-language-models.fine-tune-pretrained-models"
+domain = "large-language-models"
+label = "Fine-tune pretrained language models"
+description = "Prepare task data and adapt a pretrained language model while recording configuration and evaluation."
+assessment_examples = ["Fine-tune a small model or adapter for a controlled task and evaluate it against a baseline."]
+
+[[competencies]]
+id = "hpc.choose-when-to-use-hpc"
+domain = "hpc"
+label = "Choose when to use an HPC environment"
+description = "Judge whether workload size, runtime, memory, parallelism, or throughput justifies moving a computation to HPC."
+assessment_examples = ["Recommend local or HPC execution for a workload and justify the relevant resource threshold."]
+
+[[competencies]]
+id = "hpc.run-jobs-in-software-environments"
+domain = "hpc"
+label = "Run HPC jobs in prepared software environments"
+description = "Prepare or activate an R or Python environment and use it consistently inside a submitted job."
+assessment_examples = ["Submit a job that activates a prepared environment and records the package versions it used."]
+
+[[competencies]]
+id = "hpc.efficient-computation-basics"
+domain = "hpc"
+label = "Apply basic HPC efficiency practices"
+description = "Choose reasonable resources and execution strategies based on measured workload behavior."
+assessment_examples = ["Revise an over-requested or under-requested job specification using measured evidence."]
+
+[[competencies]]
+id = "hpc.io-strategies-and-pitfalls"
+domain = "hpc"
+label = "Choose HPC I/O strategies and avoid pitfalls"
+description = "Choose data formats and access patterns that account for shared-filesystem behavior, metadata costs, and concurrency."
+assessment_examples = ["Revise a many-small-files workflow into a more suitable HPC I/O strategy."]
+
+[[competencies]]
+id = "scientific-software.explain-value-of-engineering-practices"
+domain = "scientific-software"
+label = "Explain the value of software engineering in science"
+description = "Relate software-engineering practices to scientific reliability, efficiency, reuse, and exposure."
+assessment_examples = ["Explain how a concrete engineering practice reduces a scientific-project risk."]
+
+[[competencies]]
+id = "scientific-software.distinguish-quality-evidence"
+domain = "scientific-software"
+label = "Distinguish sources of software-quality evidence"
+description = "Distinguish formatters, diagnostics, linters, type checkers, static analysers, and tests by the evidence each provides."
+assessment_examples = ["Choose which tools can and cannot detect several concrete defect types."]
+
+[[competencies]]
+id = "scientific-software.core-quality-practices"
+domain = "scientific-software"
+label = "Relate core quality practices in scientific software"
+description = "Explain how style, documentation, testing, version control, and reproducibility work together in scientific software."
+assessment_examples = ["Propose a coherent minimal quality workflow for a small scientific project."]
+
+[[competencies]]
+id = "scientific-software.design-reproducible-data"
+domain = "scientific-software"
+label = "Design reproducible scientific data"
+description = "Choose formats, metadata, validation, and access patterns that support usable and reproducible scientific data."
+assessment_examples = ["Design a small scientific dataset with format, metadata, and validation choices justified."]
+
+[[competencies]]
+id = "scientific-software.reliable-deployment-and-ci"
+domain = "scientific-software"
+label = "Relate deployment and CI to scientific reliability"
+description = "Explain and apply how repeatable deployment and continuous checks reduce scientific-software risk."
+assessment_examples = ["Design a CI and deployment check that protects a scientifically meaningful behavior."]
