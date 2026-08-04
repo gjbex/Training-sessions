@@ -1,0 +1,578 @@
+schema_version = 1
+id = "training-competencies"
+title = "Training catalog competencies"
+status = "draft"
+description = """
+A controlled registry of concrete abilities that trainings in the catalog can
+require or provide. Broad experience claims, delivery requirements, and
+proficiency levels are intentionally outside the scope of this draft.
+"""
+
+[[domains]]
+id = "programming"
+label = "Language-independent programming"
+
+[[domains]]
+id = "command-line"
+label = "Command-line use"
+
+[[domains]]
+id = "shell"
+label = "Shell workflows"
+
+[[domains]]
+id = "diagnostics"
+label = "Diagnostics"
+
+[[domains]]
+id = "python"
+label = "Python"
+
+[[domains]]
+id = "numpy"
+label = "NumPy"
+
+[[domains]]
+id = "pandas"
+label = "pandas"
+
+[[domains]]
+id = "matplotlib"
+label = "Matplotlib"
+
+[[domains]]
+id = "cpp"
+label = "C++"
+
+[[domains]]
+id = "hpc"
+label = "HPC system use"
+
+[[domains]]
+id = "slurm"
+label = "Slurm"
+
+[[domains]]
+id = "parallel-programming"
+label = "Parallel programming"
+
+[[domains]]
+id = "openmp"
+label = "OpenMP"
+
+[[domains]]
+id = "performance"
+label = "Performance reasoning"
+
+[[domains]]
+id = "git"
+label = "Git"
+
+[[domains]]
+id = "research-workflows"
+label = "Computational research workflows"
+
+[[domains]]
+id = "machine-learning"
+label = "Machine learning"
+
+[[domains]]
+id = "computational-documents"
+label = "Computational documents"
+
+[[competencies]]
+id = "programming.variables-and-expressions"
+domain = "programming"
+label = "Use variables and expressions"
+description = "Define values and combine them in expressions in a programming language."
+assessment_examples = ["Compute a derived value from several input values."]
+
+[[competencies]]
+id = "programming.control-flow"
+domain = "programming"
+label = "Use selection and iteration"
+description = "Use conditional and loop constructs to control how a program processes data."
+assessment_examples = ["Classify values with a conditional and aggregate values with a loop."]
+
+[[competencies]]
+id = "programming.functions"
+domain = "programming"
+label = "Write and call functions"
+description = "Define a function or procedure with inputs and a result, and call it from other code."
+assessment_examples = ["Write a function that computes the average of a collection of numbers."]
+
+[[competencies]]
+id = "programming.basic-data-structures"
+domain = "programming"
+label = "Use basic data structures"
+description = "Store and retrieve values in sequence, mapping, set, or record-like data structures."
+assessment_examples = ["Build a mapping from names to values and retrieve one value by key."]
+
+[[competencies]]
+id = "programming.program-decomposition"
+domain = "programming"
+label = "Decompose a program"
+description = "Split a small problem into helper functions, procedures, modules, or files with distinct responsibilities."
+assessment_examples = ["Split a small program into a few helper functions or files."]
+
+[[competencies]]
+id = "programming.read-and-trace-code"
+domain = "programming"
+label = "Read and trace code"
+description = "Read a short program and explain its control flow, data flow, and result."
+assessment_examples = ["Explain what a short program does without executing it line by line."]
+
+[[competencies]]
+id = "programming.text-file-io"
+domain = "programming"
+label = "Read and write text files"
+description = "Read structured or unstructured text input and write or print a derived result."
+assessment_examples = ["Read values from a text file and print a small summary."]
+
+[[competencies]]
+id = "programming.handle-invalid-input"
+domain = "programming"
+label = "Handle invalid input"
+description = "Detect a missing or invalid input and respond without an uncontrolled program failure."
+assessment_examples = ["Handle a missing value or invalid record and report the problem."]
+
+[[competencies]]
+id = "programming.modify-and-rerun"
+domain = "programming"
+label = "Modify and rerun a program"
+description = "Make a small, deliberate change to existing code and execute or rebuild it to inspect the effect."
+assessment_examples = ["Change one expression in an existing program and run it again."]
+
+[[competencies]]
+id = "command-line.navigate-filesystem"
+domain = "command-line"
+label = "Navigate a filesystem from a terminal"
+description = "Locate and move between project directories using a shell or command prompt."
+assessment_examples = ["Open a terminal and move to the directory containing a project's files."]
+
+[[competencies]]
+id = "command-line.manage-files"
+domain = "command-line"
+label = "Manage files from a terminal"
+description = "Create, organize, edit, and inspect ordinary files from a command-line environment."
+assessment_examples = ["Create a directory, edit a text file in it, and inspect the saved file."]
+
+[[competencies]]
+id = "command-line.run-or-compile-programs"
+domain = "command-line"
+label = "Run or compile programs from a terminal"
+description = "Invoke an interpreter, executable, compiler, or build command and inspect its output."
+assessment_examples = ["Compile or run a small program from its project directory."]
+
+[[competencies]]
+id = "shell.edit-run-inspect"
+domain = "shell"
+label = "Edit, run, and inspect in a shell"
+description = "Use the shell workflow of editing a file, running a command, and inspecting its output."
+assessment_examples = ["Make a small change to a script or command, rerun it, and inspect the result."]
+
+[[competencies]]
+id = "shell.read-and-adapt-scripts"
+domain = "shell"
+label = "Read and adapt shell scripts"
+description = "Identify the inputs, outputs, and main commands in a short shell script and make a small change."
+assessment_examples = ["Change an input path or command option in a short Bash script."]
+
+[[competencies]]
+id = "diagnostics.locate-problem"
+domain = "diagnostics"
+label = "Locate a problem from diagnostics"
+description = "Use a compiler message, traceback, runtime error, or test failure to identify where a problem probably occurred."
+assessment_examples = ["Read a short diagnostic and identify the source location needing attention."]
+
+[[competencies]]
+id = "python.run-code"
+domain = "python"
+label = "Run Python code"
+description = "Execute Python in a script, notebook, or command-line environment and inspect the result."
+assessment_examples = ["Run a Python script or notebook cell and inspect its output."]
+
+[[competencies]]
+id = "python.values-and-containers"
+domain = "python"
+label = "Use Python values and containers"
+description = "Create and use Python numbers, strings, booleans, lists, tuples, sets, and dictionaries as appropriate."
+assessment_examples = ["Build a dictionary and retrieve a stored value by key."]
+
+[[competencies]]
+id = "python.control-flow-and-comprehensions"
+domain = "python"
+label = "Use Python control flow and comprehensions"
+description = "Use Python conditionals, loops, and simple comprehensions to transform or filter data."
+assessment_examples = ["Filter a sequence with a loop or comprehension and a conditional."]
+
+[[competencies]]
+id = "python.functions"
+domain = "python"
+label = "Write and call Python functions"
+description = "Define and call Python functions with arguments and return values."
+assessment_examples = ["Write a function that transforms an input value and returns the result."]
+
+[[competencies]]
+id = "python.import-modules"
+domain = "python"
+label = "Import and use Python modules"
+description = "Import a module and use functions, classes, or constants from it."
+assessment_examples = ["Import a standard-library module and call one of its functions."]
+
+[[competencies]]
+id = "python.index-and-slice-sequences"
+domain = "python"
+label = "Index and slice Python sequences"
+description = "Select individual values or subsequences using Python indexing and slicing syntax."
+assessment_examples = ["Extract every second element from a sequence."]
+
+[[competencies]]
+id = "python.file-io"
+domain = "python"
+label = "Read and write files with Python"
+description = "Open a small text file in Python, process its contents, and optionally write a result."
+assessment_examples = ["Write a function that reads a text file and counts its lines."]
+
+[[competencies]]
+id = "python.exceptions"
+domain = "python"
+label = "Handle Python exceptions"
+description = "Use try/except to handle an expected error such as a missing file or invalid value."
+assessment_examples = ["Catch and handle a missing input file."]
+
+[[competencies]]
+id = "python.paths-and-file-names"
+domain = "python"
+label = "Work with paths and file names in Python"
+description = "Construct, inspect, and transform basic filesystem paths and file names in Python."
+assessment_examples = ["Build an output path from a directory, stem, and file extension."]
+
+[[competencies]]
+id = "python.activate-software-environment"
+domain = "python"
+label = "Activate a Python software environment"
+description = "Activate a prepared Python environment and verify that an installed package can be imported."
+assessment_examples = ["Activate an environment and import one of its installed packages."]
+
+[[competencies]]
+id = "python.simple-classes"
+domain = "python"
+label = "Define and use simple Python classes"
+description = "Define a class with initialization, instance attributes, and methods, and create an instance."
+assessment_examples = ["Define a small class with an initializer and one additional method."]
+
+[[competencies]]
+id = "numpy.create-slice-and-reshape-arrays"
+domain = "numpy"
+label = "Create, slice, and reshape NumPy arrays"
+description = "Create a NumPy array and select or reshape its data while reasoning about the resulting shape."
+assessment_examples = ["Create an array, take a slice, reshape it, and state the resulting shape."]
+
+[[competencies]]
+id = "numpy.vectorized-computations"
+domain = "numpy"
+label = "Apply vectorized NumPy computations"
+description = "Apply element-wise numerical operations to arrays without an explicit Python loop."
+assessment_examples = ["Apply a mathematical formula to every element of an array."]
+
+[[competencies]]
+id = "numpy.broadcasting"
+domain = "numpy"
+label = "Use NumPy broadcasting"
+description = "Predict and use compatible array shapes in a broadcasted NumPy operation."
+assessment_examples = ["Add a one-dimensional array to compatible rows or columns of a two-dimensional array."]
+
+[[competencies]]
+id = "numpy.reductions"
+domain = "numpy"
+label = "Compute NumPy reductions"
+description = "Compute and interpret aggregate values such as sums, means, minima, or maxima over an array or axis."
+assessment_examples = ["Compute a mean over a selected axis and state the result's shape."]
+
+[[competencies]]
+id = "numpy.basic-linear-algebra"
+domain = "numpy"
+label = "Perform basic linear algebra with NumPy"
+description = "Perform a basic matrix or vector operation and interpret compatible dimensions and the result."
+assessment_examples = ["Multiply two compatible matrices and explain the result's shape."]
+
+[[competencies]]
+id = "pandas.read-tabular-data"
+domain = "pandas"
+label = "Read tabular data with pandas"
+description = "Load a small tabular data file into a pandas DataFrame and inspect its structure."
+assessment_examples = ["Load a CSV file and inspect its columns and first rows."]
+
+[[competencies]]
+id = "pandas.select-rows-and-columns"
+domain = "pandas"
+label = "Select pandas rows and columns"
+description = "Select specified rows or columns from a pandas DataFrame and inspect the result."
+assessment_examples = ["Select two named columns and rows satisfying a simple condition."]
+
+[[competencies]]
+id = "matplotlib.create-basic-plots"
+domain = "matplotlib"
+label = "Create basic Matplotlib plots"
+description = "Create a line or scatter plot with meaningful axis labels."
+assessment_examples = ["Plot a curve and label both axes."]
+
+[[competencies]]
+id = "matplotlib.interpret-basic-plots"
+domain = "matplotlib"
+label = "Interpret basic plots"
+description = "Explain what the axes, marks, and values in a basic scientific plot represent."
+assessment_examples = ["Describe the variables and trend shown by a line or scatter plot."]
+
+[[competencies]]
+id = "cpp.separate-compilation"
+domain = "cpp"
+label = "Use separate compilation in C++"
+description = "Split declarations and definitions across translation units and build the resulting program."
+assessment_examples = ["Split a small C++ program into a header and source file and rebuild it."]
+
+[[competencies]]
+id = "cpp.references-and-const"
+domain = "cpp"
+label = "Use C++ references and const"
+description = "Read and write function interfaces using references and const qualification appropriately."
+assessment_examples = ["Explain whether a const reference parameter can modify its argument."]
+
+[[competencies]]
+id = "cpp.basic-value-semantics"
+domain = "cpp"
+label = "Reason about basic C++ value semantics"
+description = "Distinguish copying an object from referring to an existing object in basic C++ code."
+assessment_examples = ["Explain whether a function parameter is copied or refers to the caller's object."]
+
+[[competencies]]
+id = "cpp.basic-classes"
+domain = "cpp"
+label = "Define and use C++ classes"
+description = "Define a C++ class with a constructor, data members, and member functions, and create an object."
+assessment_examples = ["Define a small class with a constructor and one member function."]
+
+[[competencies]]
+id = "cpp.inheritance-and-virtual-functions"
+domain = "cpp"
+label = "Use C++ inheritance and virtual functions"
+description = "Read or write a basic class hierarchy and explain which virtual function implementation is called."
+assessment_examples = ["Identify the implementation selected by a virtual call through a base reference."]
+
+[[competencies]]
+id = "cpp.exceptions"
+domain = "cpp"
+label = "Throw and catch C++ exceptions"
+description = "Use a standard exception to report an error and catch it at an appropriate boundary."
+assessment_examples = ["Throw and catch std::invalid_argument for an invalid input."]
+
+[[competencies]]
+id = "cpp.standard-library-containers-and-algorithms"
+domain = "cpp"
+label = "Use C++ standard-library containers and algorithms"
+description = "Store and process values with common C++ standard-library types such as strings, vectors, containers, and algorithms."
+assessment_examples = ["Store values in a std::vector and process them with a loop or algorithm."]
+
+[[competencies]]
+id = "cpp.standard-io-streams"
+domain = "cpp"
+label = "Use C++ standard I/O streams"
+description = "Read or write simple values using standard C++ input and output streams."
+assessment_examples = ["Read a value from an input stream and write a derived value to an output stream."]
+
+[[competencies]]
+id = "cpp.read-lambda-expressions"
+domain = "cpp"
+label = "Read C++ lambda expressions"
+description = "Read a simple C++ lambda and identify its parameters, captured values, and result."
+assessment_examples = ["Explain which surrounding values a short lambda expression uses."]
+
+[[competencies]]
+id = "hpc.log-in-and-use-shell"
+domain = "hpc"
+label = "Log in to an HPC system and use its shell"
+description = "Connect to a remote HPC system and work in the intended filesystem location from its shell."
+assessment_examples = ["Log in to a cluster and navigate to the directory containing job files."]
+
+[[competencies]]
+id = "hpc.distinguish-login-and-compute-nodes"
+domain = "hpc"
+label = "Distinguish login and compute nodes"
+description = "Decide whether work belongs on a login node or should be submitted to a compute node."
+assessment_examples = ["Choose the appropriate execution location for an interactive file edit and a long computation."]
+
+[[competencies]]
+id = "hpc.use-software-environments"
+domain = "hpc"
+label = "Use software environments on HPC"
+description = "Load or activate a compiler, module, or language environment required by a job."
+assessment_examples = ["Load or activate the environment needed to run a script."]
+
+[[competencies]]
+id = "hpc.understand-batch-jobs"
+domain = "hpc"
+label = "Understand batch jobs"
+description = "Explain how a submitted batch job differs from an interactive command and where its output is written."
+assessment_examples = ["Identify a batch job's input, executable, and output file."]
+
+[[competencies]]
+id = "hpc.organize-job-inputs-and-outputs"
+domain = "hpc"
+label = "Organize HPC job inputs and outputs"
+description = "Transfer or organize the files a batch job consumes and produces."
+assessment_examples = ["Locate the input and output files for a completed job."]
+
+[[competencies]]
+id = "slurm.submit-batch-job"
+domain = "slurm"
+label = "Submit a Slurm batch job"
+description = "Submit a basic Slurm job with sbatch and retain the job identifier."
+assessment_examples = ["Submit a short job script with sbatch."]
+
+[[competencies]]
+id = "slurm.monitor-job"
+domain = "slurm"
+label = "Monitor a Slurm job"
+description = "Inspect a Slurm job and interpret whether it is queued, running, completed, or failed."
+assessment_examples = ["Check a submitted job's state and locate its output or error file."]
+
+[[competencies]]
+id = "slurm.interpret-resource-requests"
+domain = "slurm"
+label = "Interpret Slurm resource requests"
+description = "Identify requested wall time, CPUs, memory, partition, and account in a Slurm job specification."
+assessment_examples = ["Read a job script and state its time, CPU, and memory requests."]
+
+[[competencies]]
+id = "slurm.modify-and-resubmit-job"
+domain = "slurm"
+label = "Modify and resubmit a Slurm job"
+description = "Correct a simple job-script or input error and submit the job again."
+assessment_examples = ["Fix an incorrect input path in a job script and resubmit it."]
+
+[[competencies]]
+id = "parallel-programming.loops-and-reductions"
+domain = "parallel-programming"
+label = "Recognize parallel loops and reductions"
+description = "Explain at a high level how independent loop iterations and reductions can be executed in parallel."
+assessment_examples = ["Explain what a parallel sum over many elements does."]
+
+[[competencies]]
+id = "parallel-programming.race-conditions"
+domain = "parallel-programming"
+label = "Recognize race conditions"
+description = "Explain why unsynchronized updates to shared data can produce incorrect results."
+assessment_examples = ["Identify a shared accumulator that would be unsafe for concurrent updates."]
+
+[[competencies]]
+id = "parallel-programming.host-device-data-movement"
+domain = "parallel-programming"
+label = "Recognize host-device data movement"
+description = "Explain at a high level that accelerator computations may require data transfers between host and device memory."
+assessment_examples = ["Identify where input and result arrays must reside for a GPU operation."]
+
+[[competencies]]
+id = "openmp.parallel-loops-and-reductions"
+domain = "openmp"
+label = "Read OpenMP parallel loops and reductions"
+description = "Read a basic OpenMP parallel-loop or reduction construct and explain how iterations and results are shared."
+assessment_examples = ["Explain the effect of an OpenMP parallel-for reduction on a loop sum."]
+
+[[competencies]]
+id = "openmp.shared-data-and-races"
+domain = "openmp"
+label = "Reason about OpenMP shared data and races"
+description = "Identify shared data in basic OpenMP code and recognize an unsafe concurrent update."
+assessment_examples = ["Identify a variable in an OpenMP loop that would require a reduction or synchronization."]
+
+[[competencies]]
+id = "performance.measure-execution-time"
+domain = "performance"
+label = "Measure execution time"
+description = "Measure comparable execution times for a computation and distinguish the timed region from setup work."
+assessment_examples = ["Time two implementations of the same task under comparable conditions."]
+
+[[competencies]]
+id = "performance.identify-expensive-work"
+domain = "performance"
+label = "Identify likely expensive work"
+description = "Read a short computation and identify which operation or region is likely to dominate its runtime."
+assessment_examples = ["Point out the likely dominant loop or operation in a short program."]
+
+[[competencies]]
+id = "performance.memory-access-patterns"
+domain = "performance"
+label = "Reason about memory access patterns"
+description = "Explain at a high level why the order and locality of memory accesses can affect performance."
+assessment_examples = ["Compare two loop traversal orders for a multidimensional array."]
+
+[[competencies]]
+id = "performance.parallel-scaling"
+domain = "performance"
+label = "Reason about parallel scaling"
+description = "Explain why adding cores or processes does not necessarily produce proportional speedup."
+assessment_examples = ["Name a serial or communication cost that can limit speedup."]
+
+[[competencies]]
+id = "performance.recognize-resource-pressure"
+domain = "performance"
+label = "Recognize memory or storage pressure"
+description = "Estimate when data or intermediate results are large enough to put pressure on available memory or storage."
+assessment_examples = ["Compare an estimated dataset size with the available memory or storage."]
+
+[[competencies]]
+id = "performance.recognize-small-file-overhead"
+domain = "performance"
+label = "Recognize small-file overhead"
+description = "Explain at a high level why reading many small files can be less efficient than reading fewer larger files."
+assessment_examples = ["Identify metadata and open-close work as possible costs of a many-file workflow."]
+
+[[competencies]]
+id = "git.everyday-local-workflow"
+domain = "git"
+label = "Use an everyday local Git workflow"
+description = "Clone or initialize a repository, inspect changes, stage files, and create a small commit."
+assessment_examples = ["Clone or initialize a repository and commit one deliberate change."]
+
+[[competencies]]
+id = "git.inspect-history-and-revisions"
+domain = "git"
+label = "Inspect Git history and revisions"
+description = "Inspect repository history and check out or examine an earlier revision."
+assessment_examples = ["Use Git history to locate and inspect a previous revision."]
+
+[[competencies]]
+id = "research-workflows.distinguish-artifact-roles"
+domain = "research-workflows"
+label = "Distinguish computational artifact roles"
+description = "Distinguish source code, input data, parameters, metrics, plots, and generated results in an experiment."
+assessment_examples = ["Classify changed experiment files as code, data, configuration, or generated output."]
+
+[[competencies]]
+id = "research-workflows.change-parameter-and-compare"
+domain = "research-workflows"
+label = "Change a parameter and compare results"
+description = "Rerun a computation after changing one parameter and compare the resulting metrics or outputs."
+assessment_examples = ["Change one configuration value, rerun the experiment, and compare its result."]
+
+[[competencies]]
+id = "research-workflows.read-configuration"
+domain = "research-workflows"
+label = "Read a configuration file"
+description = "Read a short configuration file and identify named parameter values."
+assessment_examples = ["Locate selected parameter values in a small TOML, YAML, or JSON file."]
+
+[[competencies]]
+id = "machine-learning.inference-concept"
+domain = "machine-learning"
+label = "Explain machine-learning inference"
+description = "Explain at a high level how a trained model consumes input to produce a prediction or generated result."
+assessment_examples = ["Distinguish using a trained model for inference from training the model."]
+
+[[competencies]]
+id = "computational-documents.distinguish-code-text-output"
+domain = "computational-documents"
+label = "Distinguish code, narrative, and output"
+description = "Distinguish executable code, explanatory text, and generated output in a computational document."
+assessment_examples = ["Classify parts of a notebook-like document as code, narrative, or generated output."]
