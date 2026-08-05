@@ -38,15 +38,17 @@ the catalog needs stronger claims.
 
 ## Coverage of the learning-outcome pass
 
-The August 2026 pass inspected explicit learning outcomes in 26 catalog course
+The August 2026 pass inspected explicit learning outcomes in 30 WSL training
 repositories whose participant page is `docs/README.md`, plus
-`Best-practices-for-scientific-computing/docs/training_overview.md`.  Existing
-competencies were reused where possible; new entries represent transferable
-abilities rather than literal copies of course-specific wording.
+`Best-practices-for-scientific-computing/docs/training_overview.md`.  Those 31
+repositories now keep their prerequisite and learning-outcome mappings in a
+repository-local `training.toml`. Existing competencies were reused where
+possible; new entries represent transferable abilities rather than literal
+copies of course-specific wording.
 
 No outcomes were inferred for catalog entries that currently provide only a
 description or subject list, including the Linux and HPC introductions,
-parallel programming with MPI, OpenMP, or STL/TBB, generative AI, and ParaView.
+parallel programming with MPI, OpenMP, or STL/TBB, and ParaView.
 The defensive-programming repository was not available in the WSL catalog
 checkout.  Those trainings require explicit learning outcomes before their
 output coverage can be considered complete.
@@ -64,12 +66,10 @@ its identifiers are not stable yet.
 
 ## Intended next steps
 
-1. Map original prerequisite statements to these identifiers outside the
-   registry, preserving whether each statement is required, recommended,
-   conditional, or an alternative.
-2. Map each participant-facing learning outcome to one or more competencies in
-   its training repository; leave broad or non-observable outcomes unmapped.
-3. Add missing competencies only when a concrete statement cannot be mapped
+1. Review the initial repository-local prerequisite and learning-outcome
+   mappings, preserving whether each prerequisite statement is required,
+   recommended, conditional, or an alternative.
+2. Add missing competencies only when a concrete statement cannot be mapped
    without changing its meaning.
-4. Introduce relationships or proficiency levels only when a real selection
+3. Introduce relationships or proficiency levels only when a real selection
    use case requires them.

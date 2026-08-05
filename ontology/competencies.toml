@@ -180,6 +180,14 @@ label = "Scientific software practices"
 id = "version-control"
 label = "Version control"
 
+[[domains]]
+id = "r"
+label = "R"
+
+[[domains]]
+id = "generative-ai-tools"
+label = "Generative-AI development tools"
+
 [[competencies]]
 id = "programming.variables-and-expressions"
 domain = "programming"
@@ -1691,3 +1699,73 @@ domain = "scientific-software"
 label = "Relate deployment and CI to scientific reliability"
 description = "Explain and apply how repeatable deployment and continuous checks reduce scientific-software risk."
 assessment_examples = ["Design a CI and deployment check that protects a scientifically meaningful behavior."]
+
+[[competencies]]
+id = "r.manage-packages-on-hpc"
+domain = "r"
+label = "Manage R packages on HPC"
+description = "Install or activate R packages outside the system defaults and use them reproducibly in an HPC job."
+assessment_examples = ["Run an HPC job that loads a project-specific R package library and records its package versions."]
+
+[[competencies]]
+id = "generative-ai-tools.evaluate-capabilities-and-limitations"
+domain = "generative-ai-tools"
+label = "Evaluate generative-AI capabilities and limitations"
+description = "Judge when a generative-AI tool is useful, what domain knowledge is required, and which outputs need verification."
+assessment_examples = ["Review an AI-generated technical answer and identify unsupported or incorrect claims."]
+
+[[competencies]]
+id = "generative-ai-tools.generate-and-review-code"
+domain = "generative-ai-tools"
+label = "Generate and review code with AI tools"
+description = "Use a generative-AI assistant to draft routine code and verify its correctness, safety, and fit with the project."
+assessment_examples = ["Generate a small boilerplate component and correct it after tests and review."]
+
+[[competencies]]
+id = "generative-ai-tools.generate-and-review-tests"
+domain = "generative-ai-tools"
+label = "Generate and review tests with AI tools"
+description = "Use a generative-AI assistant to propose tests and critically improve their coverage and assertions."
+assessment_examples = ["Generate tests for a function, identify a missing boundary case, and add it."]
+
+[[competencies]]
+id = "generative-ai-tools.generate-and-review-documentation"
+domain = "generative-ai-tools"
+label = "Generate and review documentation with AI tools"
+description = "Use a generative-AI assistant to draft API documentation and verify it against the implementation."
+assessment_examples = ["Generate documentation for an interface and correct a discrepancy with its behavior."]
+
+[[competencies]]
+id = "generative-ai-tools.assist-debugging-and-refactoring"
+domain = "generative-ai-tools"
+label = "Use AI tools for debugging and refactoring"
+description = "Use a generative-AI assistant to form debugging hypotheses or refactoring proposals and validate them with evidence."
+assessment_examples = ["Evaluate an AI-proposed bug fix with a reproducer and regression test."]
+
+[[competencies]]
+id = "generative-ai-tools.explore-and-visualize-data"
+domain = "generative-ai-tools"
+label = "Explore and visualize data with AI tools"
+description = "Use an AI-assisted analysis environment to explore supplied data while checking calculations and visual encodings."
+assessment_examples = ["Produce an exploratory chart and independently verify its aggregation and labels."]
+
+[[competencies]]
+id = "generative-ai-tools.use-from-command-line"
+domain = "generative-ai-tools"
+label = "Use generative-AI tools from the command line"
+description = "Invoke a generative-AI assistant from a terminal and control the context and handling of its output."
+assessment_examples = ["Use a command-line AI tool for a bounded task without exposing unintended files or secrets."]
+
+[[competencies]]
+id = "generative-ai-tools.generate-infrastructure-as-code"
+domain = "generative-ai-tools"
+label = "Generate and review infrastructure as code with AI tools"
+description = "Use an AI assistant to draft infrastructure-as-code and validate its resources, security, and idempotence."
+assessment_examples = ["Generate a small Ansible task, review its effects, and test it in a safe environment."]
+
+[[competencies]]
+id = "hpc.reason-about-software-startup-overhead"
+domain = "hpc"
+label = "Reason about software startup overhead on HPC"
+description = "Explain how loading many modules, packages, or small files can affect startup and shared-filesystem performance."
+assessment_examples = ["Diagnose and reduce avoidable startup I/O in a package-heavy HPC application."]
