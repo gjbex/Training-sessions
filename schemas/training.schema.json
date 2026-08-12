@@ -1,0 +1,408 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "https://raw.githubusercontent.com/gjbex/Training-sessions/master/schemas/training.schema.json",
+  "title": "Training metadata",
+  "description": "Metadata for a training repository using training.toml schema version 2.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "summary",
+    "learning_outcomes",
+    "source",
+    "delivery",
+    "audience",
+    "prerequisites",
+    "materials",
+    "trainers"
+  ],
+  "properties": {
+    "schema_version": {
+      "description": "Version of the training metadata schema.",
+      "type": "integer",
+      "enum": [2]
+    },
+    "id": {
+      "description": "Stable, catalogue-wide identifier for the training.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "title": {
+      "description": "Participant-facing title of the training.",
+      "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+    },
+    "summary": {
+      "description": "Short participant-facing description of the training.",
+      "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+    },
+    "languages": {
+      "description": "Programming or command languages used in the training.",
+      "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+    },
+    "learning_outcomes": {
+      "description": "Observable outcomes addressed by the training.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/learningOutcome"
+      }
+    },
+    "source": {
+      "$ref": "#/definitions/source"
+    },
+    "delivery": {
+      "$ref": "#/definitions/delivery"
+    },
+    "audience": {
+      "$ref": "#/definitions/audience"
+    },
+    "prerequisites": {
+      "$ref": "#/definitions/prerequisites"
+    },
+    "self_assessment": {
+      "$ref": "#/definitions/selfAssessment"
+    },
+    "requirements": {
+      "$ref": "#/definitions/requirements"
+    },
+    "level": {
+      "$ref": "#/definitions/level"
+    },
+    "materials": {
+      "description": "Files and directories containing participant or trainer materials.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/material"
+      }
+    },
+    "trainers": {
+      "description": "People responsible for delivering or maintaining the training.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/trainer"
+      }
+    },
+    "sessions": {
+      "description": "Itemized delivery schedule. It may be omitted only when the schedule is incomplete.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/session"
+      }
+    },
+    "standards_discussed": {
+      "description": "Named standards explicitly discussed in the training.",
+      "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+    },
+    "topics": {
+      "description": "Broad subject labels used to describe the training.",
+      "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+    }
+  },
+  "oneOf": [
+    {
+      "description": "A complete schedule must provide at least one session.",
+      "required": ["sessions"],
+      "properties": {
+        "delivery": {
+          "type": "object",
+          "required": ["schedule_complete"],
+          "properties": {
+            "schedule_complete": {
+              "enum": [true]
+            }
+          }
+        }
+      }
+    },
+    {
+      "description": "An incomplete schedule may omit sessions or provide only the known sessions.",
+      "properties": {
+        "delivery": {
+          "type": "object",
+          "required": ["schedule_complete"],
+          "properties": {
+            "schedule_complete": {
+              "enum": [false]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nonEmptyUniqueStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/definitions/nonEmptyString"
+      }
+    },
+    "competencyArray": {
+      "description": "Catalogue competency identifiers. An empty array is permitted when no competency is required or an outcome is deliberately left unmapped.",
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*(?:\\.[a-z0-9]+(?:-[a-z0-9]+)*)+$"
+      }
+    },
+    "learningOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["statement"],
+      "properties": {
+        "statement": {
+          "description": "Participant-facing statement of an observable outcome.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        },
+        "competencies": {
+          "description": "Registry competencies provided by this outcome.",
+          "allOf": [{"$ref": "#/definitions/competencyArray"}]
+        }
+      }
+    },
+    "source": {
+      "description": "Canonical source and publication locations for the training.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository_url", "website_url", "license"],
+      "properties": {
+        "metadata_document": {
+          "description": "Repository-relative document from which the metadata was derived.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        },
+        "repository_url": {
+          "description": "Canonical source repository URL.",
+          "type": "string",
+          "format": "uri"
+        },
+        "website_url": {
+          "description": "Published participant-facing website URL.",
+          "type": "string",
+          "format": "uri"
+        },
+        "license": {
+          "description": "SPDX identifier for the training-material license.",
+          "type": "string",
+          "enum": ["CC-BY-4.0"]
+        }
+      }
+    },
+    "delivery": {
+      "description": "Overall duration and schedule status.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "duration_minutes",
+        "duration_kind",
+        "session_count",
+        "schedule_complete"
+      ],
+      "properties": {
+        "duration_minutes": {
+          "description": "Total fixed duration or minimum duration in minutes.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "duration_kind": {
+          "description": "Whether duration_minutes is an exact duration or a lower bound.",
+          "type": "string",
+          "enum": ["fixed", "minimum"]
+        },
+        "session_count": {
+          "description": "Number of sessions in the intended delivery.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "target_session_duration_minutes": {
+          "description": "Expected duration of every session when sessions have a common target duration.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "schedule_complete": {
+          "description": "Whether sessions contains the complete itemized schedule.",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Participant-facing explanation of the delivery format.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        }
+      }
+    },
+    "audience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description"],
+      "properties": {
+        "description": {
+          "description": "Participant-facing description of the intended audience.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        }
+      }
+    },
+    "prerequisites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["summary", "competencies"],
+      "properties": {
+        "summary": {
+          "description": "Participant-facing prerequisite description.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        },
+        "competencies": {
+          "description": "Registry competencies participants are expected to have before the training.",
+          "allOf": [{"$ref": "#/definitions/competencyArray"}]
+        },
+        "not_required": {
+          "description": "Knowledge or experience that participants might assume is required but is not.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+        }
+      }
+    },
+    "selfAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["introduction", "tasks"],
+      "properties": {
+        "introduction": {
+          "description": "Text introducing the prerequisite self-assessment.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        },
+        "tasks": {
+          "description": "Concrete tasks participants can use to assess their readiness.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+        },
+        "recommendation_if_not_ready": {
+          "description": "Suggested next step when a participant is not yet ready.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        }
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["software"],
+      "properties": {
+        "software": {
+          "description": "Required software, hardware, accounts, or access.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+        },
+        "optional": {
+          "description": "Optional software, hardware, accounts, or access.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyUniqueStringArray"}]
+        }
+      }
+    },
+    "level": {
+      "description": "Approximate distribution of material by difficulty. The three percentages must total 100.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "introductory_percent",
+        "intermediate_percent",
+        "advanced_percent"
+      ],
+      "properties": {
+        "introductory_percent": {
+          "$ref": "#/definitions/percentage"
+        },
+        "intermediate_percent": {
+          "$ref": "#/definitions/percentage"
+        },
+        "advanced_percent": {
+          "$ref": "#/definitions/percentage"
+        },
+        "description": {
+          "description": "Participant-facing explanation of how the percentages should be interpreted.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        }
+      }
+    },
+    "percentage": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "material": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path"],
+      "properties": {
+        "kind": {
+          "description": "Short label describing the material category.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        },
+        "path": {
+          "description": "Repository-relative path to the material.",
+          "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+        }
+      }
+    },
+    "trainer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "title", "duration_minutes", "items"],
+      "properties": {
+        "id": {
+          "description": "Stable identifier for the session within this training.",
+          "type": "string",
+          "pattern": "^session-[1-9][0-9]*$"
+        },
+        "title": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/sessionItem"
+          }
+        }
+      }
+    },
+    "sessionItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject", "duration_minutes"],
+      "properties": {
+        "subject": {
+          "$ref": "#/definitions/nonEmptyString"
+        },
+        "duration_minutes": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}
