@@ -1127,6 +1127,13 @@ description = "Recognize and avoid common problems involving leakage, evaluation
 assessment_examples = ["Review an ML experiment and identify a concrete validity or evaluation flaw."]
 
 [[competencies]]
+id = "machine-learning.hyperparameter-optimization-concepts"
+domain = "machine-learning"
+label = "Explain hyperparameter-optimization concepts"
+description = "Explain how a search space, objective, validation strategy, and computational budget shape hyperparameter optimization and its risk of overfitting."
+assessment_examples = ["Design or critique a hyperparameter-optimization plan that avoids leakage and uses a suitable validation strategy."]
+
+[[competencies]]
 id = "deep-learning.neural-network-concepts"
 domain = "deep-learning"
 label = "Explain core neural-network concepts"
@@ -1139,6 +1146,13 @@ domain = "deep-learning"
 label = "Apply a CNN to image classification"
 description = "Prepare image data and train or apply a convolutional neural network for a classification task."
 assessment_examples = ["Train or fine-tune a small CNN and evaluate it on held-out images."]
+
+[[competencies]]
+id = "deep-learning.physics-informed-neural-network-concepts"
+domain = "deep-learning"
+label = "Explain physics-informed neural-network concepts"
+description = "Explain how governing equations and initial or boundary conditions can be incorporated into a neural network's loss, including the approach's main assumptions and limitations."
+assessment_examples = ["For a simple differential equation, identify the data, residual, and condition terms in a PINN loss and explain their roles."]
 
 [[competencies]]
 id = "deep-learning.recurrent-models-for-sequences"
