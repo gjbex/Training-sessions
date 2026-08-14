@@ -9,6 +9,7 @@
     "schema_version",
     "id",
     "title",
+    "content_language",
     "summary",
     "learning_outcomes",
     "source",
@@ -33,6 +34,12 @@
     "title": {
       "description": "Participant-facing title of the training.",
       "allOf": [{"$ref": "#/definitions/nonEmptyString"}]
+    },
+    "content_language": {
+      "description": "BCP 47 language tag for the human language in which the participant-facing training material is written, for example en or nl-BE. This is distinct from programming or command languages.",
+      "type": "string",
+      "minLength": 2,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
     },
     "summary": {
       "description": "Short participant-facing description of the training.",
