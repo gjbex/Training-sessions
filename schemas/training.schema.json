@@ -17,7 +17,8 @@
     "audience",
     "prerequisites",
     "materials",
-    "trainers"
+    "trainers",
+    "maintainers"
   ],
   "properties": {
     "schema_version": {
@@ -87,11 +88,19 @@
       }
     },
     "trainers": {
-      "description": "People responsible for delivering or maintaining the training.",
+      "description": "People who typically deliver the training.",
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "#/definitions/trainer"
+        "$ref": "#/definitions/person"
+      }
+    },
+    "maintainers": {
+      "description": "People currently responsible for maintaining the training material.",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/definitions/person"
       }
     },
     "sessions": {
@@ -357,7 +366,7 @@
         }
       }
     },
-    "trainer": {
+    "person": {
       "type": "object",
       "additionalProperties": false,
       "required": ["name"],
