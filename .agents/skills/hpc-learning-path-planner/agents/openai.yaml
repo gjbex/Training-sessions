@@ -1,0 +1,4 @@
+interface:
+  display_name: "HPC Learning Path Planner"
+  short_description: "Plan goal-driven HPC training paths"
+  default_prompt: "Use $hpc-learning-path-planner to create a training path for my HPC goal."
