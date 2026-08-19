@@ -47,30 +47,40 @@ ontology membership, duration arithmetic, unique identifiers across
 repositories, or the semantic adequacy of a proposed learning path.
 
 
-## Create a custom HPC learning path with Codex
+## Create a custom HPC learning path with an AI coding agent
 
-This repository includes a Codex skill that turns a concrete HPC goal into an
-evidence-backed, prerequisite-aware training path.  It asks a few adaptive
-questions about the intended work, current abilities and practical constraints,
-then proposes a minimal core path with optional branches, readiness checks and
-explicit gaps or uncertainty.
+This repository includes an
+[Agent Skill](https://agentskills.io/specification) that turns a concrete HPC
+goal into an evidence-backed, prerequisite-aware training path.  It asks a few
+adaptive questions about the intended work, current abilities and practical
+constraints, then proposes a minimal core path with optional branches, readiness
+checks and explicit gaps or uncertainty.
 
-With Codex cloud, you do not need to clone the repository yourself: select this
-GitHub repository as the task environment and use a prompt such as:
+Point an AI coding agent at this repository and use this portable prompt:
 
-> Use `$hpc-learning-path-planner` from this repository to help me create a
+> Read and follow
+> `.agents/skills/hpc-learning-path-planner/SKILL.md` to help me create a
 > training path for my HPC goal. Start by asking up to three questions about
 > what I want to do, my current experience and my constraints.
 
-Codex checks out the selected repository and discovers the skill under
-`.agents/skills`.  For detailed course evidence, it may also need internet or
-GitHub access to read the training repositories linked from this catalogue.  If
-that access is unavailable, the result should be treated as provisional because
-some course details cannot be verified.
+The agent must be able to read this repository.  It may also need internet or
+GitHub access to inspect detailed course evidence in the training repositories
+linked from this catalogue.  If remote access is unavailable, treat the result
+as provisional because some course details cannot be verified.
 
-Using a local Codex environment remains supported: clone or open this repository
-locally and start Codex anywhere inside it.  The root `AGENTS.md` and the
-repository-local skill then provide the same project-specific guidance.
+The setup depends on the agent environment:
+
+- **Codex:** select this GitHub repository for a cloud task, or open a local
+  checkout.  Codex automatically discovers the skill under `.agents/skills` and
+  it can also be invoked as `$hpc-learning-path-planner`.
+- **GitHub Copilot:** supported Copilot agents also discover project skills under
+  `.agents/skills`.
+- **Claude Code:** open a local checkout and use the portable prompt above.
+  Claude Code uses `.claude/skills` for automatic project-skill discovery, so
+  the current location is not discovered automatically.
+- **Other agents:** if the environment supports repository access but does not
+  discover Agent Skills or `AGENTS.md`, explicitly direct it to the `SKILL.md`
+  file as shown above.
 
 
 ## New training repositories
