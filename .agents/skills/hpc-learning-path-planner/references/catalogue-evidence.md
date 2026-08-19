@@ -9,11 +9,11 @@ Treat the nearest repository root containing `ontology/competencies.toml` and `s
 Inspect at least:
 
 1. `README.md`, `mkdocs.yml`, `docs/index.md`, and relevant `docs/learning_path_*.md` and subject pages for broad discovery;
-2. every available sibling `training.toml`, not merely files whose directory names contain `HPC`;
+2. course `training.toml` documents reachable through local sibling checkouts or declared repository links, not merely repositories whose names contain `HPC`;
 3. `ontology/competencies.toml` for the meaning and assessment examples of referenced competency IDs;
 4. relevant course repositories' participant documentation and materials when structured metadata cannot settle a close match, depth claim, or apparent conflict.
 
-Use fast repository search to enumerate files. Do not assume every catalogue entry has a local checkout or a `training.toml`; the catalogue explicitly contains some legacy entries without structured outcomes. Report reduced confidence for those entries rather than silently excluding them.
+Use fast repository search to enumerate files. Do not require a manual clone and do not assume every catalogue entry has a local checkout or a `training.toml`; the catalogue explicitly contains some legacy entries without structured outcomes. A Codex-managed checkout of `Training-sessions` is sufficient to start. Use an existing sibling checkout when available and retrieve relevant remote evidence from declared repository links when it is not. Do not clone additional repositories merely for inspection when read-only GitHub or web access is sufficient. If remote access is unavailable, report which candidates or facts could not be checked and lower confidence rather than silently excluding them.
 
 ## Interpret structured metadata
 
@@ -60,7 +60,7 @@ Do not silently upgrade one level to another. Record uncertainty when instructor
 
 ## Use GitHub safely and precisely
 
-Prefer local material for efficient inspection, but check GitHub through an available GitHub connector or web access when remote evidence is required. Start from the repository URL declared in `training.toml` or linked by this catalogue; do not guess repository names or URLs.
+Prefer already available local material for efficient inspection, but check GitHub through an available GitHub connector or web access when remote evidence is required. Start from the repository URL declared in `training.toml` or linked by this catalogue; do not guess repository names or URLs. Absence of remote access is a limitation to disclose, not a reason to fabricate detail or require the user to reorganize their workspace.
 
 When remote and local evidence differ, report the relevant branch or revision and explain which version the recommendation uses. Use the published website for participant-facing descriptions and the repository for source-level evidence. Verify time-sensitive claims such as current availability, archived status, or changed prerequisites at the point of use.
 

@@ -36,7 +36,7 @@ Keep these evidence roles distinct:
 - actual slides, notes, exercises, solutions, and participant documentation support finer-grained claims about depth and fit;
 - GitHub is a source for missing or fresher detail, not permission to modify, enrol, publish, or contact anyone.
 
-Prefer a local sibling checkout when it exists. Use the declared `source.repository_url` to inspect GitHub when the repository is absent locally, freshness matters, or the local material lacks the necessary detail. Distinguish local and remote evidence and record revisions when they materially affect the conclusion.
+Do not require the user to clone this repository or sibling course repositories manually. Work in the checkout supplied by the Codex host and assume that only `Training-sessions` may be available locally. Prefer an existing local sibling checkout when present; otherwise use the declared `source.repository_url` to inspect GitHub when detail is required. Distinguish local and remote evidence and record revisions when they materially affect the conclusion. If remote access is unavailable, continue only as far as the local evidence supports, mark the path provisional, and identify the facts that remain unverified.
 
 ## Derive and sequence the path
 
