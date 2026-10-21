@@ -1,0 +1,17 @@
+[workspace]
+name = "training-notebook-classifier"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.14.*"
+
+[pypi-dependencies]
+training-notebook-classifier = { path = ".", editable = true, extras = ["dev"] }
+
+[tasks]
+test = "pytest"
+lint = "ruff check ."
+format-check = "ruff format --check ."
+check = { depends-on = ["lint", "format-check", "test"] }
+

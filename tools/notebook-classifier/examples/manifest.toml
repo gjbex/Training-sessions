@@ -1,0 +1,30 @@
+schema_version = 1
+repository_id = "example-training"
+
+[defaults]
+lifecycle = "active"
+runtime = "unknown"
+
+[[rules]]
+id = "numpy-tutorials"
+include = ["source-code/numpy/*.ipynb"]
+
+[rules.properties]
+role = "tutorial"
+environment = "default"
+delivery_scope = "core"
+
+[[notebooks]]
+id = "numpy-axes"
+path = "source-code/numpy/axes.ipynb"
+reviewed_by = "maintainer"
+reviewed_on = "2026-10-21"
+reviewed_commit = "0123456789abcdef0123456789abcdef01234567"
+reviewed_blob = "89abcdef0123456789abcdef0123456789abcdef"
+
+[notebooks.properties]
+output_policy = "preserve_source"
+validation_tier = "required"
+runtime = "short"
+rationale = "Small core tutorial used as a locked-environment smoke check."
+

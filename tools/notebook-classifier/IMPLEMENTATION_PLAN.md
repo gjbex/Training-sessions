@@ -397,7 +397,7 @@ without explicit invocation and a clear data-disclosure warning.
 
 ### Technology choices
 
-- Python 3.11 or newer.
+- Python 3.14, locked for Linux (`linux-64`); WSL uses the Linux environment.
 - A tool-local PEP 621 `pyproject.toml`; do not add application dependencies to
   the repository's documentation `requirements.txt`.
 - A tool-local Pixi environment and Linux lockfile for development and launch.
@@ -440,10 +440,10 @@ tools/notebook-classifier/
 |   |-- manifest.py
 |   |-- drafts.py
 |   |-- reporting.py
+|   |-- schemas/
+|   |   `-- notebook-validation.schema.json
 |   |-- templates/
 |   `-- static/
-|-- schemas/
-|   `-- notebook-validation.schema.json
 |-- tests/
 |   |-- fixtures/
 |   |-- test_scanner.py

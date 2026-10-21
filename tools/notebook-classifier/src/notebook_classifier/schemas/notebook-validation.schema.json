@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gjbex/Training-sessions/tools/notebook-classifier/notebook-validation.schema.json",
+  "title": "Training notebook classification manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "repository_id"],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "repository_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "defaults": {
+      "$ref": "#/$defs/classificationProperties"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    },
+    "notebooks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/notebook"
+      }
+    }
+  },
+  "$defs": {
+    "classificationProperties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "tutorial",
+            "exercise",
+            "demonstration",
+            "analysis",
+            "report",
+            "exploration",
+            "unknown"
+          ]
+        },
+        "delivery_scope": {
+          "enum": [
+            "core",
+            "optional",
+            "extended",
+            "historical",
+            "not_delivered",
+            "unknown"
+          ]
+        },
+        "output_policy": {
+          "enum": [
+            "preserve_source",
+            "strip",
+            "empty_expected",
+            "declared_errors",
+            "unknown"
+          ]
+        },
+        "validation_tier": {
+          "enum": ["required", "extended", "manual", "excluded", "unknown"]
+        },
+        "environment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lifecycle": {
+          "enum": ["active", "replaced", "retired", "suspended"]
+        },
+        "constraints": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "gui",
+              "network",
+              "gpu",
+              "hpc",
+              "large_data",
+              "manual_interaction"
+            ]
+          }
+        },
+        "runtime": {
+          "enum": ["short", "medium", "long", "unknown"]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "include", "properties"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "include": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "properties": {
+          "$ref": "#/$defs/classificationProperties"
+        }
+      }
+    },
+    "notebook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "path", "properties"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "properties": {
+          "$ref": "#/$defs/classificationProperties"
+        },
+        "replacement_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "reviewed_by": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "reviewed_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,64}$"
+        },
+        "reviewed_blob": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40,64}$"
+        }
+      }
+    }
+  }
+}
+

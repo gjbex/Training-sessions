@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "training-notebook-classifier"
+version = "0.1.0"
+description = "Classify training notebooks from static repository evidence."
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+license = "CC-BY-4.0"
+authors = [{ name = "Geert Jan Bex" }]
+dependencies = [
+  "jsonschema>=4.25,<5",
+  "nbformat>=5.10,<6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.4,<10",
+  "ruff>=0.14,<0.16",
+]
+
+[project.scripts]
+notebook-classifier = "notebook_classifier.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/notebook_classifier"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+extend-exclude = ["tests/fixtures/*.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
