@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gjbex/Training-sessions/tools/notebook-classifier/notebook-validation-result.schema.json",
+  "title": "Training notebook validation result interchange",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "runner",
+    "plan_digest",
+    "repository",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "runner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "plan_digest": { "$ref": "#/$defs/sha256" },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "commit", "platform"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "commit": { "$ref": "#/$defs/gitObject" },
+        "platform": { "const": "linux-64" }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/resultEntry" }
+    }
+  },
+  "$defs": {
+    "gitObject": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40,64}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "path", "digest"],
+      "properties": {
+        "kind": {
+          "enum": ["executed_notebook", "log", "generated_file", "assertion"]
+        },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "outcome", "message"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "outcome": { "enum": ["pass", "fail", "error", "not_run"] },
+        "message": { "type": "string" }
+      }
+    },
+    "resultEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "notebook_id",
+        "path",
+        "source_blob",
+        "environment",
+        "observed_environment",
+        "outcome",
+        "reason_code",
+        "started_at",
+        "duration_seconds",
+        "timeout_seconds",
+        "artifacts",
+        "checks",
+        "worktree_unchanged"
+      ],
+      "properties": {
+        "notebook_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "source_blob": {
+          "oneOf": [
+            { "$ref": "#/$defs/gitObject" },
+            { "type": "null" }
+          ]
+        },
+        "environment": { "type": "string", "minLength": 1 },
+        "observed_environment": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "python_version"],
+              "properties": {
+                "name": { "type": "string", "minLength": 1 },
+                "python_version": { "type": "string", "minLength": 1 }
+              }
+            },
+            { "type": "null" }
+          ]
+        },
+        "outcome": { "enum": ["pass", "fail", "error", "not_run"] },
+        "reason_code": { "type": "string", "minLength": 1 },
+        "started_at": {
+          "oneOf": [
+            { "type": "string", "format": "date-time" },
+            { "type": "null" }
+          ]
+        },
+        "duration_seconds": {
+          "oneOf": [
+            { "type": "number", "minimum": 0 },
+            { "type": "null" }
+          ]
+        },
+        "timeout_seconds": {
+          "oneOf": [
+            { "type": "integer", "minimum": 1 },
+            { "type": "null" }
+          ]
+        },
+        "artifacts": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/artifact" }
+        },
+        "checks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/check" }
+        },
+        "worktree_unchanged": { "type": "boolean" }
+      }
+    }
+  }
+}

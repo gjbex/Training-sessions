@@ -1,0 +1,372 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/gjbex/Training-sessions/tools/notebook-classifier/notebook-validation-plan.schema.json",
+  "title": "Training notebook validation plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generator",
+    "repository",
+    "source",
+    "selection",
+    "entries",
+    "environment_groups",
+    "untracked_notebooks",
+    "diagnostics",
+    "plan_digest"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version"],
+      "properties": {
+        "name": { "const": "training-notebook-classifier" },
+        "version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "commit", "dirty", "platform"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "commit": { "$ref": "#/$defs/gitObject" },
+        "dirty": { "type": "boolean" },
+        "platform": { "const": "linux-64" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_path",
+        "manifest_schema_version",
+        "manifest_source_digest",
+        "inventory_schema_version",
+        "inventory_digest"
+      ],
+      "properties": {
+        "manifest_path": { "$ref": "#/$defs/relativePath" },
+        "manifest_schema_version": { "type": "integer", "minimum": 1 },
+        "manifest_source_digest": { "$ref": "#/$defs/sha256" },
+        "inventory_schema_version": { "type": "integer", "minimum": 1 },
+        "inventory_digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "selection": { "$ref": "#/$defs/selection" },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    },
+    "environment_groups": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/environmentGroup" }
+    },
+    "untracked_notebooks": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/relativePath" }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/diagnostic" }
+    },
+    "plan_digest": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "gitObject": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40,64}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "nullableGitObject": {
+      "oneOf": [
+        { "$ref": "#/$defs/gitObject" },
+        { "type": "null" }
+      ]
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "include_tiers",
+        "include_scopes",
+        "include_lifecycles",
+        "review_policy",
+        "allowed_constraints",
+        "platform"
+      ],
+      "properties": {
+        "include_tiers": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["required", "extended", "manual", "excluded", "unknown"]
+          }
+        },
+        "include_scopes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "core",
+              "optional",
+              "extended",
+              "historical",
+              "not_delivered",
+              "unknown"
+            ]
+          }
+        },
+        "include_lifecycles": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["active", "replaced", "retired", "suspended"]
+          }
+        },
+        "review_policy": { "enum": ["warn", "require-current"] },
+        "allowed_constraints": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "gui",
+              "network",
+              "gpu",
+              "hpc",
+              "large_data",
+              "manual_interaction"
+            ]
+          }
+        },
+        "platform": { "const": "linux-64" }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "delivery_scope",
+        "output_policy",
+        "validation_tier",
+        "environment",
+        "lifecycle",
+        "constraints",
+        "runtime"
+      ],
+      "properties": {
+        "role": {
+          "enum": [
+            "tutorial",
+            "exercise",
+            "demonstration",
+            "analysis",
+            "report",
+            "exploration",
+            "unknown"
+          ]
+        },
+        "delivery_scope": {
+          "enum": [
+            "core",
+            "optional",
+            "extended",
+            "historical",
+            "not_delivered",
+            "unknown"
+          ]
+        },
+        "output_policy": {
+          "enum": [
+            "preserve_source",
+            "strip",
+            "empty_expected",
+            "declared_errors",
+            "unknown"
+          ]
+        },
+        "validation_tier": {
+          "enum": ["required", "extended", "manual", "excluded", "unknown"]
+        },
+        "environment": { "type": "string", "minLength": 1 },
+        "lifecycle": {
+          "enum": ["active", "replaced", "retired", "suspended"]
+        },
+        "constraints": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "gui",
+              "network",
+              "gpu",
+              "hpc",
+              "large_data",
+              "manual_interaction"
+            ]
+          }
+        },
+        "runtime": { "enum": ["short", "medium", "long", "unknown"] },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "notebook_id",
+        "path",
+        "tracked",
+        "current_blob",
+        "reviewed_blob",
+        "review_state",
+        "properties",
+        "provenance",
+        "matched_rules",
+        "replacement_id",
+        "action",
+        "reasons",
+        "unresolved_fields",
+        "required_target_inputs"
+      ],
+      "properties": {
+        "notebook_id": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            { "type": "null" }
+          ]
+        },
+        "path": { "$ref": "#/$defs/relativePath" },
+        "tracked": { "type": "boolean" },
+        "current_blob": { "$ref": "#/$defs/nullableGitObject" },
+        "reviewed_blob": { "$ref": "#/$defs/nullableGitObject" },
+        "review_state": {
+          "enum": ["unreviewed", "current", "stale", "missing"]
+        },
+        "properties": { "$ref": "#/$defs/classification" },
+        "provenance": {
+          "type": "object",
+          "additionalProperties": { "type": "string", "minLength": 1 }
+        },
+        "matched_rules": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "replacement_id": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            { "type": "null" }
+          ]
+        },
+        "action": {
+          "enum": ["candidate", "manual", "excluded", "blocked"]
+        },
+        "reasons": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "selected",
+              "validation_tier_manual",
+              "validation_tier_excluded",
+              "validation_tier_not_selected",
+              "delivery_scope_not_selected",
+              "lifecycle_not_selected",
+              "lifecycle_not_executable",
+              "notebook_not_tracked",
+              "notebook_id_missing",
+              "notebook_parse_error",
+              "classification_unknown",
+              "environment_missing",
+              "review_not_current",
+              "constraint_not_allowed"
+            ]
+          }
+        },
+        "unresolved_fields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_.-]*$"
+          }
+        },
+        "required_target_inputs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": ["execution_mode", "timeout_seconds", "manual_procedure"]
+          }
+        }
+      }
+    },
+    "environmentGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["environment", "notebook_ids"],
+      "properties": {
+        "environment": { "type": "string", "minLength": 1 },
+        "notebook_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "code", "message", "path", "notebook_id"],
+      "properties": {
+        "level": { "enum": ["warning", "error"] },
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*$"
+        },
+        "message": { "type": "string", "minLength": 1 },
+        "path": {
+          "oneOf": [
+            { "$ref": "#/$defs/relativePath" },
+            { "type": "null" }
+          ]
+        },
+        "notebook_id": {
+          "oneOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            },
+            { "type": "null" }
+          ]
+        }
+      }
+    }
+  }
+}

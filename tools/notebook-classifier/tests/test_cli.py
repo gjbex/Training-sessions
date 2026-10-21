@@ -130,6 +130,89 @@ def test_resolve_manifest_cli_distinguishes_validation_failure(
     assert "repository_id_mismatch" in captured.err
 
 
+def test_create_validation_plan_cli_is_deterministic(
+    course_repository: Path,
+    tmp_path: Path,
+) -> None:
+    manifest = course_repository / "validation" / "manifest.toml"
+    manifest.parent.mkdir()
+    manifest.write_text(
+        """
+schema_version = 1
+repository_id = "example-training"
+
+[[notebooks]]
+id = "tutorial"
+path = "notebooks/tutorial.ipynb"
+
+[notebooks.properties]
+role = "tutorial"
+delivery_scope = "core"
+output_policy = "preserve_source"
+validation_tier = "required"
+environment = "default"
+lifecycle = "active"
+constraints = []
+runtime = "short"
+""".lstrip(),
+        encoding="utf-8",
+    )
+    first = tmp_path / "first-plan.json"
+    second = tmp_path / "second-plan.json"
+
+    first_status = main(
+        [
+            "create-validation-plan",
+            "--repository",
+            str(course_repository),
+            "--output",
+            str(first),
+        ]
+    )
+    second_status = main(
+        [
+            "create-validation-plan",
+            "--repository",
+            str(course_repository),
+            "--output",
+            str(second),
+        ]
+    )
+
+    assert first_status == second_status == 0
+    assert first.read_bytes() == second.read_bytes()
+    payload = json.loads(first.read_text(encoding="utf-8"))
+    assert payload["entries"][0]["action"] == "candidate"
+    assert payload["repository"]["platform"] == "linux-64"
+
+
+def test_create_validation_plan_cli_writes_blocked_plan_with_status_one(
+    course_repository: Path,
+    tmp_path: Path,
+) -> None:
+    manifest = course_repository / "validation" / "manifest.toml"
+    manifest.parent.mkdir()
+    manifest.write_text(
+        'schema_version = 1\nrepository_id = "example-training"\n',
+        encoding="utf-8",
+    )
+    output = tmp_path / "blocked-plan.json"
+
+    status = main(
+        [
+            "create-validation-plan",
+            "--repository",
+            str(course_repository),
+            "--output",
+            str(output),
+        ]
+    )
+
+    assert status == 1
+    payload = json.loads(output.read_text(encoding="utf-8"))
+    assert payload["entries"][0]["action"] == "blocked"
+
+
 def test_non_repository_is_an_actionable_error(tmp_path: Path, capsys) -> None:
     status = main(["scan", "--repository", str(tmp_path)])
 

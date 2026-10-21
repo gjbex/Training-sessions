@@ -1,0 +1,31 @@
+"""Contract tests for the generated starter, not scientific validation."""
+
+from __future__ import annotations
+
+import tomllib
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _configuration() -> dict:
+    return tomllib.loads((ROOT / "execution.toml").read_text(encoding="utf-8"))
+
+
+def test_scaffold_provenance_matches_reviewed_generation() -> None:
+    scaffold = _configuration()["scaffold"]
+
+    assert scaffold["template_version"] == {{ template_version }}
+    assert scaffold["plan_digest"] == "{{ plan_digest }}"
+    assert scaffold["repository_id"] == "{{ repository_id }}"
+
+
+def test_generated_execution_is_disabled_until_maintainer_review() -> None:
+    configuration = _configuration()
+
+    assert configuration["runner"]["enabled"] is False
+    assert all(
+        notebook["mode"] == "not_run"
+        for notebook in configuration.get("notebooks", [])
+    )

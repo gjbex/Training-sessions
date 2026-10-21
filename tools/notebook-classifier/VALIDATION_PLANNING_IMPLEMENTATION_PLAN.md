@@ -1,6 +1,6 @@
 # Validation planning and scaffolding implementation plan
 
-Status: proposed follow-on to the completed Scientific Python classifier pilot
+Status: Stages V0–V3 implemented; Stages V4 and V5 pending
 
 Date: 2026-10-21
 
@@ -360,6 +360,10 @@ exit codes.
 
 ### Stage V0: contracts and falsifiable fixtures
 
+Status: implemented.  The versioned schemas, deterministic digest, reason
+codes, exit statuses, and synthetic planning cases are covered by the package
+and its tests.
+
 Deliver:
 
 - plan and result semantic definitions;
@@ -378,6 +382,9 @@ Exit criteria:
 - plan output is byte-for-byte stable for identical inputs.
 
 ### Stage V1: read-only plan generator
+
+Status: implemented.  `create-validation-plan` consumes the existing inventory
+and resolved manifest models and never executes course content.
 
 Deliver:
 
@@ -399,6 +406,11 @@ Exit criteria:
 
 ### Stage V2: result validation and reporting
 
+Status: implemented. Result documents are schema-checked and matched to their
+plan, repository, notebook blobs, environments, checks, and confined artifacts.
+JSON and Markdown summaries preserve missing results as `not_run` and downgrade
+invalid evidence rather than counting it as a pass.
+
 Deliver:
 
 - result loader and schema validator;
@@ -417,6 +429,11 @@ Exit criteria:
 - artifacts outside the declared result root are rejected.
 
 ### Stage V3: safe scaffold generator
+
+Status: implemented. The generator writes only to a new review directory
+outside the target repository. Execution is disabled by default; the generated
+runner isolates configured execution in temporary repository copies and the CI
+draft remains outside `.github/workflows` until separately reviewed.
 
 Deliver:
 
@@ -632,18 +649,15 @@ cross-repository evidence justifies a shared field.
 - Documentation states clearly what execution evidence proves and what remains
   manual, scientific, pedagogical, interactive, or too costly to validate.
 
-## Open decisions to resolve during implementation
+## Decisions and remaining question
 
-1. Should deterministic JSON use a documented canonicalization scheme or a
-   simpler project-specific stable serializer?
-2. Which review-state and constraint diagnostics are warnings by default, and
-   which make an entry `blocked`?
-3. Should the first target adapter use `nbclient` directly or a thin wrapper
-   around an existing repository-native command?
-4. Should result artifacts be retained by path and digest only, or should small
-   textual diagnostics be embedded?
-5. At what point should the classifier and validation planner be split into
-   separately versioned packages?
+Stages V0–V3 use the documented project-specific canonical JSON serializer,
+warn about stale review evidence by default, block unapproved constraints, use
+`nbclient` directly in the generated target-owned runner, and identify retained
+artifacts by confined relative path and SHA-256 digest. Concise check messages
+remain embedded in result documents.
 
-Resolve these with synthetic fixtures and the Scientific Python handoff.  Do
-not answer them by adding Scientific-Python-specific branches to shared code.
+The remaining packaging question is when the classifier and validation planner
+should become separately versioned packages. Resolve that from the Scientific
+Python handoff and cross-repository evidence; do not add
+Scientific-Python-specific branches to shared code.

@@ -11,7 +11,14 @@ FIXTURES = Path(__file__).parent / "fixtures"
 
 def run_git(repository: Path, *arguments: str) -> str:
     result = subprocess.run(
-        ["git", "-C", str(repository), *arguments],
+        [
+            "git",
+            "-c",
+            "commit.gpgsign=false",
+            "-C",
+            str(repository),
+            *arguments,
+        ],
         check=True,
         capture_output=True,
         text=True,

@@ -1,0 +1,10 @@
+# Course-owned assertions
+
+Put scientifically meaningful checks here after deciding what each notebook is
+intended to establish. Prefer invariants and property checks over brittle full
+output snapshots. Define every tolerance from the numerical method, scale, and
+expected variability; do not copy an unexplained tolerance from another test.
+
+This scaffold deliberately generates no assertion function. A vacuous
+placeholder such as `assert True` would create false confidence. Until explicit
+checks are added, a runner `pass` establishes notebook execution only.

@@ -1,0 +1,31 @@
+schema_version = 1
+
+[scaffold]
+template_version = {{ template_version }}
+generator_name = {{ generator_name | tojson }}
+generator_version = {{ generator_version | tojson }}
+plan_digest = {{ plan_digest | tojson }}
+repository_id = {{ repository_id | tojson }}
+repository_commit = {{ repository_commit | tojson }}
+platform = {{ platform | tojson }}
+
+[runner]
+# This deliberate default prevents generated code from claiming a false pass.
+enabled = false
+artifact_root_must_be_outside_repository = true
+noninteractive_backend = "Agg"
+
+{% for group in environment_groups %}
+[[environments]]
+name = {{ group.environment | tojson }}
+notebook_ids = {{ group.notebook_ids_json }}
+{% endfor %}
+{% for candidate in candidates %}
+[[notebooks]]
+id = {{ candidate.notebook_id | tojson }}
+path = {{ candidate.path | tojson }}
+environment = {{ candidate.environment | tojson }}
+# Change to "execute" only after choosing a justified positive timeout.
+mode = "not_run"
+reason_code = "maintainer_configuration_required"
+{% endfor %}

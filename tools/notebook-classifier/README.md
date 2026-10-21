@@ -20,6 +20,9 @@ validation handoff is
 The proposed reusable plan generator, result contract, and safe scaffolding are
 specified separately in the
 [`validation planning implementation plan`](VALIDATION_PLANNING_IMPLEMENTATION_PLAN.md).
+Stages V0 through V3 of that plan are implemented.  The versioned semantics, reason
+codes, deterministic digest, and exit statuses are documented in the
+[`validation plan contract`](VALIDATION_PLAN_CONTRACT.md).
 
 ## Trust boundary
 
@@ -115,6 +118,72 @@ retained in the manifest.  Each effective property records its provenance as a
 vocabulary default, repository default, matching rule, or notebook override.
 Review state is reported as `unreviewed`, `current`, `stale`, or `missing` by
 comparing the reviewed blob ID with current notebook content.
+
+Create a deterministic validation plan without executing course content:
+
+```bash
+pixi run notebook-classifier create-validation-plan \
+    --repository /path/to/course \
+    --include-tier required \
+    --platform linux-64 \
+    --output validation-plan.json
+```
+
+The plan accounts for every resolved notebook, groups eligible candidates by
+environment, and records filtered, manual, excluded, or blocked entries with
+machine-readable reasons.  Its default selection is the active `required` tier
+on `linux-64`.  Use repeated `--include-tier`, `--include-scope`,
+`--include-lifecycle`, and `--allow-constraint` options to state another policy.
+Use `--review-policy require-current` when a stale or unreviewed selected
+notebook must block planning.
+
+This command does not run a notebook.  Concrete execution, scientific
+assertions, timeouts, artifacts, and CI policy remain the responsibility of the
+course repository.
+
+Validate course-owned result evidence against its exact plan:
+
+```bash
+pixi run notebook-classifier validate-validation-results \
+    --plan validation-plan.json \
+    --results validation-results.json \
+    --artifact-root /tmp/notebook-validation-artifacts
+```
+
+The validator checks schemas, plan and repository provenance, notebook IDs,
+paths and blobs, declared and observed environments, explicit checks, source
+worktree state, and artifact confinement and digests. Missing selected results
+are counted as `not_run`; invalid or forged evidence is never counted as a
+pass. Use `--json` for the full machine-readable assessment.
+
+Render the same assessment as Markdown or JSON without executing anything:
+
+```bash
+pixi run notebook-classifier summarize-validation \
+    --plan validation-plan.json \
+    --results validation-results.json \
+    --artifact-root /tmp/notebook-validation-artifacts \
+    --output validation-report.md
+```
+
+Generate a target-owned starter into a new review directory outside the course
+repository:
+
+```bash
+pixi run notebook-classifier scaffold-validation \
+    --repository /path/to/course \
+    --output-directory /tmp/course-validation-scaffold \
+    --ci github-actions
+```
+
+Generation refuses existing destinations and direct writes inside the target
+repository. The runner is disabled until maintainers configure explicit
+timeouts, runs notebooks only in temporary copies, and requires artifacts and
+results outside the source checkout. The workflow is a manual-only draft under
+`ci/`, not an active `.github/workflows` file. `--schedule monthly` is explicit
+opt-in; `--check` reports missing or changed generated files without modifying
+them. Local additions are ignored because target repositories are expected to
+adapt the scaffold.
 
 ## Safe manifest changes and drafts
 

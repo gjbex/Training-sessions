@@ -1,0 +1,23 @@
+# Integration notes
+
+1. Copy the reviewed runtime files to a target-owned directory such as
+   `validation/`. Keep the CI draft outside `.github/workflows` until its action
+   references, budget, command, and trigger have been reviewed.
+2. Store or reproducibly create the exact plan identified by
+   `{{ plan_digest }}`. The generated runner accepts a plan path; it does not
+   regenerate classification decisions.
+3. Add repository-owned tasks. For example, a Pixi task may call
+   `python validation/run_validation.py`; choose the environment and all
+   arguments in the target repository rather than this shared generator.
+4. Set a positive timeout for each notebook before changing its mode from
+   `not_run` to `execute`. Unknown runtime is not a timeout estimate.
+5. Add scientific and artifact assertions separately. Keep execution smoke
+   results distinct from those stronger checks.
+6. Run the contract tests and runner from a clean Linux checkout. The runner
+   rejects artifact roots inside the source repository and reports any source
+   worktree change.
+
+The workflow draft uses `workflow_dispatch` only{% if schedule == "monthly" %}
+plus the explicitly requested monthly schedule{% endif %}. It calls the
+repository-owned `pixi run notebook-validation-contract` command. Define that
+task and pin external actions to reviewed full commit hashes before activation.

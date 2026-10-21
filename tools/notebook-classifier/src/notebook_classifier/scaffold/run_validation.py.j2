@@ -1,0 +1,392 @@
+"""Target-owned notebook runner starter generated from a static plan.
+
+This runner is disabled by default. It runs configured notebooks only in a
+temporary repository copy and writes evidence outside the source checkout.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import platform
+import shutil
+import subprocess
+import sys
+import tempfile
+import time
+import tomllib
+from contextlib import contextmanager
+from datetime import UTC, datetime
+from pathlib import Path, PurePosixPath
+from typing import Any, Iterator
+
+
+RUNNER_NAME = "generated-notebook-validation-runner"
+RUNNER_VERSION = "{{ template_version }}"
+
+
+def create_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repository", type=Path, required=True)
+    parser.add_argument("--plan", type=Path, required=True)
+    parser.add_argument(
+        "--configuration",
+        type=Path,
+        default=Path(__file__).with_name("execution.toml"),
+    )
+    parser.add_argument("--artifact-root", type=Path, required=True)
+    parser.add_argument("--results", type=Path, required=True)
+    parser.add_argument("--environment")
+    return parser
+
+
+def main(arguments: list[str] | None = None) -> int:
+    namespace = create_parser().parse_args(arguments)
+    repository = namespace.repository.resolve()
+    artifact_root = namespace.artifact_root.resolve()
+    result_path = namespace.results.resolve()
+    require_outside_repository(repository, artifact_root, "artifact root")
+    require_outside_repository(repository, result_path, "result path")
+    artifact_root.mkdir(parents=True, exist_ok=True)
+    if not result_path.parent.is_dir():
+        raise RuntimeError(f"result parent does not exist: {result_path.parent}")
+
+    plan = load_json(namespace.plan)
+    configuration = load_toml(namespace.configuration)
+    if canonical_plan_digest(plan) != plan["plan_digest"]:
+        raise RuntimeError("plan digest does not match the canonical plan content")
+    if configuration["scaffold"]["plan_digest"] != plan["plan_digest"]:
+        raise RuntimeError("execution configuration was generated for another plan")
+    if sys.platform != "linux":
+        raise RuntimeError("this generated runner supports Linux only")
+    configured = {
+        item["id"]: item for item in configuration.get("notebooks", [])
+    }
+    enabled = configuration["runner"]["enabled"]
+    before = git_status(repository)
+    actual_commit = git_text(repository, "rev-parse", "HEAD")
+    precondition_reason = None
+    if actual_commit != plan["repository"]["commit"]:
+        precondition_reason = "repository_commit_mismatch"
+    elif before:
+        precondition_reason = "source_worktree_not_clean"
+    result_entries: list[dict[str, Any]] = []
+
+    for entry in plan["entries"]:
+        notebook_id = entry["notebook_id"]
+        if notebook_id is None:
+            continue
+        environment = str(entry["properties"].get("environment", "unknown"))
+        policy = configured.get(notebook_id)
+        reason = planned_not_run_reason(
+            entry,
+            policy,
+            enabled=enabled,
+            selected_environment=namespace.environment,
+            precondition_reason=precondition_reason,
+        )
+        if reason is not None:
+            result_entries.append(not_run_entry(entry, environment, reason))
+            continue
+        result_entries.append(
+            execute_entry(
+                repository,
+                entry,
+                environment,
+                policy,
+                artifact_root,
+            )
+        )
+
+    unchanged = git_status(repository) == before
+    for entry in result_entries:
+        entry["worktree_unchanged"] = unchanged
+    document = {
+        "schema_version": 1,
+        "runner": {"name": RUNNER_NAME, "version": RUNNER_VERSION},
+        "plan_digest": plan["plan_digest"],
+        "repository": {
+            "id": plan["repository"]["id"],
+            "commit": actual_commit,
+            "platform": plan["repository"]["platform"],
+        },
+        "entries": result_entries,
+    }
+    write_json_atomic(result_path, document)
+    candidate_ids = {
+        entry["notebook_id"]
+        for entry in plan["entries"]
+        if entry["action"] == "candidate"
+    }
+    return int(
+        not unchanged
+        or any(
+            entry["notebook_id"] in candidate_ids and entry["outcome"] != "pass"
+            for entry in result_entries
+        )
+    )
+
+
+def planned_not_run_reason(
+    entry: dict[str, Any],
+    policy: dict[str, Any] | None,
+    *,
+    enabled: bool,
+    selected_environment: str | None,
+    precondition_reason: str | None,
+) -> str | None:
+    if entry["action"] != "candidate":
+        return f"planned_action_{entry['action']}"
+    if not enabled:
+        return "runner_disabled_pending_maintainer_review"
+    if precondition_reason is not None:
+        return precondition_reason
+    if policy is None:
+        return "execution_policy_missing"
+    if policy.get("mode") != "execute":
+        return str(policy.get("reason_code", "execution_not_configured"))
+    environment = str(entry["properties"].get("environment", "unknown"))
+    if selected_environment is not None and environment != selected_environment:
+        return "environment_not_selected"
+    timeout = policy.get("timeout_seconds")
+    if not isinstance(timeout, int) or isinstance(timeout, bool) or timeout <= 0:
+        return "positive_timeout_required"
+    return None
+
+
+def execute_entry(
+    repository: Path,
+    entry: dict[str, Any],
+    environment: str,
+    policy: dict[str, Any],
+    artifact_root: Path,
+) -> dict[str, Any]:
+    notebook_id = entry["notebook_id"]
+    timeout = policy["timeout_seconds"]
+    started_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
+    started = time.monotonic()
+    artifact_relative = f"executed-notebooks/{notebook_id}.ipynb"
+    artifact_path = safe_relative_path(artifact_root, artifact_relative)
+    artifact_path.parent.mkdir(parents=True, exist_ok=True)
+    artifacts: list[dict[str, str]] = []
+    checks: list[dict[str, str]] = []
+    outcome = "pass"
+    reason_code = "notebook_execution_completed"
+    observed_blob = entry["current_blob"]
+    temporary_repository: Path | None = None
+
+    try:
+        source_path = safe_relative_path(repository, entry["path"])
+        observed_blob = git_text(repository, "hash-object", "--", str(source_path))
+        if observed_blob != entry["current_blob"]:
+            raise RuntimeError("source notebook blob does not match the plan")
+        with temporary_repository_copy(repository) as temporary_repository:
+            notebook_path = safe_relative_path(
+                temporary_repository, entry["path"]
+            )
+            execute_notebook(notebook_path, artifact_path, timeout)
+        artifacts.append(
+            {
+                "kind": "executed_notebook",
+                "path": artifact_relative,
+                "digest": file_digest(artifact_path),
+            }
+        )
+        checks.append(
+            {
+                "name": "notebook_execution",
+                "outcome": "pass",
+                "message": (
+                    "the notebook kernel completed; no scientific assertion "
+                    "is implied"
+                ),
+            }
+        )
+    except Exception as error:  # noqa: BLE001 - evidence must record runner errors
+        outcome = "error"
+        reason_code = "notebook_execution_error"
+        message = str(error)
+        if temporary_repository is not None:
+            message = message.replace(
+                str(temporary_repository), "<temporary-repository>"
+            )
+        checks.append(
+            {
+                "name": "notebook_execution",
+                "outcome": "error",
+                "message": f"{type(error).__name__}: {message}",
+            }
+        )
+
+    return {
+        "notebook_id": notebook_id,
+        "path": entry["path"],
+        "source_blob": observed_blob,
+        "environment": environment,
+        "observed_environment": {
+            "name": environment,
+            "python_version": platform.python_version(),
+        },
+        "outcome": outcome,
+        "reason_code": reason_code,
+        "started_at": started_at,
+        "duration_seconds": round(time.monotonic() - started, 9),
+        "timeout_seconds": timeout,
+        "artifacts": artifacts,
+        "checks": checks,
+        "worktree_unchanged": True,
+    }
+
+
+def execute_notebook(source: Path, destination: Path, timeout: int) -> None:
+    try:
+        import nbformat
+        from nbclient import NotebookClient
+    except ImportError as error:
+        raise RuntimeError(
+            "execution requires target-owned nbformat and nbclient dependencies"
+        ) from error
+
+    os.environ.setdefault("MPLBACKEND", "Agg")
+    notebook = nbformat.read(source, as_version=4)
+    client = NotebookClient(
+        notebook,
+        timeout=timeout,
+        resources={"metadata": {"path": str(source.parent)}},
+    )
+    client.execute()
+    nbformat.write(notebook, destination)
+
+
+def not_run_entry(
+    entry: dict[str, Any], environment: str, reason_code: str
+) -> dict[str, Any]:
+    return {
+        "notebook_id": entry["notebook_id"],
+        "path": entry["path"],
+        "source_blob": entry["current_blob"],
+        "environment": environment,
+        "observed_environment": None,
+        "outcome": "not_run",
+        "reason_code": reason_code,
+        "started_at": None,
+        "duration_seconds": None,
+        "timeout_seconds": None,
+        "artifacts": [],
+        "checks": [],
+        "worktree_unchanged": True,
+    }
+
+
+@contextmanager
+def temporary_repository_copy(repository: Path) -> Iterator[Path]:
+    with tempfile.TemporaryDirectory(prefix="notebook-validation-") as directory:
+        destination = Path(directory) / "repository"
+        shutil.copytree(
+            repository,
+            destination,
+            symlinks=True,
+            ignore=shutil.ignore_patterns(
+                ".git",
+                ".pixi",
+                ".pytest_cache",
+                ".ruff_cache",
+                "__pycache__",
+            ),
+        )
+        yield destination
+
+
+def require_outside_repository(
+    repository: Path, candidate: Path, label: str
+) -> None:
+    if candidate == repository or repository in candidate.parents:
+        raise RuntimeError(f"{label} must be outside the source repository")
+
+
+def safe_relative_path(root: Path, relative: str) -> Path:
+    pure = PurePosixPath(relative)
+    if pure.is_absolute() or ".." in pure.parts or "\\" in relative:
+        raise RuntimeError(f"unsafe relative path: {relative}")
+    candidate = root.joinpath(*pure.parts).resolve()
+    resolved_root = root.resolve()
+    if candidate != resolved_root and resolved_root not in candidate.parents:
+        raise RuntimeError(f"path escapes its declared root: {relative}")
+    return candidate
+
+
+def git_status(repository: Path) -> str:
+    return git_text(
+        repository, "status", "--porcelain=v1", "--untracked-files=all"
+    )
+
+
+def git_text(repository: Path, *arguments: str) -> str:
+    result = subprocess.run(
+        [
+            "git",
+            "--no-optional-locks",
+            "-C",
+            str(repository),
+            *arguments,
+        ],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or "unable to inspect Git state")
+    return result.stdout.strip()
+
+
+def load_json(path: Path) -> dict[str, Any]:
+    document = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(document, dict):
+        raise RuntimeError(f"JSON document must be an object: {path}")
+    return document
+
+
+def load_toml(path: Path) -> dict[str, Any]:
+    return tomllib.loads(path.read_text(encoding="utf-8"))
+
+
+def file_digest(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def canonical_plan_digest(plan: dict[str, Any]) -> str:
+    content = dict(plan)
+    content.pop("plan_digest", None)
+    payload = json.dumps(
+        content,
+        allow_nan=False,
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    )
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def write_json_atomic(path: Path, document: dict[str, Any]) -> None:
+    descriptor, temporary_name = tempfile.mkstemp(
+        prefix=f".{path.name}.", suffix=".tmp", dir=path.parent, text=True
+    )
+    temporary = Path(temporary_name)
+    try:
+        with os.fdopen(descriptor, "w", encoding="utf-8") as handle:
+            json.dump(document, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+        temporary.replace(path)
+    except BaseException:
+        temporary.unlink(missing_ok=True)
+        raise
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
