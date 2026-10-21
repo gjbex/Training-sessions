@@ -4,13 +4,19 @@
 validates the sidecar manifest that records maintainer decisions about notebook
 roles, output policies, delivery scope, and validation tiers.
 
-The current implementation covers Stage 0 through Stage 3 of the
+The current implementation covers Stage 0 through Stage 4 of the
 [implementation plan](IMPLEMENTATION_PLAN.md): the classification contract,
 synthetic fixtures, a read-only scanner, deterministic JSON output, and
 manifest validation and resolution.  It also provides comment-preserving TOML
 updates, reviewed diffs, conflict-checked atomic writes, blob-based review
 staleness, exact-blob rename candidates, resumable drafts, and a local web
 review interface.
+
+The completed Scientific Python pilot, including measurements and usability
+findings, is documented in
+[`pilots/scientific-python.md`](pilots/scientific-python.md).  Its unresolved
+validation handoff is
+[`pilots/scientific-python-unresolved.md`](pilots/scientific-python-unresolved.md).
 
 ## Trust boundary
 

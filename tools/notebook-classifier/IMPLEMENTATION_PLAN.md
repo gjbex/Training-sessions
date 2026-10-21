@@ -1,6 +1,6 @@
 # Notebook classifier implementation plan
 
-Status: Stages 0–3 implemented; Scientific Python pilot pending
+Status: Stages 0–4 implemented; cross-repository hardening pending
 
 Date: 2026-10-21
 
@@ -591,8 +591,8 @@ Exit criteria:
 
 ### Stage 2: manifest engine
 
-Status: implemented in the tool-local package.  Stage 3 will provide the human
-review interface over these APIs.
+Status: implemented in the tool-local package and used by the Stage 3 review
+interface.
 
 Deliver:
 
@@ -610,9 +610,9 @@ Exit criteria:
 
 ### Stage 3: local web MVP
 
-Status: implemented in the tool-local package.  The implementation has
-synthetic integration and security coverage; the Stage 4 Scientific Python
-pilot is still required before treating the interaction model as validated.
+Status: implemented in the tool-local package and exercised by the Scientific
+Python pilot.  Synthetic integration and security coverage remain part of the
+regression suite.
 
 Deliver:
 
@@ -631,6 +631,10 @@ Exit criteria:
 - saving changes never modifies source notebooks.
 
 ### Stage 4: Scientific Python pilot
+
+Status: complete.  The evidence, measurements, schema findings, and usability
+review are recorded in `pilots/scientific-python.md`; validation follow-ups are
+recorded in `pilots/scientific-python-unresolved.md`.
 
 Deliver:
 
