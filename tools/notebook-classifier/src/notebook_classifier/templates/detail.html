@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block title %}{{ resolved.path }}{% endblock %}
+{% block content %}
+<p><a href="/">← Back to notebooks</a></p>
+<div class="page-heading">
+  <div><h1><code>{{ resolved.path }}</code></h1><p class="lede">{{ resolved.notebook_id or "No stable ID yet" }} · <span class="status status-{{ resolved.review_state }}">{{ resolved.review_state }}</span></p></div>
+</div>
+{% if message %}<p class="notice success">{{ message }}</p>{% endif %}
+
+<div class="detail-layout">
+  <aside>
+    <section class="panel">
+      <h2>Extracted facts</h2>
+      <dl class="facts compact">
+        <dt>Blob</dt><dd><code>{{ facts.blob_id[:12] }}</code></dd>
+        <dt>Size</dt><dd>{{ facts.size_bytes }} bytes</dd>
+        <dt>Kernel</dt><dd>{{ facts.kernel_name or "unknown" }}</dd>
+        <dt>Cells</dt><dd>{{ facts.markdown_cells }} Markdown, {{ facts.code_cells }} code, {{ facts.raw_cells }} raw</dd>
+        <dt>Unexecuted</dt><dd>{{ facts.unexecuted_code_cells }}</dd>
+        <dt>Outputs</dt><dd>{{ facts.output_count }}; {{ facts.embedded_output_bytes }} embedded bytes</dd>
+        <dt>Imports</dt><dd>{{ facts.imports|join(", ") or "none detected" }}</dd>
+        <dt>Signals</dt><dd>{% for signal in facts.signals %}{{ signal.name }} (cells {{ signal.cell_indices|map('int')|join(', ') }}){% if not loop.last %}, {% endif %}{% else %}none detected{% endfor %}</dd>
+        <dt>Last change</dt><dd><code>{{ facts.last_changed_commit[:12] if facts.last_changed_commit else "unknown" }}</code></dd>
+      </dl>
+    </section>
+    <section class="panel">
+      <h2>Suggestions</h2>
+      <p class="muted">Suggestions are unconfirmed and never applied automatically.</p>
+      {% for name, suggestion in suggestions.items() %}
+      <article class="suggestion">
+        <h3>{{ name }} → <code>{{ suggestion.value|join(', ') if suggestion.value is not string else suggestion.value }}</code></h3>
+        <p><strong>{{ suggestion.confidence }} confidence</strong></p>
+        <ul>{% for evidence in suggestion.evidence %}<li>{{ evidence }}</li>{% endfor %}</ul>
+      </article>
+      {% else %}<p>No suggestion is available.</p>{% endfor %}
+    </section>
+  </aside>
+
+  <div>
+    <section class="panel">
+      <h2>Maintainer decision</h2>
+      <p>“Inherit” removes the notebook override. The effective value and its provenance remain visible beside each field.</p>
+      <form method="post" action="/notebook" class="decision-form">
+        <input type="hidden" name="csrf" value="{{ csrf_token }}">
+        <input type="hidden" name="path" value="{{ resolved.path }}">
+        {% for name in ["role", "delivery_scope", "output_policy", "validation_tier", "lifecycle", "runtime"] %}
+        <label>{{ name }}
+          <select name="{{ name }}">
+            <option value="__inherit__" {% if resolved.provenance[name] != "notebook_override" %}selected{% endif %}>inherit ({{ resolved.properties[name] }} from {{ resolved.provenance[name] }})</option>
+            {% for value in vocabularies[name] %}<option value="{{ value }}" {% if resolved.provenance[name] == "notebook_override" and resolved.properties[name] == value %}selected{% endif %}>{{ value }}</option>{% endfor %}
+          </select>
+        </label>
+        {% endfor %}
+        <label>environment
+          <input name="environment" value="{{ resolved.properties.environment if resolved.provenance.environment == 'notebook_override' else '' }}" placeholder="inherit: {{ resolved.properties.environment }} from {{ resolved.provenance.environment }}">
+        </label>
+        <fieldset>
+          <legend>constraints <small>{{ resolved.provenance.constraints }}</small></legend>
+          <label>Mode
+            <select name="constraints_mode">
+              <option value="inherit" {% if resolved.provenance.constraints != 'notebook_override' %}selected{% endif %}>inherit ({{ resolved.properties.constraints|join(', ') or 'none' }} from {{ resolved.provenance.constraints }})</option>
+              <option value="override" {% if resolved.provenance.constraints == 'notebook_override' %}selected{% endif %}>explicit notebook decision</option>
+            </select>
+          </label>
+          {% for value in constraints %}<label class="check"><input type="checkbox" name="constraints" value="{{ value }}" {% if resolved.provenance.constraints == 'notebook_override' and value in resolved.properties.constraints %}checked{% endif %}>{{ value }}</label>{% endfor %}
+        </fieldset>
+        <label>rationale
+          <textarea name="rationale" rows="3" placeholder="inherit or no rationale">{{ resolved.properties.rationale if resolved.provenance.rationale == 'notebook_override' else '' }}</textarea>
+        </label>
+        <label>Reviewer <input name="reviewer" value="{{ resolved.reviewed_by or '' }}" required></label>
+        <button class="primary" type="submit">Save decision to draft</button>
+      </form>
+    </section>
+
+    <section class="panel preview">
+      <h2>Safe source preview</h2>
+      <p class="muted">Markdown raw HTML is escaped. Code is highlighted but never run. Output payloads are omitted.</p>
+      {% if preview_error %}<p class="notice error">{{ preview_error }}</p>{% endif %}
+      {% if preview %}
+        {% for cell in preview.cells %}
+        <article class="cell cell-{{ cell.cell_type }}">
+          <h3>Cell {{ cell.index + 1 }} · {{ cell.cell_type }}</h3>
+          <div class="cell-source">{{ cell.rendered_source }}</div>
+          {% if cell.source_truncated %}<p class="warning">Source truncated.</p>{% endif %}
+          {% for output in cell.outputs %}<p class="output-summary">Omitted {{ output.output_type }} output · MIME: {{ output.mime_types|join(', ') or 'none' }} · approximately {{ output.approximate_bytes }} bytes</p>{% endfor %}
+        </article>
+        {% endfor %}
+        {% if preview.cells_omitted %}<p class="warning">{{ preview.cells_omitted }} cell(s) omitted by preview limits.</p>{% endif %}
+      {% endif %}
+    </section>
+  </div>
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 # Notebook classifier implementation plan
 
-Status: initial plan for review
+Status: Stages 0–3 implemented; Scientific Python pilot pending
 
 Date: 2026-10-21
 
@@ -609,6 +609,10 @@ Exit criteria:
 - concurrent repository changes prevent unsafe writes.
 
 ### Stage 3: local web MVP
+
+Status: implemented in the tool-local package.  The implementation has
+synthetic integration and security coverage; the Stage 4 Scientific Python
+pilot is still required before treating the interaction model as validated.
 
 Deliver:
 

@@ -214,9 +214,18 @@ def resolve_manifest(
     """Resolve defaults, ordered rules, and explicit notebook overrides."""
 
     snapshot = load_manifest_snapshot(repository_path, manifest_path)
+    document = tomllib.loads(snapshot.source_text)
+    return resolve_document(snapshot, document)
+
+
+def resolve_document(
+    snapshot: ManifestSnapshot,
+    document: Mapping[str, Any],
+) -> ManifestResolution:
+    """Resolve an in-memory candidate against the snapshot's repository state."""
+
     repository = GitRepository.discover(snapshot.repository_root)
     _assert_snapshot_current(repository, snapshot)
-    document = tomllib.loads(snapshot.source_text)
     diagnostics = validate_document(repository, document)
     if any(diagnostic.level == "error" for diagnostic in diagnostics):
         raise ManifestValidationError(diagnostics)

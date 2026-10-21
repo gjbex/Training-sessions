@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Add path rule{% endblock %}
+{% block content %}
+<h1>Add a path rule</h1>
+<p class="lede">Rules provide inherited values. Preview the affected notebooks before adding one to the draft.</p>
+<form method="post" action="/rules/preview" class="panel narrow-form">
+  <input type="hidden" name="csrf" value="{{ csrf_token }}">
+  <label>Rule ID <input name="rule_id" pattern="[a-z0-9]+(-[a-z0-9]+)*" required placeholder="source-code-core"></label>
+  <label>Include pattern <input name="include" required placeholder="source-code/**/*.ipynb"></label>
+  <label>Exclude patterns, one per line <textarea name="exclude" rows="3"></textarea></label>
+  <label>Property
+    <select name="property_name">{% for name in ["role", "delivery_scope", "output_policy", "validation_tier", "environment", "lifecycle", "runtime", "constraints"] %}<option value="{{ name }}">{{ name }}</option>{% endfor %}</select>
+  </label>
+  <label>Value <input name="value" required></label>
+  <button class="primary" type="submit">Preview affected notebooks</button>
+</form>
+{% endblock %}

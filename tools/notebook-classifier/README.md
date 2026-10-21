@@ -4,13 +4,13 @@
 validates the sidecar manifest that records maintainer decisions about notebook
 roles, output policies, delivery scope, and validation tiers.
 
-The current implementation covers Stage 0 through Stage 2 of the
+The current implementation covers Stage 0 through Stage 3 of the
 [implementation plan](IMPLEMENTATION_PLAN.md): the classification contract,
 synthetic fixtures, a read-only scanner, deterministic JSON output, and
 manifest validation and resolution.  It also provides comment-preserving TOML
 updates, reviewed diffs, conflict-checked atomic writes, blob-based review
-staleness, exact-blob rename candidates, and resumable drafts.  It does not yet
-provide the local web interface.
+staleness, exact-blob rename candidates, resumable drafts, and a local web
+review interface.
 
 ## Trust boundary
 
@@ -24,7 +24,9 @@ The scanner treats repositories and notebook content as untrusted data.  It:
 - leaves notebook files unchanged.
 
 The manifest validator reads `validation/manifest.toml` by default.  It reports
-structural and semantic errors but does not edit the manifest.
+structural and semantic errors but does not edit the manifest.  The web review
+interface writes that manifest only after displaying the exact diff and
+rechecking the repository snapshot.
 
 The inventory records Git state, tracked/untracked/ignored notebooks, current
 working-tree blob IDs, Pixi environments and task names, other environment
@@ -49,6 +51,25 @@ The tool has its own `pyproject.toml`, Pixi environment, and lockfile.  It does
 not use or modify the catalogue website's top-level `requirements.txt`.
 
 ## Commands
+
+Launch the local review interface:
+
+```bash
+pixi run notebook-classifier review \
+    --repository /path/to/course
+```
+
+The command chooses an available port, binds only to `127.0.0.1`, prints the
+repository revision and a per-process session URL, and opens the browser.  Use
+`--no-open` under WSL or when you prefer to open the printed URL yourself.  A
+specific loopback port can be selected with `--port`; there is deliberately no
+option to bind to another interface.
+
+The application uses only packaged CSS and does not need a network connection.
+It provides server-side filters and sorting, safe source previews, transparent
+deterministic suggestions, explicit notebook overrides, bulk decisions,
+previewed path rules, progress, and the final TOML diff.  Every edit is first
+saved as an XDG draft outside the course repository.
 
 Write a deterministic inventory:
 
@@ -88,8 +109,8 @@ comparing the reviewed blob ID with current notebook content.
 
 ## Safe manifest changes and drafts
 
-Stage 2 deliberately does not expose an unreviewed "write this file" CLI.  The
-application layer loads a `ManifestSnapshot`, edits its comment-preserving
+There is deliberately no unreviewed "write this file" CLI.  The application
+loads a `ManifestSnapshot`, edits its comment-preserving
 TOML document, and calls `prepare_manifest_change` to validate it and obtain the
 exact unified diff.  Only that reviewed `ManifestChange` can be passed to
 `write_manifest_atomic`.
@@ -119,9 +140,15 @@ This runs Ruff linting, Ruff formatting checks, and the test suite.
 
 - Evidence extraction is intentionally conservative and heuristic.
 - The scanner handles Jupyter notebooks only.
-- It records notebook and repository evidence but does not make classification
-  suggestions yet.
-- The web review interface that orchestrates the manifest engine is Stage 3.
+- Suggestions are deterministic heuristics, not content judgements, and must be
+  confirmed by a maintainer.
+- Markdown raw HTML is escaped and mathematical source is preserved, but the
+  MVP does not render mathematics or expose a raw-JSON download.
+- Bulk values are validated after submission rather than being presented in a
+  property-dependent widget.
+- If the repository commit, notebook set/content, or source manifest changes
+  during review, writes are blocked; the MVP requires restarting the review
+  session rather than rebasing the draft in the UI.
 - Rename candidates require identical Git blob content; similarity-based
   candidates are intentionally deferred and identities are never transferred
   automatically.

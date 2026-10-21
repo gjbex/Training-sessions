@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Preview path rule{% endblock %}
+{% block content %}
+<h1>Preview path rule</h1>
+<p><code>{{ rule.include }}</code> would set <code>{{ rule.property_name }} = {{ parsed_value }}</code> for {{ affected|length }} tracked notebook(s).</p>
+<div class="table-scroll" tabindex="0"><table><thead><tr><th>Path</th><th>Current effective value</th><th>Current provenance</th><th>Explicit override?</th></tr></thead><tbody>
+{% for notebook in affected %}<tr><th><code>{{ notebook.path }}</code></th><td>{{ notebook.properties[rule.property_name] }}</td><td>{{ notebook.provenance[rule.property_name] }}</td><td>{{ "yes; override remains effective" if notebook.provenance[rule.property_name] == "notebook_override" else "no" }}</td></tr>{% else %}<tr><td colspan="4">No notebooks match. The manifest validator will reject an unmatched rule.</td></tr>{% endfor %}
+</tbody></table></div>
+<form method="post" action="/rules" class="confirmation">
+  <input type="hidden" name="csrf" value="{{ csrf_token }}">
+  <input type="hidden" name="rule_id" value="{{ rule.id }}">
+  <input type="hidden" name="include" value="{{ rule.include }}">
+  <input type="hidden" name="exclude" value="{{ rule.exclude }}">
+  <input type="hidden" name="property_name" value="{{ rule.property_name }}">
+  <input type="hidden" name="value" value="{{ rule.value }}">
+  <button class="primary" type="submit" {% if not affected %}disabled{% endif %}>Add rule to draft</button>
+  <a class="button" href="/rules">Revise rule</a>
+</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Notebook classifier{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/app.css') }}">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div>
+      <a class="brand" href="/">Notebook classifier</a>
+      <span class="repository">{{ review.inventory.repository_name }}</span>
+    </div>
+    <nav aria-label="Primary">
+      <a href="/">Notebooks</a>
+      <a href="/rules">Rules</a>
+      <a href="/review">Review &amp; save</a>
+    </nav>
+  </header>
+  <div class="session-bar" role="status">
+    <span>Commit <code>{{ review.snapshot.repository_commit[:12] }}</code></span>
+    <span>{{ progress.complete }}/{{ progress.total }} complete</span>
+    {% if review.has_unsaved_changes %}<strong>Draft has unsaved changes</strong>{% else %}<span>No unsaved changes</span>{% endif %}
+  </div>
+  <main id="main" class="page">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

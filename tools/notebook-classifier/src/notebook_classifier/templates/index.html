@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Notebook review{% endblock %}
+{% block content %}
+<div class="page-heading">
+  <div>
+    <h1>Repository review</h1>
+    <p class="lede">Static evidence and unconfirmed suggestions for tracked notebooks. Nothing here executes notebook code.</p>
+  </div>
+  <a class="button primary" href="/review">Review manifest diff</a>
+</div>
+
+{% if message %}<p class="notice success">{{ message }}</p>{% endif %}
+{% if review.resumed_draft %}<p class="notice">A matching draft was resumed from the XDG state directory.</p>{% endif %}
+
+<section class="summary-grid" aria-label="Repository summary">
+  <article><strong>{{ review.inventory.tracked_notebook_count }}</strong><span>tracked</span></article>
+  <article><strong>{{ review.inventory.untracked_notebooks|length }}</strong><span>untracked</span></article>
+  <article><strong>{{ review.inventory.ignored_notebooks|length }}</strong><span>ignored</span></article>
+  <article><strong>{{ progress.reviewed }}</strong><span>reviewed at current blob</span></article>
+  <article><strong>{{ progress.stale }}</strong><span>stale</span></article>
+  <article><strong>{{ progress.unresolved }}</strong><span>incomplete</span></article>
+</section>
+
+<details class="repository-details">
+  <summary>Repository and scan details</summary>
+  <dl class="facts">
+    <dt>Path</dt><dd><code>{{ review.repository_root }}</code></dd>
+    <dt>Branch</dt><dd>{{ review.inventory.branch or "detached HEAD" }}</dd>
+    <dt>Dirty worktree</dt><dd>{{ "yes" if review.inventory.dirty else "no" }}</dd>
+    <dt>Manifest</dt><dd><code>{{ review.snapshot.relative_path }}</code> (schema {{ review.resolution.schema_version }})</dd>
+    <dt>Environments</dt><dd>{{ review.inventory.pixi_environments|join(", ") or "none detected" }}</dd>
+    <dt>Scan findings</dt><dd>{{ review.inventory.findings|join(", ") or "none" }}</dd>
+  </dl>
+</details>
+
+<section aria-labelledby="notebook-table-heading">
+  <div class="section-heading">
+    <h2 id="notebook-table-heading">Notebooks</h2>
+    <form class="filters" method="get" action="/">
+      <label>Path <input name="q" value="{{ filters.q }}"></label>
+      <label>Status
+        <select name="state">
+          <option value="">all</option>
+          {% for value in ["current", "unreviewed", "stale", "missing"] %}<option value="{{ value }}" {% if filters.state == value %}selected{% endif %}>{{ value }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Role
+        <select name="role"><option value="">all</option>{% for value in vocabularies.role %}<option value="{{ value }}" {% if filters.role == value %}selected{% endif %}>{{ value }}</option>{% endfor %}</select>
+      </label>
+      <label>Scope
+        <select name="scope"><option value="">all</option>{% for value in vocabularies.delivery_scope %}<option value="{{ value }}" {% if filters.scope == value %}selected{% endif %}>{{ value }}</option>{% endfor %}</select>
+      </label>
+      <button type="submit">Filter</button>
+    </form>
+  </div>
+
+  <form method="post" action="/bulk">
+    <input type="hidden" name="csrf" value="{{ csrf_token }}">
+    <div class="table-scroll" tabindex="0" aria-label="Scrollable notebook table">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col"><span class="visually-hidden">Select</span></th>
+            <th scope="col"><a href="/?sort=path&direction={{ 'desc' if sort == 'path' and direction == 'asc' else 'asc' }}">Path</a></th>
+            <th scope="col"><a href="/?sort=state">Status</a></th>
+            <th scope="col"><a href="/?sort=role">Role</a></th>
+            <th scope="col">Suggested role</th>
+            <th scope="col"><a href="/?sort=scope">Scope</a></th>
+            <th scope="col"><a href="/?sort=tier">Tier</a></th>
+            <th scope="col">Cells M/C</th>
+            <th scope="col">Outputs/errors</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            <td><input type="checkbox" name="paths" value="{{ row.resolved.path }}" aria-label="Select {{ row.resolved.path }}"></td>
+            <th scope="row"><a href="{{ row.detail_url }}"><code>{{ row.resolved.path }}</code></a></th>
+            <td><span class="status status-{{ row.resolved.review_state }}">{{ row.resolved.review_state }}</span></td>
+            <td>{{ row.resolved.properties.role }} <small>{{ row.resolved.provenance.role }}</small></td>
+            <td>{% if row.suggested_role %}{{ row.suggested_role.value }} <small>{{ row.suggested_role.confidence }}</small>{% else %}—{% endif %}</td>
+            <td>{{ row.resolved.properties.delivery_scope }}</td>
+            <td>{{ row.resolved.properties.validation_tier }}</td>
+            <td>{{ row.facts.markdown_cells }}/{{ row.facts.code_cells }}</td>
+            <td>{{ row.facts.output_count }}/{{ row.facts.stored_errors|length }}</td>
+          </tr>
+          {% else %}<tr><td colspan="9">No tracked notebooks match these filters.</td></tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <fieldset class="bulk-controls">
+      <legend>Bulk explicit decision</legend>
+      <label>Property
+        <select name="property_name">
+          {% for name in ["role", "delivery_scope", "output_policy", "validation_tier", "environment", "lifecycle", "runtime", "constraints"] %}<option value="{{ name }}">{{ name }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>Value <input name="value" required aria-describedby="bulk-help"></label>
+      <label>Reviewer <input name="reviewer" required></label>
+      <button type="submit">Apply to selected</button>
+      <small id="bulk-help">Use a vocabulary value; constraints are comma-separated. This creates explicit notebook overrides.</small>
+    </fieldset>
+  </form>
+</section>
+{% endblock %}

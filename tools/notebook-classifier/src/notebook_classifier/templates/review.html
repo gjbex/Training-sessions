@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Review manifest diff{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>Review manifest diff</h1><p class="lede">This is the exact candidate that will replace <code>{{ change.relative_path }}</code>.</p></div></div>
+{% if unresolved %}
+<details open class="notice warning"><summary>{{ unresolved|length }} tracked notebook(s) remain incomplete</summary><ul>{% for notebook in unresolved %}<li><a href="/notebook?path={{ notebook.path|urlencode }}"><code>{{ notebook.path }}</code></a>: {{ notebook.review_state }}, required decisions may still be unknown</li>{% endfor %}</ul></details>
+{% else %}<p class="notice success">Every tracked notebook is current and has all required decisions.</p>{% endif %}
+
+{% if change.diagnostics %}<section><h2>Validation diagnostics</h2><ul>{% for diagnostic in change.diagnostics %}<li><strong>{{ diagnostic.level }}</strong> {{ diagnostic.code }}: {{ diagnostic.message }}</li>{% endfor %}</ul></section>{% endif %}
+<section><h2>Exact TOML diff</h2>{% if change.diff %}<pre class="diff"><code>{{ change.diff }}</code></pre>{% else %}<p>No manifest changes are pending.</p>{% endif %}</section>
+<form method="post" action="/save" class="confirmation">
+  <input type="hidden" name="csrf" value="{{ csrf_token }}">
+  <input type="hidden" name="confirm" value="save">
+  <button class="primary" type="submit" {% if not change.diff %}disabled{% endif %}>Write manifest atomically</button>
+  <p class="muted">This writes the manifest only. It does not modify notebooks, stage files, commit, or push.</p>
+</form>
+{% endblock %}

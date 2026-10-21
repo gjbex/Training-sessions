@@ -18,6 +18,7 @@ from notebook_classifier.manifest import (
     validate_manifest,
 )
 from notebook_classifier.scanner import scan_repository
+from notebook_classifier.server import run_review_server
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -95,6 +96,34 @@ def create_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="write compact rather than indented JSON",
     )
+
+    review = subparsers.add_parser(
+        "review",
+        help="review classifications in a loopback-only web interface",
+    )
+    review.add_argument(
+        "--repository",
+        type=Path,
+        required=True,
+        help="path inside the Git repository",
+    )
+    review.add_argument(
+        "--manifest",
+        type=Path,
+        default=Path("validation/manifest.toml"),
+        help="manifest path inside the repository",
+    )
+    review.add_argument(
+        "--port",
+        type=int,
+        default=0,
+        help="loopback TCP port; 0 chooses an available port (default: 0)",
+    )
+    review.add_argument(
+        "--no-open",
+        action="store_true",
+        help="print the URL without opening a browser",
+    )
     return parser
 
 
@@ -108,6 +137,8 @@ def main(arguments: Sequence[str] | None = None) -> int:
             return _validate_manifest(namespace)
         if namespace.command == "resolve-manifest":
             return _resolve_manifest(namespace)
+        if namespace.command == "review":
+            return _review(namespace)
     except (GitError, ManifestError, OSError, ValueError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 2
@@ -173,6 +204,16 @@ def _resolve_manifest(namespace: argparse.Namespace) -> int:
     if indent is not None:
         payload += "\n"
     _write_output(namespace.output, payload)
+    return 0
+
+
+def _review(namespace: argparse.Namespace) -> int:
+    run_review_server(
+        namespace.repository,
+        namespace.manifest,
+        port=namespace.port,
+        open_browser=not namespace.no_open,
+    )
     return 0
 
 
