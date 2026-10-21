@@ -4,10 +4,13 @@
 validates the sidecar manifest that records maintainer decisions about notebook
 roles, output policies, delivery scope, and validation tiers.
 
-The current implementation covers Stage 0 and Stage 1 of the
+The current implementation covers Stage 0 through Stage 2 of the
 [implementation plan](IMPLEMENTATION_PLAN.md): the classification contract,
 synthetic fixtures, a read-only scanner, deterministic JSON output, and
-manifest validation.  It does not yet provide the local web interface.
+manifest validation and resolution.  It also provides comment-preserving TOML
+updates, reviewed diffs, conflict-checked atomic writes, blob-based review
+staleness, exact-blob rename candidates, and resumable drafts.  It does not yet
+provide the local web interface.
 
 ## Trust boundary
 
@@ -69,6 +72,41 @@ pixi run notebook-classifier validate-manifest \
 Use `--json` for machine-readable diagnostics or `--manifest` to choose a
 non-default manifest path inside the repository.
 
+Resolve repository defaults, ordered rules, and notebook overrides:
+
+```bash
+pixi run notebook-classifier resolve-manifest \
+    --repository /path/to/course \
+    --output resolution.json
+```
+
+The resolution includes every tracked notebook plus historical notebook paths
+retained in the manifest.  Each effective property records its provenance as a
+vocabulary default, repository default, matching rule, or notebook override.
+Review state is reported as `unreviewed`, `current`, `stale`, or `missing` by
+comparing the reviewed blob ID with current notebook content.
+
+## Safe manifest changes and drafts
+
+Stage 2 deliberately does not expose an unreviewed "write this file" CLI.  The
+application layer loads a `ManifestSnapshot`, edits its comment-preserving
+TOML document, and calls `prepare_manifest_change` to validate it and obtain the
+exact unified diff.  Only that reviewed `ManifestChange` can be passed to
+`write_manifest_atomic`.
+
+The write is refused when any of these changed since the snapshot:
+
+- the repository commit;
+- tracked or untracked notebook paths or content;
+- the source manifest;
+- the candidate content after its diff was prepared.
+
+`DraftStore` atomically persists a candidate outside the course repository.  It
+uses `$XDG_STATE_HOME/notebook-classifier` when `XDG_STATE_HOME` is absolute,
+and otherwise `~/.local/state/notebook-classifier`.  Drafts are keyed by the
+canonical repository path, starting commit, and manifest path; they include the
+source and candidate digests needed for an explicit resume or rebase decision.
+
 ## Developer checks
 
 ```bash
@@ -81,10 +119,10 @@ This runs Ruff linting, Ruff formatting checks, and the test suite.
 
 - Evidence extraction is intentionally conservative and heuristic.
 - The scanner handles Jupyter notebooks only.
-- It does not yet resolve defaults, rules, and overrides into an editable
-  review model.
 - It records notebook and repository evidence but does not make classification
   suggestions yet.
-- The web review interface, draft persistence, and atomic manifest writer are
-  later stages.
+- The web review interface that orchestrates the manifest engine is Stage 3.
+- Rename candidates require identical Git blob content; similarity-based
+  candidates are intentionally deferred and identities are never transferred
+  automatically.
 

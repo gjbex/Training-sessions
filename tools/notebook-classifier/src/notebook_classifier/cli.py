@@ -11,7 +11,12 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from notebook_classifier.git import GitError
-from notebook_classifier.manifest import validate_manifest
+from notebook_classifier.manifest import (
+    ManifestError,
+    ManifestValidationError,
+    resolve_manifest,
+    validate_manifest,
+)
 from notebook_classifier.scanner import scan_repository
 
 
@@ -62,6 +67,34 @@ def create_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="write machine-readable diagnostics",
     )
+
+    resolve = subparsers.add_parser(
+        "resolve-manifest",
+        help="write effective classifications and per-property provenance",
+    )
+    resolve.add_argument(
+        "--repository",
+        type=Path,
+        required=True,
+        help="path inside the Git repository",
+    )
+    resolve.add_argument(
+        "--manifest",
+        type=Path,
+        default=Path("validation/manifest.toml"),
+        help="manifest path inside the repository",
+    )
+    resolve.add_argument(
+        "--output",
+        type=str,
+        default="-",
+        help="JSON output path, or - for standard output",
+    )
+    resolve.add_argument(
+        "--compact",
+        action="store_true",
+        help="write compact rather than indented JSON",
+    )
     return parser
 
 
@@ -73,7 +106,9 @@ def main(arguments: Sequence[str] | None = None) -> int:
             return _scan(namespace)
         if namespace.command == "validate-manifest":
             return _validate_manifest(namespace)
-    except (GitError, OSError, ValueError) as error:
+        if namespace.command == "resolve-manifest":
+            return _resolve_manifest(namespace)
+    except (GitError, ManifestError, OSError, ValueError) as error:
         print(f"error: {error}", file=sys.stderr)
         return 2
     parser.error(f"unknown command: {namespace.command}")
@@ -114,6 +149,31 @@ def _validate_manifest(namespace: argparse.Namespace) -> int:
     else:
         print("manifest is valid")
     return 1 if any(item.level == "error" for item in diagnostics) else 0
+
+
+def _resolve_manifest(namespace: argparse.Namespace) -> int:
+    try:
+        resolution = resolve_manifest(namespace.repository, namespace.manifest)
+    except ManifestValidationError as error:
+        for diagnostic in error.diagnostics:
+            location = f" [{diagnostic.location}]" if diagnostic.location else ""
+            print(
+                f"{diagnostic.level}: {diagnostic.code}{location}: "
+                f"{diagnostic.message}",
+                file=sys.stderr,
+            )
+        return 1
+    indent = None if namespace.compact else 2
+    payload = json.dumps(
+        resolution.to_dict(),
+        indent=indent,
+        sort_keys=True,
+        ensure_ascii=False,
+    )
+    if indent is not None:
+        payload += "\n"
+    _write_output(namespace.output, payload)
+    return 0
 
 
 def _write_output(destination: str, payload: str) -> None:

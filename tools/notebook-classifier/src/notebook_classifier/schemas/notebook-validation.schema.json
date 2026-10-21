@@ -15,16 +15,19 @@
       "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
     },
     "defaults": {
-      "$ref": "#/$defs/classificationProperties"
+      "$ref": "#/$defs/classificationProperties",
+      "default": {}
     },
     "rules": {
       "type": "array",
+      "default": [],
       "items": {
         "$ref": "#/$defs/rule"
       }
     },
     "notebooks": {
       "type": "array",
+      "default": [],
       "items": {
         "$ref": "#/$defs/notebook"
       }
@@ -36,6 +39,7 @@
       "additionalProperties": false,
       "properties": {
         "role": {
+          "default": "unknown",
           "enum": [
             "tutorial",
             "exercise",
@@ -47,6 +51,7 @@
           ]
         },
         "delivery_scope": {
+          "default": "unknown",
           "enum": [
             "core",
             "optional",
@@ -57,6 +62,7 @@
           ]
         },
         "output_policy": {
+          "default": "unknown",
           "enum": [
             "preserve_source",
             "strip",
@@ -66,17 +72,21 @@
           ]
         },
         "validation_tier": {
+          "default": "unknown",
           "enum": ["required", "extended", "manual", "excluded", "unknown"]
         },
         "environment": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "default": "unknown"
         },
         "lifecycle": {
+          "default": "active",
           "enum": ["active", "replaced", "retired", "suspended"]
         },
         "constraints": {
           "type": "array",
+          "default": [],
           "uniqueItems": true,
           "items": {
             "enum": [
@@ -90,6 +100,7 @@
           }
         },
         "runtime": {
+          "default": "unknown",
           "enum": ["short", "medium", "long", "unknown"]
         },
         "rationale": {
@@ -123,6 +134,10 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "retain_if_unmatched": {
+          "type": "boolean",
+          "default": false
         },
         "properties": {
           "$ref": "#/$defs/classificationProperties"

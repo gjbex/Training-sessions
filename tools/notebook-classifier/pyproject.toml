@@ -13,6 +13,7 @@ authors = [{ name = "Geert Jan Bex" }]
 dependencies = [
   "jsonschema>=4.25,<5",
   "nbformat>=5.10,<6",
+  "tomlkit>=0.13,<1",
 ]
 
 [project.optional-dependencies]

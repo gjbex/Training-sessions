@@ -591,6 +591,9 @@ Exit criteria:
 
 ### Stage 2: manifest engine
 
+Status: implemented in the tool-local package.  Stage 3 will provide the human
+review interface over these APIs.
+
 Deliver:
 
 - repository defaults, ordered path rules, and notebook overrides;

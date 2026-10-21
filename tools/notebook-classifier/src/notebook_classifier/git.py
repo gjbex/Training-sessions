@@ -74,6 +74,17 @@ class GitRepository:
         path = self.safe_path(relative_path)
         return self.text("hash-object", str(path)).strip()
 
+    def blob_ids(self, relative_paths: tuple[str, ...]) -> tuple[tuple[str, str], ...]:
+        """Hash several worktree files with one read-only Git invocation."""
+
+        if not relative_paths:
+            return ()
+        paths = tuple(str(self.safe_path(path)) for path in relative_paths)
+        hashes = self.text("hash-object", "--", *paths).splitlines()
+        if len(hashes) != len(relative_paths):
+            raise GitError("Git returned an unexpected number of object IDs")
+        return tuple(zip(relative_paths, hashes, strict=True))
+
     def last_changed_commit(self, relative_path: str) -> str | None:
         value = self.text(
             "log", "-1", "--format=%H", "--", relative_path, check=False
