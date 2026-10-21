@@ -674,6 +674,12 @@ Only after the single-repository workflow is stable, consider:
 - opt-in agent suggestions with explicit data-disclosure controls;
 - reusable validation-runner integration.
 
+The reusable plan-generation, result-interchange, and scaffolding work is
+specified in
+[`VALIDATION_PLANNING_IMPLEMENTATION_PLAN.md`](VALIDATION_PLANNING_IMPLEMENTATION_PLAN.md).
+That work preserves the classifier's no-execution boundary: course repositories
+own executable validation and CI policy.
+
 A central database remains unnecessary while version-controlled manifests are
 the authoritative records.
 

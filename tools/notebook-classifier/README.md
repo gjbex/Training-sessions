@@ -17,6 +17,9 @@ findings, is documented in
 [`pilots/scientific-python.md`](pilots/scientific-python.md).  Its unresolved
 validation handoff is
 [`pilots/scientific-python-unresolved.md`](pilots/scientific-python-unresolved.md).
+The proposed reusable plan generator, result contract, and safe scaffolding are
+specified separately in the
+[`validation planning implementation plan`](VALIDATION_PLANNING_IMPLEMENTATION_PLAN.md).
 
 ## Trust boundary
 
