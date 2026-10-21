@@ -7,7 +7,7 @@ import secrets
 from collections import Counter
 from pathlib import Path, PurePosixPath
 from typing import Annotated, Any
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 from fastapi import Depends, FastAPI, Form, HTTPException, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -21,6 +21,7 @@ from notebook_classifier.preview import build_preview
 from notebook_classifier.review import (
     CONSTRAINTS,
     EDITABLE_PROPERTIES,
+    REQUIRED_DECISIONS,
     VOCABULARIES,
     ReviewState,
 )
@@ -29,6 +30,7 @@ from notebook_classifier.suggestions import suggestion_map
 COOKIE_NAME = "notebook_classifier_session"
 MAX_FORM_BYTES = 128 * 1024
 _PACKAGE = Path(__file__).parent
+_LOOPBACK_HOSTS = frozenset({"127.0.0.1", "localhost", "::1"})
 
 
 def create_app(
@@ -95,9 +97,7 @@ def create_app(
         authenticated(request)
         if not hmac.compare_digest(token, app.state.csrf_token):
             raise HTTPException(status_code=403, detail="invalid form token")
-        origin = request.headers.get("origin")
-        expected = f"{request.url.scheme}://{request.headers.get('host', '')}"
-        if origin != expected:
+        if not _acceptable_write_origin(request):
             raise HTTPException(status_code=403, detail="cross-origin write rejected")
 
     def context(request: Request, **values: Any) -> dict[str, Any]:
@@ -108,6 +108,7 @@ def create_app(
             "progress": review.progress(),
             "vocabularies": VOCABULARIES,
             "constraints": CONSTRAINTS,
+            "required_decisions": REQUIRED_DECISIONS,
             **values,
         }
 
@@ -150,6 +151,7 @@ def create_app(
         request: Request,
         q: str = "",
         state: str = "",
+        completeness: str = "",
         role: str = "",
         scope: str = "",
         sort: str = "path",
@@ -162,16 +164,21 @@ def create_app(
             facts = inventory.get(resolved.path)
             if facts is None:
                 continue
-            suggestions = suggestion_map(facts, review.inventory)
+            missing_required = review.missing_required_decisions(resolved)
             row = {
                 "resolved": resolved,
                 "facts": facts,
-                "suggested_role": suggestions.get("role"),
+                "missing_required": missing_required,
+                "decisions_complete": not missing_required,
                 "detail_url": f"/notebook?path={quote(resolved.path, safe='')}",
             }
             if q and q.casefold() not in resolved.path.casefold():
                 continue
             if state and resolved.review_state != state:
+                continue
+            if completeness == "complete" and missing_required:
+                continue
+            if completeness == "incomplete" and not missing_required:
                 continue
             if role and resolved.properties.get("role") != role:
                 continue
@@ -181,6 +188,10 @@ def create_app(
         sort_keys = {
             "path": lambda row: row["resolved"].path,
             "state": lambda row: row["resolved"].review_state,
+            "completeness": lambda row: (
+                row["decisions_complete"],
+                row["missing_required"],
+            ),
             "role": lambda row: row["resolved"].properties.get("role", ""),
             "scope": lambda row: row["resolved"].properties.get("delivery_scope", ""),
             "tier": lambda row: row["resolved"].properties.get("validation_tier", ""),
@@ -201,7 +212,13 @@ def create_app(
                 request,
                 rows=rows,
                 counts=counts,
-                filters={"q": q, "state": state, "role": role, "scope": scope},
+                filters={
+                    "q": q,
+                    "state": state,
+                    "completeness": completeness,
+                    "role": role,
+                    "scope": scope,
+                },
                 sort=sort,
                 direction=direction,
                 message=request.query_params.get("message", ""),
@@ -406,3 +423,38 @@ def _property_value(name: str, raw: str, *, allow_inherit: bool) -> Any:
     if len(value) > maximum:
         raise ValueError(f"{name} is longer than {maximum} characters")
     return value
+
+
+def _acceptable_write_origin(request: Request) -> bool:
+    """Accept browser form posts from the same loopback server.
+
+    A valid per-session CSRF token is the primary write authorization.  Origin
+    remains a defence-in-depth check when a browser supplies it, but browsers
+    and embedded webviews may omit it or serialize it as ``null``.
+    """
+
+    if request.headers.get("sec-fetch-site", "").casefold() == "cross-site":
+        return False
+    origin = request.headers.get("origin")
+    if origin is None or origin == "null":
+        return True
+    try:
+        parsed = urlsplit(origin)
+        origin_port = parsed.port or _default_port(parsed.scheme)
+        request_port = request.url.port or _default_port(request.url.scheme)
+    except ValueError:
+        return False
+    return (
+        parsed.scheme in {"http", "https"}
+        and parsed.hostname in _LOOPBACK_HOSTS
+        and parsed.username is None
+        and parsed.password is None
+        and parsed.path in {"", "/"}
+        and not parsed.query
+        and not parsed.fragment
+        and origin_port == request_port
+    )
+
+
+def _default_port(scheme: str) -> int | None:
+    return {"http": 80, "https": 443}.get(scheme)

@@ -39,6 +39,8 @@ def test_decision_is_drafted_without_modifying_source_notebook(
     assert resolved.properties["role"] == "tutorial"
     assert resolved.provenance["role"] == "notebook_override"
     assert state.progress().complete == 1
+    assert state.progress().decisions_complete == 1
+    assert state.missing_required_decisions(resolved) == ()
     assert state.has_unsaved_changes
     assert notebook.read_bytes() == before
     assert not (course_repository / "validation" / "manifest.toml").exists()
@@ -109,6 +111,13 @@ def test_bulk_update_records_each_selected_notebook(
         assert resolved.properties["delivery_scope"] == "core"
         assert resolved.provenance["delivery_scope"] == "notebook_override"
         assert resolved.review_state == "current"
+        assert state.missing_required_decisions(resolved) == (
+            "role",
+            "output_policy",
+            "validation_tier",
+            "environment",
+        )
+    assert state.progress().decisions_complete == 0
 
 
 def test_final_save_writes_only_manifest(

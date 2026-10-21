@@ -21,7 +21,7 @@
   </header>
   <div class="session-bar" role="status">
     <span>Commit <code>{{ review.snapshot.repository_commit[:12] }}</code></span>
-    <span>{{ progress.complete }}/{{ progress.total }} complete</span>
+    <span>{{ progress.complete }}/{{ progress.total }} ready</span>
     {% if review.has_unsaved_changes %}<strong>Draft has unsaved changes</strong>{% else %}<span>No unsaved changes</span>{% endif %}
   </div>
   <main id="main" class="page">

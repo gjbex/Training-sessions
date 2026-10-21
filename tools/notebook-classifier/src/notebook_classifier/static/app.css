@@ -61,6 +61,8 @@ tbody tr:hover { background: #f5fafb; }
 td small { display: block; }
 .status { display: inline-block; border-radius: 1rem; border: 1px solid currentColor; padding: .08rem .48rem; font-size: .82rem; }
 .status-current { color: var(--good); }
+.status-complete { color: var(--good); }
+.status-incomplete { color: var(--bad); }
 .status-stale, .status-unreviewed { color: var(--warn); }
 .status-missing { color: var(--bad); }
 .bulk-controls { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; margin-top: .8rem; }

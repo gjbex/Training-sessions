@@ -85,6 +85,7 @@ class Progress:
 
     total: int
     reviewed: int
+    decisions_complete: int
     complete: int
     stale: int
     unresolved: int
@@ -151,11 +152,15 @@ class ReviewState:
             notebook for notebook in self.resolution.notebooks if notebook.tracked
         ]
         reviewed = sum(notebook.review_state == "current" for notebook in tracked)
+        decisions_complete = sum(
+            not self.missing_required_decisions(notebook) for notebook in tracked
+        )
         complete = sum(self._is_complete(notebook) for notebook in tracked)
         stale = sum(notebook.review_state == "stale" for notebook in tracked)
         return Progress(
             total=len(tracked),
             reviewed=reviewed,
+            decisions_complete=decisions_complete,
             complete=complete,
             stale=stale,
             unresolved=len(tracked) - complete,
@@ -166,6 +171,18 @@ class ReviewState:
             notebook
             for notebook in self.resolution.notebooks
             if notebook.tracked and not self._is_complete(notebook)
+        )
+
+    @staticmethod
+    def missing_required_decisions(
+        notebook: ResolvedNotebook,
+    ) -> tuple[str, ...]:
+        """Return required classification fields that still lack a decision."""
+
+        return tuple(
+            name
+            for name in REQUIRED_DECISIONS
+            if notebook.properties.get(name) in (None, "unknown", "")
         )
 
     def update_notebook(
@@ -352,9 +369,9 @@ class ReviewState:
 
     @staticmethod
     def _is_complete(notebook: ResolvedNotebook) -> bool:
-        return notebook.review_state == "current" and all(
-            notebook.properties.get(name) not in (None, "unknown", "")
-            for name in REQUIRED_DECISIONS
+        return (
+            notebook.review_state == "current"
+            and not ReviewState.missing_required_decisions(notebook)
         )
 
 

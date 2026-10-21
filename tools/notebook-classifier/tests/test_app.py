@@ -36,6 +36,37 @@ def test_session_cookie_and_security_headers(
     assert response.headers["x-frame-options"] == "DENY"
     assert "script-src 'none'" in response.headers["content-security-policy"]
     assert "Repository review" in response.text
+    assert "Suggested role" not in response.text
+
+
+def test_dashboard_shows_and_filters_missing_required_fields(
+    course_repository: Path, tmp_path: Path
+) -> None:
+    app = create_app(course_repository, draft_root=tmp_path / "drafts")
+    client = authenticated_client(app)
+    app.state.review.bulk_update(
+        ["notebooks/tutorial.ipynb"],
+        property_name="role",
+        value="tutorial",
+        reviewer="Maintainer",
+    )
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert "Required fields" in response.text
+    assert "Missing: delivery_scope, output_policy, validation_tier, environment" in (
+        response.text
+    )
+    assert "current" in response.text
+    assert (
+        "notebooks/tutorial.ipynb"
+        in client.get("/", params={"completeness": "incomplete"}).text
+    )
+    assert (
+        "No tracked notebooks match these filters."
+        in client.get("/", params={"completeness": "complete"}).text
+    )
 
 
 def test_non_loopback_host_and_oversized_form_are_rejected(
@@ -68,7 +99,7 @@ def test_detail_route_cannot_browse_arbitrary_files(
     assert "unknown tracked notebook" in response.text
 
 
-def test_cross_origin_and_bad_csrf_writes_are_rejected(
+def test_write_origin_fallback_and_csrf_protection(
     course_repository: Path, tmp_path: Path
 ) -> None:
     app = create_app(course_repository, draft_root=tmp_path / "drafts")
@@ -79,7 +110,35 @@ def test_cross_origin_and_bad_csrf_writes_are_rejected(
         "reviewer": "Maintainer",
     }
 
-    assert client.post("/notebook", data=data).status_code == 403
+    # Some browsers and embedded webviews omit Origin on same-origin form posts.
+    assert (
+        client.post("/notebook", data=data, follow_redirects=False).status_code == 303
+    )
+    assert (
+        client.post(
+            "/notebook",
+            data=data,
+            headers={"Origin": "http://localhost:8765"},
+            follow_redirects=False,
+        ).status_code
+        == 303
+    )
+    assert (
+        client.post(
+            "/notebook",
+            data=data,
+            headers={"Origin": "https://example.invalid"},
+        ).status_code
+        == 403
+    )
+    assert (
+        client.post(
+            "/notebook",
+            data=data,
+            headers={"Sec-Fetch-Site": "cross-site"},
+        ).status_code
+        == 403
+    )
     data["csrf"] = "wrong"
     assert client.post("/notebook", data=data, headers=ORIGIN).status_code == 403
 
