@@ -11,6 +11,7 @@ import hashlib
 import json
 import os
 import platform
+import signal
 import shutil
 import subprocess
 import sys
@@ -25,6 +26,10 @@ from typing import Any, Iterator
 
 RUNNER_NAME = "generated-notebook-validation-runner"
 RUNNER_VERSION = "{{ template_version }}"
+
+
+class NotebookTimeoutError(RuntimeError):
+    """Raised when a notebook exceeds its total execution deadline."""
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -187,13 +192,6 @@ def execute_entry(
                 temporary_repository, entry["path"]
             )
             execute_notebook(notebook_path, artifact_path, timeout)
-        artifacts.append(
-            {
-                "kind": "executed_notebook",
-                "path": artifact_relative,
-                "digest": file_digest(artifact_path),
-            }
-        )
         checks.append(
             {
                 "name": "notebook_execution",
@@ -202,6 +200,16 @@ def execute_entry(
                     "the notebook kernel completed; no scientific assertion "
                     "is implied"
                 ),
+            }
+        )
+    except NotebookTimeoutError as error:
+        outcome = "error"
+        reason_code = "notebook_timeout"
+        checks.append(
+            {
+                "name": "notebook_execution",
+                "outcome": "error",
+                "message": str(error),
             }
         )
     except Exception as error:  # noqa: BLE001 - evidence must record runner errors
@@ -219,6 +227,15 @@ def execute_entry(
                 "message": f"{type(error).__name__}: {message}",
             }
         )
+    finally:
+        if artifact_path.is_file():
+            artifacts.append(
+                {
+                    "kind": "executed_notebook",
+                    "path": artifact_relative,
+                    "digest": file_digest(artifact_path),
+                }
+            )
 
     return {
         "notebook_id": notebook_id,
@@ -253,11 +270,32 @@ def execute_notebook(source: Path, destination: Path, timeout: int) -> None:
     notebook = nbformat.read(source, as_version=4)
     client = NotebookClient(
         notebook,
-        timeout=timeout,
+        timeout=None,
         resources={"metadata": {"path": str(source.parent)}},
     )
-    client.execute()
-    nbformat.write(notebook, destination)
+    try:
+        with notebook_deadline(timeout):
+            client.execute()
+    finally:
+        nbformat.write(notebook, destination)
+
+
+@contextmanager
+def notebook_deadline(timeout: int) -> Iterator[None]:
+    def deadline_exceeded(_signum: int, _frame: Any) -> None:
+        raise NotebookTimeoutError(
+            f"notebook exceeded its {timeout}-second total execution timeout"
+        )
+
+    previous_handler = signal.signal(signal.SIGALRM, deadline_exceeded)
+    previous_timer = signal.setitimer(signal.ITIMER_REAL, timeout)
+    try:
+        yield
+    finally:
+        signal.setitimer(signal.ITIMER_REAL, 0)
+        signal.signal(signal.SIGALRM, previous_handler)
+        if previous_timer[0] > 0:
+            signal.setitimer(signal.ITIMER_REAL, *previous_timer)
 
 
 def not_run_entry(

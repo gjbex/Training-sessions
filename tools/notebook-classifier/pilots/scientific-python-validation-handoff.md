@@ -2,16 +2,18 @@
 
 Status: local Stage V4 handoff complete; CI activation and delivery tag pending
 
-Date: 2026-10-21
+Date: 2026-10-22
 
 Target branch: `feature/validation`
 
-Target commit used for the measured runs: `6097ab73fb31dff0ee153957b51036e994ca21c5`
+Target implementation commit before the final timeout refinement:
+`a0767e2d292c67b256adf4b469e2093c6f52c757`
 
 The target checkout was dirty because the Stage V4 implementation was under
-review. A separate clean temporary checkout test is therefore part of the
-handoff verification; these results must not be represented as evidence for
-the pending `20261023` delivery tag.
+review. The final result came from a disposable clean commit containing the
+proposed Stage V4 changes; that verification commit is not part of the target
+branch. These results must not be represented as evidence for the pending
+`20261023` delivery tag.
 
 ## Result
 
@@ -24,35 +26,39 @@ environment or error-tolerance overrides.
 | --- | ---: | ---: |
 | Manifest entries accounted for | 47/47 | 47/47 |
 | Candidates | 4 | 19 |
-| Pass | 4 | 15 |
+| Pass | 4 | 14 |
 | Fail | 0 | 0 |
-| Error | 0 | 4 |
+| Error | 0 | 5 |
 | Not run | 43 | 28 |
-| Sum of notebook durations | 25.364 s | 436.461 s |
-| End-to-end elapsed time | 29.135 s | 463.726 s |
+| Sum of notebook durations | 25.364 s | 278.808 s |
+| End-to-end elapsed time | 29.135 s | 292.301 s |
 | Provisional budget | 720 s | 720 s |
 
-Required-profile environment setup took 0.262 seconds for `default`, 3.651
-seconds for `hdf5`, and 2.380 seconds for `xarray` on the pilot host. All three
+Required-profile environment setup took 0.246 seconds for `default`, 0.261
+seconds for `hdf5`, and 0.264 seconds for `xarray` on the final clean run. All three
 reported Python 3.12.13 from the repository's existing lockfile. The requested
 Python 3.14 applies to the Training-sessions classifier itself; Scientific
 Python's lock currently constrains its course environments to Python 3.12.
 
 ## Actionable findings
 
-All four required-profile errors named the stable notebook ID, environment,
+All five required-profile errors named the stable notebook ID, environment,
 failing execution check, and underlying exception:
 
-1. `source-code-numpy-fft-experiments` requests the historical kernel
+1. `source-code-numpy-broadcast` exceeded its 120-second total execution
+   timeout. Its repeated `%timeit` cells and large arrays took 207.6 seconds in
+   a warm run and 519.8 seconds in the first clean run, so it is not a stable
+   required check in its current form.
+2. `source-code-numpy-fft-experiments` requests the historical kernel
    `conda-env-py35-py`, which is not installed.
-2. `source-code-numpy-io-performance` is classified in `default` but imports
+3. `source-code-numpy-io-performance` is classified in `default` but imports
    `h5py`; the dependency is available in the repository's `hdf5` environment.
-3. `source-code-numpy-numpy-linear-algebra` uses `y.shape[0]` before `y` is
+4. `source-code-numpy-numpy-linear-algebra` uses `y.shape[0]` before `y` is
    defined.
-4. `source-code-xarray-xarray-intro` uses frequency `6H`; the locked pandas
+5. `source-code-xarray-xarray-intro` uses frequency `6H`; the locked pandas
    rejects uppercase `H` and suggests `6h`.
 
-This gives an actionable-diagnostic ratio of 4/4 for the observed errors. The
+This gives an actionable-diagnostic ratio of 5/5 for the observed errors. The
 classification of the I/O notebook is a data-quality problem, not evidence
 that the shared manifest schema needs another field: its existing environment
 can be corrected to `hdf5` after maintainer review.
@@ -101,6 +107,14 @@ entire working tree tried to copy a live `.codegraph/daemon.sock`. The runner
 and shared scaffold template now construct temporary execution trees from
 `git ls-files`, excluding sockets, ignored caches, and unrelated untracked
 material. The repaired smoke run passed 4/4.
+
+The first clean required run exposed a second generic assumption: nbclient's
+`timeout` is a per-cell limit, not a whole-notebook deadline. That run took
+746.726 seconds and exceeded the 720-second budget because `broadcast.ipynb`
+alone ran for 519.810 seconds. The target runner and shared scaffold now enforce
+the configured limit across total notebook execution, retain the partial
+notebook on timeout, and report `notebook_timeout`. The final clean run took
+292.301 seconds and left its checkout clean.
 
 ## Shared-tool changes prompted by the pilot
 
