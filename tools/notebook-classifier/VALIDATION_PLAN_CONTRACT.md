@@ -87,6 +87,7 @@ notebook was run or passed.
 | `validation_tier_excluded` | The manifest explicitly excludes the entry. |
 | `validation_tier_not_selected` | Its tier is outside the requested selection. |
 | `delivery_scope_not_selected` | Its delivery scope is outside the requested selection. |
+| `notebook_id_not_selected` | Its stable ID is outside an explicitly requested subset. |
 | `lifecycle_not_selected` | Its lifecycle is outside the requested selection. |
 | `lifecycle_not_executable` | A selected non-active lifecycle is retained for history, not execution. |
 | `notebook_not_tracked` | An active manifest entry has no tracked notebook. |
@@ -113,8 +114,10 @@ The default selection is:
 
 Repeated values within a selection are deduplicated and emitted in vocabulary
 order.  Repeated `--include-tier`, `--include-scope`, and
-`--include-lifecycle` options are cumulative.  Filters of different kinds are
-combined: an entry must match each filter that is present.
+`--include-lifecycle` options are cumulative. Stable IDs supplied with
+`--include-id` are deduplicated and sorted. Filters of different kinds are
+combined: an entry must match each filter that is present. An ID filter retains
+non-selected entries as `excluded`; it never removes them from accounting.
 
 `--review-policy warn` records stale, missing, and unreviewed evidence without
 blocking a selected entry.  `--review-policy require-current` blocks it.

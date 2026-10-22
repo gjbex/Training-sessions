@@ -15,7 +15,11 @@ def render_validation_markdown(assessment: ResultAssessment) -> str:
     lines = [
         "# Notebook validation evidence summary",
         "",
-        f"**Status:** {'complete' if report['complete'] else 'incomplete or invalid'}",
+        "**Evidence validity:** "
+        f"{'valid and complete' if report['complete'] else 'incomplete or invalid'}",
+        "",
+        "**Selected checks:** "
+        f"{'all passed' if report['successful'] else 'non-passing outcomes present'}",
         "",
         f"> {report['evidence_boundary']}",
         "",

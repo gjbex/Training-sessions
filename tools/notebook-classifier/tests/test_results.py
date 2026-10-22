@@ -99,6 +99,8 @@ def test_complete_result_is_schema_valid_and_reported_honestly(
 
     assert validate_result_document(result) == ()
     assert not assessment.has_errors
+    assert assessment.summary["complete"] is True
+    assert assessment.summary["successful"] is True
     assert assessment.summary["counts"]["effective_outcomes"] == {
         "pass": 1,
         "fail": 0,
@@ -122,6 +124,7 @@ def test_partial_or_interrupted_result_is_not_mistaken_for_pass(
     assessment = assess_results(plan, result)
 
     assert assessment.has_errors
+    assert assessment.summary["successful"] is False
     assert "selected_result_missing" in _codes(assessment)
     assert assessment.summary["counts"]["effective_outcomes"]["not_run"] == 1
     assert assessment.summary["counts"]["effective_outcomes"]["pass"] == 0
@@ -226,6 +229,8 @@ def test_fail_and_error_remain_distinct_reported_outcomes(
     assessment = assess_results(plan, result)
 
     assert not assessment.has_errors
+    assert assessment.summary["complete"] is True
+    assert assessment.summary["successful"] is False
     assert assessment.summary["counts"]["effective_outcomes"][outcome] == 1
 
 

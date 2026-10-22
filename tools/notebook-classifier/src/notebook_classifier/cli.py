@@ -152,6 +152,11 @@ def create_parser() -> argparse.ArgumentParser:
         help="delivery scope to select; repeatable (default: all scopes)",
     )
     plan.add_argument(
+        "--include-id",
+        action="append",
+        help="stable notebook ID to select; repeatable (default: all IDs)",
+    )
+    plan.add_argument(
         "--include-lifecycle",
         action="append",
         choices=LIFECYCLES,
@@ -399,6 +404,7 @@ def _create_validation_plan(namespace: argparse.Namespace) -> int:
     selection = PlanSelection.create(
         include_tiers=tuple(namespace.include_tier or ("required",)),
         include_scopes=tuple(namespace.include_scope or ()),
+        include_ids=tuple(namespace.include_id or ()),
         include_lifecycles=tuple(namespace.include_lifecycle or ("active",)),
         review_policy=namespace.review_policy,
         allowed_constraints=tuple(namespace.allow_constraint or ()),

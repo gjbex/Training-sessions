@@ -455,6 +455,13 @@ Exit criteria:
 
 ### Stage V4: Scientific Python handoff pilot
 
+Status: implemented locally on 2026-10-21. All 47 entries were accounted for,
+all 19 required notebooks received explicit results, the smoke profile passed,
+and the required profile exposed four actionable course-maintenance errors.
+Measurements and handoff findings are recorded in
+`pilots/scientific-python-validation-handoff.md`. Hosted CI activation and the
+`20261023` delivery baseline remain intentionally pending.
+
 This stage creates changes in Scientific Python only under a separate explicit
 task.  `Training-sessions` supplies the generator and records measurements.
 

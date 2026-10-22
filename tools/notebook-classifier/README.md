@@ -20,8 +20,10 @@ validation handoff is
 The proposed reusable plan generator, result contract, and safe scaffolding are
 specified separately in the
 [`validation planning implementation plan`](VALIDATION_PLANNING_IMPLEMENTATION_PLAN.md).
-Stages V0 through V3 of that plan are implemented.  The versioned semantics, reason
-codes, deterministic digest, and exit statuses are documented in the
+Stages V0 through V4 of that plan are implemented. The Scientific Python
+handoff measurements are recorded in
+[`pilots/scientific-python-validation-handoff.md`](pilots/scientific-python-validation-handoff.md).
+The versioned semantics, reason codes, deterministic digest, and exit statuses are documented in the
 [`validation plan contract`](VALIDATION_PLAN_CONTRACT.md).
 
 ## Trust boundary
@@ -132,7 +134,7 @@ pixi run notebook-classifier create-validation-plan \
 The plan accounts for every resolved notebook, groups eligible candidates by
 environment, and records filtered, manual, excluded, or blocked entries with
 machine-readable reasons.  Its default selection is the active `required` tier
-on `linux-64`.  Use repeated `--include-tier`, `--include-scope`,
+on `linux-64`.  Use repeated `--include-tier`, `--include-scope`, `--include-id`,
 `--include-lifecycle`, and `--allow-constraint` options to state another policy.
 Use `--review-policy require-current` when a stale or unreviewed selected
 notebook must block planning.

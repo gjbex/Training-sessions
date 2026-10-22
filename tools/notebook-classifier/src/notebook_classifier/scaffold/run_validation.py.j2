@@ -284,19 +284,31 @@ def not_run_entry(
 def temporary_repository_copy(repository: Path) -> Iterator[Path]:
     with tempfile.TemporaryDirectory(prefix="notebook-validation-") as directory:
         destination = Path(directory) / "repository"
-        shutil.copytree(
-            repository,
-            destination,
-            symlinks=True,
-            ignore=shutil.ignore_patterns(
-                ".git",
-                ".pixi",
-                ".pytest_cache",
-                ".ruff_cache",
-                "__pycache__",
-            ),
-        )
+        destination.mkdir()
+        for relative in git_tracked_paths(repository):
+            source = safe_relative_path(repository, relative)
+            target = destination.joinpath(*safe_relative_parts(relative))
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target, follow_symlinks=False)
         yield destination
+
+
+def git_tracked_paths(repository: Path) -> tuple[str, ...]:
+    result = subprocess.run(
+        ["git", "--no-optional-locks", "-C", str(repository), "ls-files", "-z"],
+        check=False,
+        capture_output=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            result.stderr.decode(errors="replace").strip()
+            or "unable to enumerate tracked files"
+        )
+    return tuple(
+        path.decode(errors="surrogateescape")
+        for path in result.stdout.split(b"\0")
+        if path
+    )
 
 
 def require_outside_repository(
@@ -307,14 +319,19 @@ def require_outside_repository(
 
 
 def safe_relative_path(root: Path, relative: str) -> Path:
-    pure = PurePosixPath(relative)
-    if pure.is_absolute() or ".." in pure.parts or "\\" in relative:
-        raise RuntimeError(f"unsafe relative path: {relative}")
-    candidate = root.joinpath(*pure.parts).resolve()
+    parts = safe_relative_parts(relative)
+    candidate = root.joinpath(*parts).resolve()
     resolved_root = root.resolve()
     if candidate != resolved_root and resolved_root not in candidate.parents:
         raise RuntimeError(f"path escapes its declared root: {relative}")
     return candidate
+
+
+def safe_relative_parts(relative: str) -> tuple[str, ...]:
+    pure = PurePosixPath(relative)
+    if pure.is_absolute() or ".." in pure.parts or "\\" in relative:
+        raise RuntimeError(f"unsafe relative path: {relative}")
+    return pure.parts
 
 
 def git_status(repository: Path) -> str:

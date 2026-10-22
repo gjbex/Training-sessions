@@ -5,6 +5,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import re
 from dataclasses import asdict, dataclass, replace
 from enum import StrEnum
 from functools import cache
@@ -60,6 +61,7 @@ class PlanReason(StrEnum):
     VALIDATION_TIER_EXCLUDED = "validation_tier_excluded"
     VALIDATION_TIER_NOT_SELECTED = "validation_tier_not_selected"
     DELIVERY_SCOPE_NOT_SELECTED = "delivery_scope_not_selected"
+    NOTEBOOK_ID_NOT_SELECTED = "notebook_id_not_selected"
     LIFECYCLE_NOT_SELECTED = "lifecycle_not_selected"
     LIFECYCLE_NOT_EXECUTABLE = "lifecycle_not_executable"
     NOTEBOOK_NOT_TRACKED = "notebook_not_tracked"
@@ -81,6 +83,7 @@ class PlanSelection:
 
     include_tiers: tuple[str, ...] = ("required",)
     include_scopes: tuple[str, ...] = ()
+    include_ids: tuple[str, ...] = ()
     include_lifecycles: tuple[str, ...] = ("active",)
     review_policy: str = "warn"
     allowed_constraints: tuple[str, ...] = ()
@@ -92,6 +95,7 @@ class PlanSelection:
         *,
         include_tiers: tuple[str, ...] = ("required",),
         include_scopes: tuple[str, ...] = (),
+        include_ids: tuple[str, ...] = (),
         include_lifecycles: tuple[str, ...] = ("active",),
         review_policy: str = "warn",
         allowed_constraints: tuple[str, ...] = (),
@@ -114,6 +118,7 @@ class PlanSelection:
             include_scopes=_ordered_unique(
                 include_scopes, DELIVERY_SCOPES, "delivery scope"
             ),
+            include_ids=_normalized_ids(include_ids),
             include_lifecycles=_ordered_unique(
                 include_lifecycles, LIFECYCLES, "lifecycle"
             ),
@@ -128,6 +133,7 @@ class PlanSelection:
         return {
             "include_tiers": list(self.include_tiers),
             "include_scopes": list(self.include_scopes),
+            "include_ids": list(self.include_ids),
             "include_lifecycles": list(self.include_lifecycles),
             "review_policy": self.review_policy,
             "allowed_constraints": list(self.allowed_constraints),
@@ -467,6 +473,8 @@ def _plan_entry(
         selection_reasons.append(PlanReason.VALIDATION_TIER_NOT_SELECTED)
     if selection.include_scopes and scope not in selection.include_scopes:
         selection_reasons.append(PlanReason.DELIVERY_SCOPE_NOT_SELECTED)
+    if selection.include_ids and notebook.notebook_id not in selection.include_ids:
+        selection_reasons.append(PlanReason.NOTEBOOK_ID_NOT_SELECTED)
 
     required_target_inputs: tuple[str, ...] = ()
     if identity_blockers:
@@ -596,6 +604,17 @@ def _ordered_unique(
         raise ValueError(f"unsupported {label}: {', '.join(invalid)}")
     selected = set(values)
     return tuple(item for item in allowed if item in selected)
+
+
+def _normalized_ids(values: tuple[str, ...]) -> tuple[str, ...]:
+    invalid = sorted(
+        value
+        for value in set(values)
+        if re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", value) is None
+    )
+    if invalid:
+        raise ValueError(f"invalid notebook ID: {', '.join(invalid)}")
+    return tuple(sorted(set(values)))
 
 
 def _unique(values: list[str]) -> tuple[str, ...]:

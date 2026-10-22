@@ -379,6 +379,11 @@ def assess_results(
             copy.deepcopy(results.get("runner")) if not result_schema_errors else None
         ),
         "complete": error_count == 0,
+        "successful": all(
+            entry["planned_action"] not in {"candidate", "manual"}
+            or entry["effective_outcome"] == "pass"
+            for entry in summary_entries
+        ),
         "counts": {
             "planned_actions": action_counts,
             "effective_outcomes": outcome_counts,
@@ -523,6 +528,7 @@ def _empty_summary(plan: dict[str, Any]) -> dict[str, Any]:
         "repository": copy.deepcopy(repository),
         "runner": None,
         "complete": False,
+        "successful": False,
         "counts": {
             "planned_actions": {},
             "effective_outcomes": {},

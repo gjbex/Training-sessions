@@ -278,6 +278,34 @@ def test_scope_filter_and_linux_only_policy_are_explicit(
         PlanSelection.create(platform="win-64")
 
 
+def test_stable_id_filter_retains_nonselected_entries(
+    course_repository: Path,
+) -> None:
+    second_path = _add_notebook(course_repository, "second")
+    _write_manifest(
+        course_repository,
+        _entry("tutorial", "notebooks/tutorial.ipynb", tier="required"),
+        _entry("second", second_path, tier="required"),
+    )
+
+    plan = create_validation_plan(
+        scan_repository(course_repository),
+        resolve_manifest(course_repository),
+        PlanSelection.create(include_ids=("tutorial", "tutorial")),
+    )
+    by_id = {entry.notebook_id: entry for entry in plan.entries}
+
+    assert plan.selection.include_ids == ("tutorial",)
+    assert by_id["tutorial"].action == "candidate"
+    assert by_id["second"].action == "excluded"
+    assert by_id["second"].reasons == ("notebook_id_not_selected",)
+
+
+def test_invalid_stable_id_filter_is_rejected() -> None:
+    with pytest.raises(ValueError, match="invalid notebook ID"):
+        PlanSelection.create(include_ids=("../tutorial",))
+
+
 def test_unknown_active_notebook_is_blocked_not_filtered_away(
     course_repository: Path,
 ) -> None:
